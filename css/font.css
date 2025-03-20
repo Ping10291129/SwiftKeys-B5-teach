@@ -1,0 +1,7 @@
+@font-face {
+    font-family: "Ding";
+    /* Project id 4788059 */
+    src: url('../fonts/DingTalk-JinBuTi.woff2') format('woff2'),
+        url('../fonts/DingTalk-JinBuTi.woff') format('woff'),
+        url('../fonts/DingTalk-JinBuTi.ttf') format('truetype');
+}

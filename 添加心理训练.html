@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="zh">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>心理健康管理系统</title>
+      <link rel="stylesheet" href="css/style.css">
+   </head>
+   <body>
+<div id="loading"><div id="loading-center"></div></div>
+      <div class="wrapper">
+         <div class="iq-sidebar">
+            <div class="iq-sidebar-logo d-flex justify-content-between">
+               <a href="index.html">
+               <img src="images/logo.png" class="img-fluid" alt="">
+               <span>心理健康管理</span>
+               </a>
+            </div>
+            <div id="sidebar-scrollbar">
+               <nav class="iq-sidebar-menu">
+                  <ul class="iq-menu">
+                     <li>
+                        <a href="index.html" class="iq-waves-effect"><i class="ri-home-8-fill"></i><span>首页</span></a>
+                     </li>
+                     <li>
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-shield-user-fill"></i><span>医师中心 </span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu">
+                              <li><a href="资料编辑.html">资料编辑</a></li>
+                              <li><a href="修改密码.html">修改密码</a></li>
+                        </ul>
+                     </li>
+                    <li>
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-user-settings-fill"></i>用户管理<i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu">
+                              <li><a href="我的用户.html">我的用户</a></li>
+                              <li><a href="添加用户.html">添加用户</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-todo-fill"></i>评测管理<i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu">
+                              <li><a href="评测预约.html">评测预约</a></li>
+                              <li><a href="答题记录.html">答题记录</a></li>
+                        </ul>
+                     </li>
+                     <li>
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-bar-chart-2-fill"></i><span>报告管理</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu">
+                              <li><a href="报告列表.html">报告列表</a></li>
+                              <li><a href="报告审核.html">报告审核</a></li>
+                        </ul>
+                     </li>
+
+                     <li>
+                        <a href="预警管理.html" class="iq-waves-effect"><i class="ri-alarm-warning-fill"></i><span>预警管理</span></a>
+                     </li>
+
+                     <li>
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-file-edit-fill"></i><span>理表管理</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu">
+                              <li><a href="所有量表.html">所有量表</a></li>
+                              <li><a href="套餐管理.html">套餐管理</a></li>
+                        </ul>
+                     </li>
+                     <li><a href="临床数据管理.html" class="iq-waves-effect"><i class="ri-pie-chart-2-fill"></i><span>临床数据管理</span></a>
+                     </li>
+
+                     <li>
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-alarm-fill"></i><span>预约排班</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu">
+                              <li><a href="预约管理.html">预约管理 </a></li>
+                              <li><a href="排班管理.html">排班管理 </a></li>
+                           </ul>
+                     </li>
+
+                     <li class="active menu-open">
+                        <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-folder-5-fill"></i><span>训练管理</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                        <ul class="iq-submenu">
+                              <li><a href="心理训练管理.html">心理训练管理</a></li>
+                              <li class="active"><a href="">添加心理训练</a></li>
+                              <li><a href="训练套餐管理.html">训练套餐管理</a></li>
+                           </ul>
+                     </li>
+
+                  </ul>
+               </nav>
+               <div class="p-3"></div>
+            </div>
+         </div>
+         
+         <!-- Page Content  -->
+         <div id="content-page" class="content-page">
+            <!-- TOP Nav Bar -->
+         <div class="iq-top-navbar">
+            <div class="iq-navbar-custom">
+               
+               <nav class="navbar navbar-expand-lg navbar-light p-0">
+                  <div class="iq-search-bar">
+                     <form action="javascript:;" class="searchbox">
+                        <input type="text" class="text search-input" placeholder="请输入搜索内容...">
+                        <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                     </form>
+                  </div>
+                  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <i class="ri-menu-3-line"></i>
+                  </button>
+                  <div class="iq-menu-bt align-self-center">
+                     <div class="wrapper-menu">
+                        <div class="main-circle"><i class="ri-more-fill"></i></div>
+                           <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                     </div>
+                  </div>
+                  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                     <ul class="navbar-nav ml-auto navbar-list">
+                     
+                        <li class="nav-item iq-full-screen">
+                           <a href="#" class="iq-waves-effect" id="btnFullscreen"><i class="ri-fullscreen-line"></i></a>
+                        </li>
+                        
+                        <li class="nav-item">
+                           <a href="#" class="search-toggle iq-waves-effect">
+                                 <i class="ri-notification-3-fill"></i>
+                                 <span class="bg-danger dots"></span>
+                              </a>
+                           <div class="iq-sub-dropdown">
+                              <div class="iq-card shadow-none m-0">
+                                 <div class="iq-card-body p-0 ">
+                                    <div class="bg-primary p-3">
+                                       <h5 class="mb-0 text-white">所有通知<small class="badge  badge-light float-right pt-1">4</small></h5>
+                                    </div>
+
+                                    <a href="#" class="iq-sub-card">
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/01.jpg" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">艾玛·沃森·比尼。</h6>
+                                             <small class="float-right font-size-12">刚刚</small>
+                                             <p class="mb-0">95 MB</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                    <a href="#" class="iq-sub-card">
+                                       <div class="media align-items-center">
+                                          <div class="">
+                                             <img class="avatar-40 rounded" src="images/user/02.jpg" alt="">
+                                          </div>
+                                          <div class="media-body ml-3">
+                                             <h6 class="mb-0 ">新客户加入</h6>
+                                             <small class="float-right font-size-12">5天前</small>
+                                             <p class="mb-0">系统管理员</p>
+                                          </div>
+                                       </div>
+                                    </a>
+                                 </div>
+                              </div>
+                           </div>
+                        </li>
+                     </ul>
+                  </div>
+                  <ul class="navbar-list">
+                     <li>
+                        <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                           <img src="images/user1.jpg" class="img-fluid rounded mr-3" alt="user">
+                           <div class="caption">
+                              <h6 class="mb-0 line-height">胡松鹤</h6>
+                              <span class="font-size-12">超级管理员</span>
+                           </div>
+                        </a>
+                        <div class="iq-sub-dropdown iq-user-dropdown">
+                           <div class="iq-card shadow-none m-0">
+                              <div class="iq-card-body p-0 ">
+                                 <div class="bg-primary p-3">
+                                    <h5 class="mb-0 text-white line-height">你好-胡松鹤</h5>
+                                 </div>
+                                 <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-file-user-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">个人中心</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-profile-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">修改密码</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                                 <a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
+                                    <div class="media align-items-center">
+                                       <div class="rounded iq-card-icon iq-bg-primary">
+                                          <i class="ri-account-box-line"></i>
+                                       </div>
+                                       <div class="media-body ml-3">
+                                          <h6 class="mb-0 ">系统设置</h6>
+                                       </div>
+                                    </div>
+                                 </a>
+                               
+                                 <div class="d-inline-block w-100 text-center p-3">
+                                    <a class="bg-primary iq-sign-btn" href="sign-in.html" role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </li>
+                  </ul>
+               </nav>
+
+            </div>
+         </div>
+         <!-- TOP Nav Bar END -->
+         <div class="container-fluid">
+            <div class="iq-card">
+               <div class="iq-card-header d-flex justify-content-between">
+                  <div class="iq-header-title">
+                     <h4 class="card-title">添加心理训练</h4>
+                  </div>
+               </div>
+             
+               <div class="iq-card-body">
+                  <div class="inputbox" style="width: 100%; max-width: 1100px; margin: 0 auto;">
+                     <div style="width: 100%; max-width: 600px;">
+                  <h5 class="mt-2">心理训练标题</h5>
+                  <fieldset class="form-group">
+                        <input type="text" class="form-control">
+                     </fieldset>
+                  
+                  <h5 class="mt-2">心理训练类别</h5>
+                  <fieldset class="form-group">
+                     
+                     <select class="form-control">
+         <option selected="" value="0">不限</option>
+    
+     <option value="1">文本</option>
+    
+     <option value="2">音频</option>
+    
+     <option value="3">视频</option>
+    
+     <option value="4">图片</option>
+   
+              </select>
+                     </fieldset>
+                  
+                  <h5 class="mt-2">心理训练类型：</h5>
+                  <fieldset class="form-group">
+                        <select class="form-control">
+         <option selected="" value="0">不限</option>
+    
+     <option value="1">抑郁</option>
+    
+     <option value="2">焦虑</option>
+   
+              </select>
+                     </fieldset>
+                  <h5 class="mt-2">心理训练文件：</h5>
+                  <fieldset class="form-group">
+                        <div class="custom-file">
+                           <input type="file" class="custom-file-input" id="inputGroupFile01">
+                           <label class="custom-file-label" for="inputGroupFile01">/image/netupfile/20190731190523784.png</label>
+                        </div>
+                     </fieldset>
+               
+                  
+                 
+                  </div>
+                     
+                     <h5 class="mt-2">心理训练详情：</h5>
+                  
+                     
+                        <fieldset class="form-group">
+                           <div id="editor">
+                              <p>欢迎使用 <b>wangEditor</b> 富文本编辑器</p>
+                          </div>
+                           </fieldset>
+               
+                     
+               
+                     
+                     
+               </div>
+               <div class="text-center">
+                  <button class="btn btn-primary">保存修改</button>
+                  </div>
+              </div>
+            </div>
+           
+        
+         </div>
+            <!-- Footer -->
+      <footer class="bg-white iq-footer">
+         <div class="container-fluid">
+            <div class="row">
+               <div class="col-lg-6">
+                  <ul class="list-inline mb-0">
+                     <li class="list-inline-item"><a href="#">使用帮助</a></li>
+                     <li class="list-inline-item"><a href="#">进入官网</a></li>
+                  </ul>
+               </div>
+               <div class="col-lg-6 text-right">
+                  Copyright 2024 <a href="">心理健康管理系统</a> 版权所有
+               </div>
+            </div>
+         </div>
+      </footer>
+         </div>
+      </div>
+
+      
+      <script src="js/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      <script src="js/smooth-scrollbar.js"></script>
+      <script src="js/custom.js"></script>
+      <script src="laydate/laydate.js"></script> 
+
+      
+      <script src="js/wangEditor.min.js"></script>
+      <style>
+         .w-e-text-container{height: 200px !important;}
+     </style>
+
+  <script type="text/javascript">
+   var E = window.wangEditor
+   var editor = new E('#editor')
+editor.customConfig.uploadImgShowBase64 = true   // 使用 base64 保存图片
+ //editor.customConfig.uploadImgServer = '/upload'  // 上传图片到服务器
+   editor.create()
+</script>
+
+
+		<script>
+			lay('#version').html('-v'+ laydate.v);
+			laydate.render({
+				elem: '#date'
+			  ,range: true
+			  ,theme: '#2c9eae'
+			});
+         </script>
+   </body>
+</html>
