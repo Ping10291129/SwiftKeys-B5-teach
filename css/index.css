@@ -1,0 +1,67 @@
+.align-right-san {
+    right: 250px !important;
+}
+
+/* 外层容器，用于整体居中 */
+.tabs-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    /* 可根据需要调整间距 */
+    width: 100%;
+}
+
+/* 最外层容器，使用深色背景与细边框 */
+.tabs {
+    position: relative;
+    display: inline-flex;
+    background-color: #333;
+    /* 深色背景 */
+    border: 1px solid #444;
+    /* 细边框，颜色略浅以区分背景 */
+    border-radius: 4px;
+    /* 小圆角，避免过于生硬 */
+    overflow: hidden;
+    font-size: 12px;
+    /* 较小字体，使整体更紧凑 */
+}
+
+/* 高亮滑块：覆盖选中的选项 */
+.tabs__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33.3333%;
+    /* 三个选项等分 */
+    height: 100%;
+    background-color: #0080ff;
+    /* 高亮颜色（可自行替换成其他主题色） */
+    transition: left 0.3s ease;
+    /* 平滑过渡 */
+    z-index: 1;
+    /* 在文字下方 */
+}
+
+/* 每个选项按钮 */
+.tabs__item {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 4px 8px;
+    /* 小内边距，使按钮更紧凑 */
+    color: #ccc;
+    /* 默认文字颜色：比背景稍亮 */
+    text-decoration: none;
+    z-index: 2;
+    /* 保证文字在滑块之上 */
+    transition: color 0.2s ease;
+}
+
+/* 悬停时，文字颜色稍微加亮 */
+.tabs__item:hover {
+    color: #eee;
+}
+
+/* 选中状态，文字变为白色 */
+.tabs__item--active {
+    color: #fff;
+}

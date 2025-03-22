@@ -1,7 +1,7 @@
 body {
 	font-family: Microsoft YaHei;
 	background: var(--primary-bg);
-	color: var(--text-primary);
+	color: #fff !important;
 }
 
 li {
@@ -58,7 +58,9 @@ dl dd:last-child {
 	color: var(--text-primary);
 }
 
-input, select, textarea {
+input,
+select,
+textarea {
 	background: #2a2a2a !important;
 	border-color: var(--border-color) !important;
 	color: var(--text-primary) !important;
@@ -75,15 +77,15 @@ input, select, textarea {
 }
 
 .btn-outline-primary:hover,
-.active > .page-link,
+.active>.page-link,
 .page-link.active,
-.show > .btn-primary.dropdown-toggle {
+.show>.btn-primary.dropdown-toggle {
 	background: var(--dark-gradient);
 	border-color: transparent !important;
 }
 
 a {
-  color: var(--text-primary);
+	color: var(--text-primary);
 }
 
 a:hover {
@@ -202,7 +204,7 @@ a:hover {
 }
 
 .iq-media-group .iq-media {
-  color: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
 
 a:hover {
@@ -228,7 +230,7 @@ a:hover {
 }
 
 .iq-media {
-  color: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
 
 a:hover {
@@ -524,7 +526,7 @@ a:hover {
 }
 
 .list-inline.text-white li a {
-  color: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
 
 a:hover {
@@ -686,7 +688,7 @@ a:hover {
 }
 
 .iq-social-media li a {
-  color: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
 
 a:hover {
@@ -915,7 +917,7 @@ a:hover {
 }
 
 .iq-sidebar-menu .iq-menu li a {
-  color: var(--text-primary);
+	color: var(--text-primary);
 }
 
 a:hover {
@@ -1019,7 +1021,7 @@ body.sidebar-main .iq-sidebar:hover .iq-menu li.menu-open>a {
 }
 
 .iq-sidebar-menu .iq-menu li ul a {
-  color: var(--text-primary);
+	color: var(--text-primary);
 }
 
 a:hover {
@@ -1049,10 +1051,11 @@ a:hover {
 
 .iq-sidebar.sidebar-dark .iq-sidebar-menu .iq-menu li>a:hover,
 .iq-sidebar.sidebar-dark .iq-sidebar-menu .iq-menu li.active>a {
-  background: linear-gradient(45deg, #2d353c, #1e242a) ;
-  color: #a0a0a0 !important;
-  border-left: 3px solid #089bab;
+	background: linear-gradient(45deg, #2d353c, #1e242a);
+	color: #a0a0a0 !important;
+	border-left: 3px solid #089bab;
 }
+
 .iq-sidebar.sidebar-dark .iq-sidebar.sidebar-dark .iq-sidebar-menu .iq-menu li a {
 	color: #ffffff;
 	background: #0f1317;
@@ -1107,10 +1110,6 @@ a:hover {
 	text-decoration: none;
 }
 
-.sidebar-main .iq-sidebar .iq-submenu li a {
-	font-size: 0;
-}
-
 .sidebar-main .iq-sidebar:hover .iq-submenu li a {
 	font-size: 14px;
 }
@@ -1132,7 +1131,9 @@ a:hover {
 	width: calc(100% - 320px);
 	display: inline-block;
 	z-index: 99;
-	background: #1e242a;
+	background: #1e242abd;
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
 	margin: 20px 30px;
 	-webkit-box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1);
 	-moz-box-shadow: 0px 0px 25px 0px rgba(45, 69, 95, 0.1);
@@ -1181,7 +1182,7 @@ a:hover {
 
 .iq-top-navbar .breadcrumb li a,
 .iq-top-navbar .breadcrumb li a {
-  color: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
 
 a:hover {
@@ -1246,7 +1247,7 @@ a:hover {
 }
 
 .navbar-list li a {
-  color: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
 
 a:hover {
@@ -1388,7 +1389,7 @@ div#lottie-fullscreen svg path {
 	padding: 5px 40px 5px 15px;
 	border-radius: 10px;
 	border: none;
-	background: rgba(255,255,255,0.1);
+	background: rgba(255, 255, 255, 0.1);
 	color: #ffffff;
 }
 
@@ -1600,9 +1601,15 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
 	padding: 15px;
 	line-height: normal;
 	color: inherit;
-	border-bottom: 1px solid #f3f7fd;
+	border-bottom: 1px solid #666;
 	display: inline-block;
 	width: 100%;
+	transition: all 0.3s ease;
+}
+
+.navbar-list li .iq-sub-dropdown .iq-sub-card:hover {
+	background-color: #1a1a1a;
+	border-bottom: 1px solid #666;
 }
 
 .iq-top-navbar .search-box {
@@ -1660,15 +1667,15 @@ body.sidebar-main .iq-menu-bt-sidebar .iq-menu-bt {
                               Content Page
 -----------------------------------------------------------------------*/
 :root {
-  --primary-bg: #1a1a1a;
-  --dark-gradient: linear-gradient(to right, #2d2d2d, #3a3a3a);
-  --text-primary: #e0e0e0;
-  --border-color: #4a4a4a;
+	--primary-bg: #1a1a1a;
+	--dark-gradient: linear-gradient(to right, #2d2d2d, #3a3a3a);
+	--text-primary: #e0e0e0;
+	--border-color: #4a4a4a;
 }
 
 .wrapper {
-  background: var(--dark-gradient);
-  color: var(--text-primary);
+	background: var(--dark-gradient);
+	color: var(--text-primary);
 }
 
 .content-page {
@@ -1785,8 +1792,8 @@ img.summary-image-top {
 Footer
 -----------------------------------------------------------------------*/
 .iq-footer {
-  background: #1e242a !important;
-  color: #b0b0b0 !important;
+	background: #1e242a !important;
+	color: #b0b0b0 !important;
 	padding: 15px;
 	margin: 0 15px 20px;
 	border-radius: 25px;
@@ -1805,7 +1812,7 @@ Footer
 }
 
 .iq-footer ul li a {
-  color: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
 
 a:hover {
@@ -1874,6 +1881,7 @@ a:hover {
 	line-height: 36px;
 	text-align: right;
 	width: 70px;
+	color: #fff;
 }
 
 .form1>ul>li label {
@@ -1881,6 +1889,7 @@ a:hover {
 	padding-right: 20px;
 	font-weight: normal;
 	line-height: 36px;
+	color: #fff;
 }
 
 .form1>ul>li label input {
@@ -1910,7 +1919,7 @@ a:hover {
 	height: 34px;
 	line-height: 34px;
 	box-shadow: none;
-	color: #3b4781;
+	color: #fff;
 	border: 1px solid #cacfe7;
 	width: 100%;
 	min-width: 180px;
@@ -1926,6 +1935,7 @@ textarea.form-control {
 
 .form-group .label-control {
 	line-height: 40px;
+	color: #fff;
 }
 
 
@@ -2178,7 +2188,7 @@ input {
 }
 
 .paiban .pblist a {
-  color: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
 
 a:hover {
@@ -2517,7 +2527,7 @@ td a {
 }
 
 .lbgl li a {
-  color: var(--text-primary) !important;
+	color: var(--text-primary) !important;
 }
 
 a:hover {

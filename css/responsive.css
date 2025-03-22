@@ -431,9 +431,9 @@ NOTE: This file contains the styling for responsive Template.
 	.navbar-collapse {
 		position: absolute;
 		top: 75px;
-		left: 0;
-		width: 100%;
-		background: #fff;
+		right: 0;
+		/* width: 100%; */
+		background: #1e242a;
 		-webkit-box-shadow: 0px 5px 12px 0px rgba(55, 73, 72, 0.15);
 		-moz-box-shadow: 0px 5px 12px 0px rgba(55, 73, 72, 0.15);
 		box-shadow: 0px 5px 12px 0px rgba(55, 73, 72, 0.15);

@@ -8,6 +8,7 @@
 	<title>SwiftKeys后台管理</title>
 	<link rel="stylesheet" href="css/style.css">
 	<link rel="stylesheet" href="./css/font.css">
+	<link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
@@ -23,88 +24,58 @@
 			<div id="sidebar-scrollbar">
 				<nav class="iq-sidebar-menu">
 					<ul class="iq-menu">
-
 						<li class="active">
-							<a href="" class="iq-waves-effect"><i class="ri-home-8-fill"></i><span>首页</span></a>
+							<a href="index.html" class="iq-waves-effect"><i
+									class="ri-home-8-fill"></i><span>首页</span></a>
 						</li>
 						<li>
 							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-shield-user-fill"></i><span>医师中心 </span><i
+									class="ri-shield-user-fill"></i><span>管理员中心</span><i
 									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
 							<ul class="iq-submenu">
-								<li><a href="资料编辑.html">资料编辑</a></li>
-								<li><a href="修改密码.html">修改密码</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-user-settings-fill"></i>用户管理<i
-									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-							<ul class="iq-submenu">
-								<li><a href="我的用户.html">我的用户</a></li>
-								<li><a href="添加用户.html">添加用户</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-todo-fill"></i>评测管理<i
-									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-							<ul class="iq-submenu">
-								<li><a href="评测预约.html">评测预约</a></li>
-								<li><a href="答题记录.html">答题记录</a></li>
+								<li><a href="edit_profile.html">资料编辑</a></li>
+								<li><a href="change_password.html">修改密码</a></li>
 							</ul>
 						</li>
 						<li>
 							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-bar-chart-2-fill"></i><span>报告管理</span><i
+									class="ri-user-settings-fill"></i>用户列表<i
 									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
 							<ul class="iq-submenu">
-								<li><a href="报告列表.html">报告列表</a></li>
-								<li><a href="报告审核.html">报告审核</a></li>
+								<li><a href="my_users.html">我的用户</a></li>
+								<li><a href="add_user.html">添加用户</a></li>
 							</ul>
 						</li>
-
 						<li>
-							<a href="预警管理.html" class="iq-waves-effect"><i
-									class="ri-alarm-warning-fill"></i><span>预警管理</span></a>
-						</li>
-
-						<li>
-							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-file-edit-fill"></i><span>理表管理</span><i
+							<a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-todo-fill"></i>打字测试<i
 									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
 							<ul class="iq-submenu">
-								<li><a href="所有量表.html">所有量表</a></li>
-								<li><a href="套餐管理.html">套餐管理</a></li>
+								<li><a href="typing_test.html">打字测试</a></li>
+								<li><a href="test_records.html">测试记录</a></li>
 							</ul>
 						</li>
-						<li><a href="临床数据管理.html" class="iq-waves-effect"><i
-									class="ri-pie-chart-2-fill"></i><span>临床数据管理</span></a>
-						</li>
-
 						<li>
 							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-alarm-fill"></i><span>预约排班</span><i
+									class="ri-bar-chart-2-fill"></i><span>成绩统计</span><i
 									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
 							<ul class="iq-submenu">
-								<li><a href="预约管理.html">预约管理 </a></li>
-								<li><a href="排班管理.html">排班管理 </a></li>
+								<li><a href="score_list.html">成绩列表</a></li>
+								<li><a href="score_review.html">成绩审核</a></li>
 							</ul>
 						</li>
-
+						<li>
+							<a href="anomaly_monitoring.html" class="iq-waves-effect"><i
+									class="ri-alarm-warning-fill"></i><span>异常监控</span></a>
+						</li>
 						<li>
 							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-folder-5-fill"></i><span>训练管理</span><i
+									class="ri-file-edit-fill"></i><span>题库管理</span><i
 									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
 							<ul class="iq-submenu">
-								<li><a href="心理训练管理.html">心理训练管理</a></li>
-								<li><a href="添加心理训练.html">添加心理训练</a></li>
-								<li><a href="训练套餐管理.html">训练套餐管理</a></li>
+								<li><a href="question_bank.html">所有题目</a></li>
+								<li><a href="package_management.html">套餐管理</a></li>
 							</ul>
-						</li>
-
-					</ul>
-				</nav>
-				<div class="p-3"></div>
+							<!-- <div class="p-3"></div> -->
 			</div>
 		</div>
 		<!-- Page Content  -->
@@ -120,12 +91,12 @@
 								<a class="search-link" href="#"><i class="ri-search-line"></i></a>
 							</form>
 						</div>
-						<button class="navbar-toggler" type="button" data-toggle="collapse"
+						<!-- <button class="navbar-toggler" type="button" data-toggle="collapse"
 							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
 							aria-expanded="false" aria-label="Toggle navigation">
 							<i class="ri-menu-3-line"></i>
-						</button>
-						<div class="iq-menu-bt align-self-center">
+						</button> -->
+						<div class="iq-menu-bt align-self-center align-right-san">
 							<div class="wrapper-menu">
 								<div class="main-circle"><i class="ri-more-fill"></i></div>
 								<div class="hover-circle"><i class="ri-more-2-fill"></i></div>
@@ -139,7 +110,7 @@
 											class="ri-fullscreen-line"></i></a>
 								</li>
 
-								<li class="nav-item">
+								<li class="nav-item" style="display: none;">
 									<a href="#" class="search-toggle iq-waves-effect">
 										<i class="ri-notification-3-fill"></i>
 										<span class="bg-danger dots"></span>
@@ -219,22 +190,21 @@
 														<h6 class="mb-0 ">修改密码</h6>
 													</div>
 												</div>
-											</a>
-											<a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
-												<div class="media align-items-center">
-													<div class="rounded iq-card-icon iq-bg-primary">
-														<i class="ri-account-box-line"></i>
+												<a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
+													<div class="media align-items-center">
+														<div class="rounded iq-card-icon iq-bg-primary">
+															<i class="ri-account-box-line"></i>
+														</div>
+														<div class="media-body ml-3">
+															<h6 class="mb-0 ">系统设置</h6>
+														</div>
 													</div>
-													<div class="media-body ml-3">
-														<h6 class="mb-0 ">系统设置</h6>
-													</div>
-												</div>
-											</a>
+												</a>
 
-											<div class="d-inline-block w-100 text-center p-3">
-												<a class="bg-primary iq-sign-btn" href="sign-in.html"
-													role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
-											</div>
+												<div class="d-inline-block w-100 text-center p-3">
+													<a class="bg-primary iq-sign-btn" href="login.html"
+														role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
+												</div>
 										</div>
 									</div>
 								</div>
@@ -249,7 +219,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<div class="iq-card">
-							<div class="iq-card-body">
+							<!-- <div class="iq-card-body">
 								<div class="yshead">
 									<ul class="row">
 										<li class=" col-md-8">
@@ -273,7 +243,7 @@
 										</li>
 									</ul>
 								</div>
-							</div>
+							</div> -->
 						</div>
 					</div>
 
@@ -281,7 +251,7 @@
 						<div class="iq-card">
 							<div class="iq-card-header d-flex justify-content-between">
 								<div class="iq-header-title">
-									<h4 class="card-title">建议训练</h4>
+									<h4 class="card-title">数据统计</h4>
 								</div>
 							</div>
 							<div class="iq-card-body">
@@ -291,47 +261,42 @@
 										<div class="ysnm ysnm2">
 
 											<div>
-												<p>累计已审核数</p>
+												<p>累计用户打字数量</p>
 
 												<span>4320</span><i>人</i>
 											</div>
 
-
 											<div>
-												<p>本周审核数</p>
+												<p>本周用户打字数量</p>
 												<span>342</span><i>人</i>
 											</div>
 										</div>
 									</li>
 									<li class="col-md-10 clearfix">
+										<!-- 控制按钮 -->
 										<div class="clearfix">
 											<div class="pull-right">
-												<div class="pull-left taba">
-													<a href="#" class="active">今日</a><a href="#">本周</a><a
-														href="#">本月</a><a href="#">全年</a>
+												<div class="tabs-wrapper">
+													<div class="tabs">
+														<!-- 滑块，用于高亮当前选中项 -->
+														<div class="tabs__slider"></div>
+														<a href="#" class="tabs__item tabs__item--active"
+															data-range="week">一周</a>
+														<a href="#" class="tabs__item" data-range="month">一月</a>
+														<a href="#" class="tabs__item" data-range="all">全部</a>
+													</div>
 												</div>
-												<span class="pull-left p-t-10">
+												<!-- 可选的日期选择框 -->
+												<!-- <span class="pull-left p-t-10">
 													<input type="text" class="form-control date date1"
 														placeholder="请选择时间" id="date" lay-key="1"
-														style="min-width: 240px;"></span>
+														style="min-width: 240px;">
+												</span> -->
 											</div>
-
 										</div>
 
-										<div style="height: 200px; -webkit-tap-highlight-color: transparent; user-select: none; position: relative;"
-											id="echart1" _echarts_instance_="ec_1585641779790">
-											<div
-												style="position: relative; overflow: hidden; width: 573px; height: 200px; padding: 0px; margin: 0px; border-width: 0px; cursor: default;">
-												<canvas data-zr-dom-id="zr_0" width="573" height="200"
-													style="position: absolute; left: 0px; top: 0px; width: 573px; height: 200px; user-select: none; -webkit-tap-highlight-color: rgba(0, 0, 0, 0); padding: 0px; margin: 0px; border-width: 0px;"></canvas>
-											</div>
-											<div
-												style="position: absolute; display: none; border-style: solid; white-space: nowrap; z-index: 9999999; transition: left 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s, top 0.4s cubic-bezier(0.23, 1, 0.32, 1) 0s; background-color: rgba(50, 50, 50, 0.7); border-width: 0px; border-color: rgb(51, 51, 51); border-radius: 4px; color: rgb(255, 255, 255); font: 14px / 21px &quot;Microsoft YaHei&quot;; padding: 5px; left: 409px; top: 114px; pointer-events: none;">
-												8月<br><span
-													style="display:inline-block;margin-right:5px;border-radius:10px;width:10px;height:10px;background-color:#fbe102;"></span>预警:
-												90</div>
-										</div>
-
+										<!-- 图表容器 -->
+										<div id="echart1" style="height: 200px;"></div>
 									</li>
 								</ul>
 							</div>
@@ -655,7 +620,7 @@
 							</ul>
 						</div>
 						<div class="col-lg-6 text-right">
-							Copyright 2024 <a href="">心理健康管理系统</a> 版权所有
+							Copyright 2024 <a href="">SwiftKeys后台管理</a> 版权所有
 						</div>
 					</div>
 				</div>
@@ -675,121 +640,216 @@
 
 	<script>
 		$(function () {
-			echarts_1();
+			// 生成最近 60 天的数据
+			function generateFullData() {
+				var fullDataX = [];
+				var dataMale = [];
+				var dataFemale = [];
+				var now = new Date();
+				for (var i = 59; i >= 0; i--) {
+					var d = new Date(now.getTime() - i * 24 * 3600 * 1000);
+					var month = d.getMonth() + 1;
+					var day = d.getDate();
+					fullDataX.push((month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day));
+					dataMale.push(Math.round(Math.random() * 100) + 50); // 男生随机数据
+					dataFemale.push(Math.round(Math.random() * 100) + 50); // 女生随机数据
+				}
+				return { fullDataX, dataMale, dataFemale };
+			}
 
-			function echarts_1() {
-				var myChart = echarts.init(document.getElementById('echart1'));
-				var uploadedDataURL = "/asset/get/s/data-1547533200844-7eBMgp66l.png";
-				var dataIPSxAxis = ['1月', '2月', '3月', '4月 ', '5月 ', '6月', '7月', '8月'];
-				var dataIPS = [60, 140, 80, 350, 100, 160, 60, 90];
-				option = {
+			// 存储全量数据
+			var fullData = generateFullData();
+
+			// 初始化 ECharts 实例
+			var myChart = echarts.init(document.getElementById('echart1'));
+
+			// 更新统计数据
+			function updateStats(dataMale, dataFemale) {
+				// 计算所有数据的总和
+				const total = dataMale.reduce((a, b) => a + b, 0) + dataFemale.reduce((a, b) => a + b, 0);
+				// 只计算最近7天的数据总和
+				const weekTotal = (dataMale.slice(-7).reduce((a, b) => a + b, 0) + dataFemale.slice(-7).reduce((a, b) => a + b, 0)) * 0.8;
+				document.querySelector('.ysnm2 div:first-child span').textContent = total;
+				document.querySelector('.ysnm2 div:last-child span').textContent = Math.round(weekTotal);
+			}
+
+			// 更新图表函数
+			function updateChart(range) {
+				let dataX = [];
+				let dataMale = [];
+				let dataFemale = [];
+				let total = fullData.fullDataX.length;
+
+				// 处理不同时间范围的数据
+				if (range === 'week') {
+					dataX = fullData.fullDataX.slice(total - 7);
+					dataMale = fullData.dataMale.slice(total - 7);
+					dataFemale = fullData.dataFemale.slice(total - 7);
+				} else if (range === 'month') {
+					dataX = fullData.fullDataX.slice(total - 30);
+					dataMale = fullData.dataMale.slice(total - 30);
+					dataFemale = fullData.dataFemale.slice(total - 30);
+				} else if (range === 'all') {
+					dataX = fullData.fullDataX;
+					dataMale = fullData.dataMale;
+					dataFemale = fullData.dataFemale;
+				}
+
+				// 更新统计数据
+				updateStats(dataMale, dataFemale);
+
+				// 设置图表配置
+				const option = {
 					tooltip: {
 						trigger: 'axis',
+						axisPointer: {
+							type: 'cross'
+						}
+					},
+					toolbox: {
+						orient: 'vertical',
+						top: 'center',
+						feature: {
+							show: true,
+							magicType: {
+								type: ['stack', 'tiled', 'line', 'bar']
+							}
+						}
 					},
 					color: ["#0080ff", "#4cd5ce"],
-					grid: {
-						left: '20',
-						right: '35',
-						top: '10%',
-						bottom: '0%',
-						containLabel: true
+					legend: {
+						textStyle: { color: '#999' }
 					},
-					xAxis: [{
+					dataZoom: [],  // 默认为空数组
+					xAxis: {
 						type: 'category',
 						boundaryGap: false,
-						data: dataIPSxAxis,
-						axisLabel: {
+						data: dataX,
+						splitLine: {
 							show: true,
-							textStyle: {
-								color: '#777',
-								//fontSize: 12,
-							},
+							lineStyle: { color: '#666', type: 'dotted' }
+						},
+						axisTick: {
+							show: false
 						},
 						axisLine: {
 							show: false
-						}
-					}],
-
-					yAxis: [{
-						type: 'value',
-						axisLine: {
-							onZero: false,
-							show: false,
 						},
 						axisLabel: {
-							show: true,
-							textStyle: {
-								color: '#777' //字体颜色
-							}
+							textStyle: { color: '#777' }
+						}
+					},
+					yAxis: {
+						type: 'value',
+						position: 'right',
+						axisLine: {
+							show: false
+						},
+						axisTick: {
+							show: false
 						},
 						splitNumber: 3,
 						splitLine: {
 							show: true,
-							lineStyle: {
-								color: '#eee',
-								type: 'dotted'
-							}
+							lineStyle: { color: '#666', type: 'dotted' }
 						},
-					}],
+						axisLabel: {
+							textStyle: { color: '#777' }
+						}
+					},
+					grid: {
+						top: '10%',
+						bottom: '10%',
+						right: '5%',
+						left: '5%',
+						containLabel: true
+					},
 					series: [{
-						name: '预警',
+						name: '男生',
 						type: 'line',
-						smooth: true,
-						//  symbol: "none", //去掉折线点
-						//	 stack: 100,
-						lineStyle: {
-							normal: {
-								width: 6,
-								color: {
-									type: 'linear',
-
-									colorStops: [{
-										offset: 0,
-										color: '#A9F387' // 0% 处的颜色
-									}, {
-										offset: 1,
-										color: '#00a1b4' // 100% 处的颜色
-									}],
-									globalCoord: false // 缺省为 false
-								},
-								shadowColor: 'rgba(72,216,191, 0.3)',
-								shadowBlur: 10,
-								shadowOffsetY: 20
-							}
+						stack: '1',
+						showSymbol: false,
+						symbolSize: 0,
+						data: dataMale,
+						itemStyle: {
+							color: '#fff',
+							borderWidth: 10,
+							borderColor: "#FF69B4"
 						},
 						itemStyle: {
-							normal: {
-								color: '#fff',
-								borderWidth: 10,
-								/*shadowColor: 'rgba(72,216,191, 0.3)',
-								shadowBlur: 100,*/
-								borderColor: "#A9F387"
-							}
+							color: {
+								type: 'linear',
+								colorStops: [
+									{ offset: 0, color: '#4B96FF' },
+									{ offset: 1, color: '#2B5FF7' }
+								]
+							},
 						},
-						areaStyle: {
-
-							color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [{
-								offset: 0,
-								color: 'rgba(0,161,179,.2)',
-							}, {
-								offset: 1,
-								color: 'rgba(0,161,179,.0)',
-							}], false),
-
+						lineStyle: {
+							width: 3,
+							shadowColor: 'rgba(43,95,247, 0.3)',
+							shadowBlur: 10,
+							shadowOffsetY: 20
 						},
-						symbolSize: 0, //折线点的大小
-						data: dataIPS,
-					},]
+						areaStyle: {}
+					}, {
+						name: '女生',
+						type: 'line',
+						showSymbol: false,
+						symbolSize: 0,
+						stack: '1',
+						data: dataFemale,
+						itemStyle: {
+							color: {
+								type: 'linear',
+								colorStops: [
+									{ offset: 0, color: '#FF69B4' },
+									{ offset: 1, color: '#FF1493' }
+								]
+							},
+						},
+						lineStyle: {
+							width: 3,
+							shadowColor: 'rgba(255,105,180, 0.3)',
+							shadowBlur: 10,
+							shadowOffsetY: 20
+						},
+						areaStyle: {}
+					}]
 				};
+
+				// 为'all'范围添加dataZoom配置
+				if (range === 'all') {
+					option.dataZoom = [{
+						type: 'slider',
+						start: ((total - 30) / total) * 100,
+						end: 100
+					}];
+				} else {
+					// 确保在周视图和月视图时移除dataZoom组件
+					option.dataZoom = [];
+				}
+
+				// 更新图表，强制清除之前的配置
+				myChart.clear();
 				myChart.setOption(option);
-				window.addEventListener("resize", function () {
-					myChart.resize();
-				});
 			}
+
+			// 将updateChart函数暴露到全局作用域
+			window.updateChart = updateChart;
+
+			// 默认加载"一周"数据
+			updateChart('week');
+			
+			// 监听窗口大小变化，保证自适应
+			window.addEventListener("resize", function () {
+				myChart.resize();
+			});
 
 		})
 	</script>
 
 </body>
+<script src="./js/index.js"></script>
 
 </html>
