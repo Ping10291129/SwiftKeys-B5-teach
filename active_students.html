@@ -2,1014 +2,164 @@
 <html lang="zh">
 
 <head>
-	<!-- Required meta tags -->
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-	<title>SwiftKeys后台管理</title>
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="./css/font.css">
-	<link rel="stylesheet" href="./css/index.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SwiftKeys后台管理</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/index.css">
 </head>
 
 <body>
-	<div id="loading">
-		<div id="loading-center"></div>
-	</div>
-	<div class="wrapper">
-		<div class="iq-sidebar">
-			<div class="iq-sidebar-logo d-flex justify-content-between">
-				<a href=""> <span>SwiftKeys后台管理</span>
-				</a>
-			</div>
-			<div id="sidebar-scrollbar">
-				<nav class="iq-sidebar-menu">
-					<ul class="iq-menu">
-						<li class="active">
-							<a href="index.html" class="iq-waves-effect"><i
-									class="ri-home-8-fill"></i><span>首页</span></a>
-						</li>
-						<li>
-							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-shield-user-fill"></i><span>管理员中心</span><i
-									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-							<ul class="iq-submenu">
-								<li><a href="edit_profile.html">资料编辑</a></li>
-								<li><a href="change_password.html">修改密码</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-user-settings-fill"></i>用户列表<i
-									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-							<ul class="iq-submenu">
-								<li><a href="my_users.html">我的用户</a></li>
-								<li><a href="add_user.html">添加用户</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-todo-fill"></i>打字测试<i
-									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-							<ul class="iq-submenu">
-								<li><a href="typing_test.html">打字测试</a></li>
-								<li><a href="test_records.html">测试记录</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-bar-chart-2-fill"></i><span>成绩统计</span><i
-									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-							<ul class="iq-submenu">
-								<li><a href="score_list.html">成绩列表</a></li>
-								<li><a href="score_review.html">成绩审核</a></li>
-							</ul>
-						</li>
-						<li>
-							<a href="anomaly_monitoring.html" class="iq-waves-effect"><i
-									class="ri-alarm-warning-fill"></i><span>异常监控</span></a>
-						</li>
-						<li>
-							<a href="javascript:void(0);" class="iq-waves-effect"><i
-									class="ri-file-edit-fill"></i><span>题库管理</span><i
-									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-							<ul class="iq-submenu">
-								<li><a href="question_bank.html">所有题目</a></li>
-								<li><a href="package_management.html">套餐管理</a></li>
-							</ul>
-							<!-- <div class="p-3"></div> -->
-			</div>
-		</div>
-		<!-- Page Content  -->
-		<div id="content-page" class="content-page">
-			<!-- TOP Nav Bar -->
-			<div class="iq-top-navbar">
-				<div class="iq-navbar-custom">
-
-					<nav class="navbar navbar-expand-lg navbar-light p-0">
-						<div class="iq-search-bar">
-							<form action="javascript:;" class="searchbox">
-								<input type="text" class="text search-input" placeholder="请输入搜索内容...">
-								<a class="search-link" href="#"><i class="ri-search-line"></i></a>
-							</form>
-						</div>
-						<!-- <button class="navbar-toggler" type="button" data-toggle="collapse"
-							data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-							aria-expanded="false" aria-label="Toggle navigation">
-							<i class="ri-menu-3-line"></i>
-						</button> -->
-						<div class="iq-menu-bt align-self-center align-right-san">
-							<div class="wrapper-menu">
-								<div class="main-circle"><i class="ri-more-fill"></i></div>
-								<div class="hover-circle"><i class="ri-more-2-fill"></i></div>
-							</div>
-						</div>
-						<div class="collapse navbar-collapse" id="navbarSupportedContent">
-							<ul class="navbar-nav ml-auto navbar-list">
-
-								<li class="nav-item iq-full-screen">
-									<a href="#" class="iq-waves-effect" id="btnFullscreen"><i
-											class="ri-fullscreen-line"></i></a>
-								</li>
-
-								<li class="nav-item" style="display: none;">
-									<a href="#" class="search-toggle iq-waves-effect">
-										<i class="ri-notification-3-fill"></i>
-										<span class="bg-danger dots"></span>
-									</a>
-									<div class="iq-sub-dropdown">
-										<div class="iq-card shadow-none m-0">
-											<div class="iq-card-body p-0 ">
-												<div class="bg-primary p-3">
-													<h5 class="mb-0 text-white">所有通知<small
-															class="badge  badge-light float-right pt-1">4</small>
-													</h5>
-												</div>
-
-												<a href="#" class="iq-sub-card">
-													<div class="media align-items-center">
-														<div class="">
-															<img class="avatar-40 rounded" src="images/user/01.jpg"
-																alt="">
-														</div>
-														<div class="media-body ml-3">
-															<h6 class="mb-0 ">艾玛·沃森·比尼。</h6>
-															<small class="float-right font-size-12">刚刚</small>
-															<p class="mb-0">95 MB</p>
-														</div>
-													</div>
-												</a>
-												<a href="#" class="iq-sub-card">
-													<div class="media align-items-center">
-														<div class="">
-															<img class="avatar-40 rounded" src="images/user/02.jpg"
-																alt="">
-														</div>
-														<div class="media-body ml-3">
-															<h6 class="mb-0 ">新客户加入</h6>
-															<small class="float-right font-size-12">5天前</small>
-															<p class="mb-0">系统管理员</p>
-														</div>
-													</div>
-												</a>
-											</div>
-										</div>
-									</div>
-								</li>
-							</ul>
-						</div>
-						<ul class="navbar-list">
-							<li>
-								<a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-									<img src="images/user1.jpg" class="img-fluid rounded mr-3" alt="user">
-									<div class="caption">
-										<h6 class="mb-0 line-height">ZYX</h6>
-										<span class="font-size-12">超级🐂富燕军</span>
-									</div>
-								</a>
-								<div class="iq-sub-dropdown iq-user-dropdown">
-									<div class="iq-card shadow-none m-0">
-										<div class="iq-card-body p-0 ">
-											<div class="bg-primary p-3">
-												<h5 class="mb-0 text-white line-height">你好-胡松鹤</h5>
-											</div>
-											<a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
-												<div class="media align-items-center">
-													<div class="rounded iq-card-icon iq-bg-primary">
-														<i class="ri-file-user-line"></i>
-													</div>
-													<div class="media-body ml-3">
-														<h6 class="mb-0 ">个人中心</h6>
-													</div>
-												</div>
-											</a>
-											<a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
-												<div class="media align-items-center">
-													<div class="rounded iq-card-icon iq-bg-primary">
-														<i class="ri-profile-line"></i>
-													</div>
-													<div class="media-body ml-3">
-														<h6 class="mb-0 ">修改密码</h6>
-													</div>
-												</div>
-												<a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
-													<div class="media align-items-center">
-														<div class="rounded iq-card-icon iq-bg-primary">
-															<i class="ri-account-box-line"></i>
-														</div>
-														<div class="media-body ml-3">
-															<h6 class="mb-0 ">系统设置</h6>
-														</div>
-													</div>
-												</a>
-
-												<div class="d-inline-block w-100 text-center p-3">
-													<a class="bg-primary iq-sign-btn" href="login.html"
-														role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
-												</div>
-										</div>
-									</div>
-								</div>
-							</li>
-						</ul>
-					</nav>
-
-				</div>
-			</div>
-			<!-- TOP Nav Bar END -->
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-12">
-						<div class="iq-card">
-							<!-- <div class="iq-card-body">
-								<div class="yshead">
-									<ul class="row">
-										<li class=" col-md-8">
-											<div class="pull-left"><img src="images/user1.jpg"></div>
-											<div class="pull-left">
-												<h2>早安，韩修洁</h2>
-												<p>主任医师 <span>|</span>联系电话：0551-123456<span>|</span>xxx中心社区医院</p>
-											</div>
-										</li>
-										<li class=" col-md-4">
-											<div class="ysnm">
-												<div class="pull-right">
-													<p>审核进度</p>
-													<span>8</span> / <i>24</i>
-												</div>
-												<div class="pull-right">
-													<p>接诊总数</p>
-													<span>56</span>
-												</div>
-											</div>
-										</li>
-									</ul>
-								</div>
-							</div> -->
-						</div>
-					</div>
-
-					<div class="col-md-12">
-						<div class="iq-card">
-							<div class="iq-card-header d-flex justify-content-between">
-								<div class="iq-header-title">
-									<div class="d-flex align-items-center justify-content-between"><h4 class="card-title m-0">数据统计</h4><a href="ranking_list.html" style="color: #666; font-size: 14px;">查看全部</a></div>
-								</div>
-							</div>
-							<div class="iq-card-body">
-								<ul class="clearfix row">
-									<li class="col-md-2">
-
-										<div class="ysnm ysnm2">
-
-											<div>
-												<p>累计用户打字数量</p>
-
-												<span>4320</span><i>人</i>
-											</div>
-
-											<div>
-												<p>本周用户打字数量</p>
-												<span>342</span><i>人</i>
-											</div>
-										</div>
-									</li>
-									<li class="col-md-10 clearfix">
-										<!-- 控制按钮 -->
-										<div class="clearfix">
-											<div class="pull-right">
-												<div class="tabs-wrapper">
-													<div class="tabs">
-														<!-- 滑块，用于高亮当前选中项 -->
-														<div class="tabs__slider"></div>
-														<a href="#" class="tabs__item tabs__item--active"
-															data-range="week">一周</a>
-														<a href="#" class="tabs__item" data-range="month">一月</a>
-														<a href="#" class="tabs__item" data-range="all">全部</a>
-													</div>
-												</div>
-												<!-- 可选的日期选择框 -->
-												<!-- <span class="pull-left p-t-10">
-													<input type="text" class="form-control date date1"
-														placeholder="请选择时间" id="date" lay-key="1"
-														style="min-width: 240px;">
-												</span> -->
-											</div>
-										</div>
-
-										<!-- 图表容器 -->
-										<div id="echart1" style="height: 200px;"></div>
-									</li>
-								</ul>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-12">
-						<div class="iq-card">
-							<div class="iq-card-header d-flex justify-content-between">
-								<div class="iq-header-title">
-									<div class="d-flex align-items-center justify-content-between"><h4 class="card-title m-0">已发布打字任务</h4><a href="active_students.html" style="color: #666; font-size: 14px;">查看全部</a></div>
-								</div>
-							</div>
-							<div class="iq-card-body">
-								<table class="table tablemd">
-									<thead>
-										<tr>
-											<th>任务名称</th>
-											<th>班级/学生</th>
-											<th>文章信息</th>
-											<th>截止时间</th>
-											<th>状态</th>
-											<th>操作</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<p><strong>期中打字测试</strong></p>
-												<p class="typing-time">发布于：2024-05-10</p>
-											</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">已完成：24/45人</p>
-											</td>
-											<td>
-												<p>《计算机基础知识》</p>
-												<p class="typing-time">字数：1500字</p>
-											</td>
-											<td>
-												<p>2024-05-20</p>
-												<p class="typing-time">剩余：3天</p>
-											</td>
-											<td>
-												<span class="task-status task-status-ongoing">进行中</span>
-											</td>
-											<td>
-												<a href="#" class="action-btn action-btn-primary">查看详情</a>
-												<a href="#" class="action-btn action-btn-secondary">编辑</a>
-											</td>
-										</tr>
-
-										<tr>
-											<td>
-												<p><strong>英文打字练习</strong></p>
-												<p class="typing-time">发布于：2024-05-08</p>
-											</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">已完成：38/42人</p>
-											</td>
-											<td>
-												<p>《The Digital Age》</p>
-												<p class="typing-time">字数：1200字</p>
-											</td>
-											<td>
-												<p>2024-05-15</p>
-												<p class="typing-time">已截止</p>
-											</td>
-											<td>
-												<span class="task-status task-status-completed">已完成</span>
-											</td>
-											<td>
-												<a href="#" class="action-btn action-btn-primary">查看详情</a>
-												<a href="#" class="action-btn action-btn-secondary">导出成绩</a>
-											</td>
-										</tr>
-
-										<tr>
-											<td>
-												<p><strong>速度挑战赛</strong></p>
-												<p class="typing-time">发布于：2024-05-12</p>
-											</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">已完成：12/46人</p>
-											</td>
-											<td>
-												<p>《信息技术与现代生活》</p>
-												<p class="typing-time">字数：2000字</p>
-											</td>
-											<td>
-												<p>2024-05-25</p>
-												<p class="typing-time">剩余：8天</p>
-											</td>
-											<td>
-												<span class="task-status task-status-ongoing">进行中</span>
-											</td>
-											<td>
-												<a href="#" class="action-btn action-btn-primary">查看详情</a>
-												<a href="#" class="action-btn action-btn-secondary">编辑</a>
-											</td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="iq-card">
-							<div class="iq-card-header d-flex justify-content-between">
-								<div class="iq-header-title">
-									<h4 class="card-title">学生名单</h4>
-								</div>
-                                <div>
-                                    <a href="active_students.html" style="color: #666; font-size: 14px;">查看全部</a>
+    <div id="loading">
+        <div id="loading-center"></div>
+    </div>
+    <div class="wrapper">
+        <div class="iq-sidebar">
+            <div class="iq-sidebar-logo d-flex justify-content-between">
+                <a href=""> <span>SwiftKeys后台管理</span>
+                </a>
+            </div>
+            <!-- 页面中需要加载导航栏的部分 -->
+            <div id="sidebar-container"></div>
+        </div>
+        <!-- Page Content  -->
+        <div id="content-page" class="content-page">
+            <!-- TOP Nav Bar -->
+            <div class="iq-top-navbar">
+                <div class="iq-navbar-custom">
+                    <nav class="navbar navbar-expand-lg navbar-light p-0">
+                        <div class="iq-search-bar">
+                            <form action="javascript:;" class="searchbox">
+                                <input type="text" class="text search-input" placeholder="请输入搜索内容...">
+                                <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                            </form>
+                        </div>
+                        <div class="iq-menu-bt align-self-center align-right-san">
+                            <div class="wrapper-menu">
+                                <div class="main-circle"><i class="ri-more-fill"></i></div>
+                                <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                            </div>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto navbar-list">
+                                <li class="nav-item iq-full-screen">
+                                    <a href="#" class="iq-waves-effect" id="btnFullscreen"><i
+                                            class="ri-fullscreen-line"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="navbar-list">
+                            <li>
+                                <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                                    <img src="images/user1.jpg" class="img-fluid rounded mr-3" alt="user">
+                                    <div class="caption">
+                                        <h6 class="mb-0 line-height">ZYX</h6>
+                                        <span class="font-size-12">超级🐂富燕军</span>
+                                    </div>
+                                </a>
+                                <div class="iq-sub-dropdown iq-user-dropdown">
+                                    <div class="iq-card shadow-none m-0">
+                                        <div class="iq-card-body p-0 ">
+                                            <div class="bg-primary p-3">
+                                                <h5 class="mb-0 text-white line-height">你好-胡松鹤</h5>
+                                            </div>
+                                            <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                                                <div class="media align-items-center">
+                                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                                        <i class="ri-file-user-line"></i>
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">个人中心</h6>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                                <div class="media align-items-center">
+                                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                                        <i class="ri-profile-line"></i>
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">修改密码</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
+                                                    <div class="media align-items-center">
+                                                        <div class="rounded iq-card-icon iq-bg-primary">
+                                                            <i class="ri-account-box-line"></i>
+                                                        </div>
+                                                        <div class="media-body ml-3">
+                                                            <h6 class="mb-0 ">系统设置</h6>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <div class="d-inline-block w-100 text-center p-3">
+                                                    <a class="bg-primary iq-sign-btn" href="login.html"
+                                                        role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
+                                                </div>
+                                        </div>
+                                    </div>
                                 </div>
-							</div>
-							<div class="iq-card-body">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>学生信息</th>
-											<th>班级/学号</th>
-											<th>打字速度</th>
-											<th>完成情况</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">李明</span>
-												</div>
-											</td>
-											<td>
-												<p>高一(2)班</p>
-												<p class="typing-time">学号：20240089</p>
-											</td>
-											<td>
-												<p><strong>85</strong> 字/分钟</p>
-												<p class="typing-time">准确率：92.5%</p>
-											</td>
-											<td><span class="task-status task-status-ongoing">进行中</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">张伟</span>
-												</div>
-											</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">学号：20240078</p>
-											</td>
-											<td>
-												<p><strong>108</strong> 字/分钟</p>
-												<p class="typing-time">准确率：97.8%</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">王浩</span>
-												</div>
-											</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">学号：20230105</p>
-											</td>
-											<td>
-												<p><strong>120</strong> 字/分钟</p>
-												<p class="typing-time">准确率：98.5%</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">陈静</span>
-												</div>
-											</td>
-											<td>
-												<p>高二(3)班</p>
-												<p class="typing-time">学号：20230142</p>
-											</td>
-											<td>
-												<p><strong>102</strong> 字/分钟</p>
-												<p class="typing-time">准确率：96.5%</p>
-											</td>
-											<td><span class="task-status task-status-pending">待完成</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">李梅</span>
-												</div>
-											</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">学号：20220211</p>
-											</td>
-											<td>
-												<p><strong>115</strong> 字/分钟</p>
-												<p class="typing-time">准确率：99.2%</p>
-											</td>
-											<td><span class="task-status task-status-expired">已过期</span></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="iq-card">
-							<div class="iq-card-header d-flex justify-content-between">
-								<div class="iq-header-title">
-									<h4 class="card-title">违规学生名单</h4>
-								</div>
-                                <div>
-                                    <a href="violation_list.html" style="color: #666; font-size: 14px;">查看全部</a>
-                                </div>
-							</div>
-							<div class="iq-card-body">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>学生信息</th>
-											<th>班级/学号</th>
-											<th>违规类型</th>
-											<th>操作</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>张明</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">学号：20240101</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
-										<tr>
-											<td>李华</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">学号：20230205</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
-										<tr>
-											<td>王芳</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">学号：20220318</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
-										<tr>
-											<td>赵强</td>
-											<td>
-												<p>高一(2)班</p>
-												<p class="typing-time">学号：20240056</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
-										<tr>
-											<td>陈明</td>
-											<td>
-												<p>高二(3)班</p>
-												<p class="typing-time">学号：20230127</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- TOP Nav Bar END -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="iq-card">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <footer class="bg-white iq-footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item"><a href="#">使用帮助</a></li>
+                                <li class="list-inline-item"><a href="#">进入官网</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            Copyright 2024 <a href="">SwiftKeys后台管理</a> 版权所有
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer END -->
+        </div>
+    </div>
+    <!-- Wrapper END -->
 
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6">
-						<div class="iq-card">
-							<div class="iq-card-header d-flex justify-content-between">
-								<div class="iq-header-title">
-									<h4 class="card-title">打字速度排行榜</h4>
-								</div>
-                                <div>
-                                    <a href="ranking_list.html" style="color: #666; font-size: 14px;">查看全部</a>
-                                </div>
-							</div>
-							<div class="iq-card-body">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>排名</th>
-											<th>学生信息</th>
-											<th>班级/学号</th>
-											<th>打字速度</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><span class="rank-badge rank-1">1</span></td>
-											<td>王浩</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">学号：20230105</p>
-											</td>
-											<td>
-												<p><strong>120</strong> 字/分钟</p>
-												<p class="typing-time">准确率：98.5%</p>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="rank-badge rank-2">2</span></td>
-											<td>李梅</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">学号：20220211</p>
-											</td>
-											<td>
-												<p><strong>115</strong> 字/分钟</p>
-												<p class="typing-time">准确率：99.2%</p>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="rank-badge rank-3">3</span></td>
-											<td>张伟</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">学号：20240078</p>
-											</td>
-											<td>
-												<p><strong>108</strong> 字/分钟</p>
-												<p class="typing-time">准确率：97.8%</p>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="rank-badge">4</span></td>
-											<td>陈静</td>
-											<td>
-												<p>高二(3)班</p>
-												<p class="typing-time">学号：20230142</p>
-											</td>
-											<td>
-												<p><strong>102</strong> 字/分钟</p>
-												<p class="typing-time">准确率：96.5%</p>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="rank-badge">5</span></td>
-											<td>赵阳</td>
-											<td>
-												<p>高一(2)班</p>
-												<p class="typing-time">学号：20240033</p>
-											</td>
-											<td>
-												<p><strong>98</strong> 字/分钟</p>
-												<p class="typing-time">准确率：95.9%</p>
-											</td>
-										</tr>
-
-
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-					<div class="col-md-6">
-						<div class="iq-card">
-							<div class="iq-card-header d-flex justify-content-between">
-								<div class="iq-header-title">
-									<h4 class="card-title">最近活跃学生</h4>
-								</div>
-							</div>
-							<div class="iq-card-body">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>学生信息</th>
-											<th>班级/学号</th>
-											<th>最近活动</th>
-											<th>完成情况</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>刘洋</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">学号：20240102</p>
-											</td>
-											<td>
-												<p>完成《计算机基础知识》</p>
-												<p class="typing-time">2024-05-15 14:30</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-										<tr>
-											<td>张丽</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">学号：20230118</p>
-											</td>
-											<td>
-												<p>开始《The Digital Age》</p>
-												<p class="typing-time">2024-05-15 13:45</p>
-											</td>
-											<td><span class="task-status task-status-ongoing">进行中</span></td>
-										</tr>
-										<tr>
-											<td>王强</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">学号：20220056</p>
-											</td>
-											<td>
-												<p>完成《信息技术与现代生活》</p>
-												<p class="typing-time">2024-05-15 11:20</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-										<tr>
-											<td>李明</td>
-											<td>
-												<p>高一(2)班</p>
-												<p class="typing-time">学号：20240089</p>
-											</td>
-											<td>
-												<p>开始《速度挑战赛》</p>
-												<p class="typing-time">2024-05-15 10:15</p>
-											</td>
-											<td><span class="task-status task-status-ongoing">进行中</span></td>
-										</tr>
-										<tr>
-											<td>陈华</td>
-											<td>
-												<p>高二(3)班</p>
-												<p class="typing-time">学号：20230075</p>
-											</td>
-											<td>
-												<p>完成《英文打字练习》</p>
-												<p class="typing-time">2024-05-15 09:30</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-									</tbody>
-								</table>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-			<!-- Footer -->
-			<footer class="bg-white iq-footer">
-				<div class="container-fluid">
-					<div class="row">
-						<div class="col-lg-6">
-							<ul class="list-inline mb-0">
-								<li class="list-inline-item"><a href="#">使用帮助</a></li>
-								<li class="list-inline-item"><a href="#">进入官网</a></li>
-							</ul>
-						</div>
-						<div class="col-lg-6 text-right">
-							Copyright 2024 <a href="">SwiftKeys后台管理</a> 版权所有
-						</div>
-					</div>
-				</div>
-			</footer>
-			<!-- Footer END -->
-		</div>
-	</div>
-	<!-- Wrapper END -->
-
-	<!-- Optional JavaScript -->
-	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/smooth-scrollbar.js"></script>
-	<script src="js/custom.js"></script>
-	<script src="js/echarts.min.js"></script>
-
-	<script>
-		$(function () {
-			// 生成最近 60 天的数据
-			function generateFullData() {
-				var fullDataX = [];
-				var dataMale = [];
-				var dataFemale = [];
-				var now = new Date();
-				for (var i = 59; i >= 0; i--) {
-					var d = new Date(now.getTime() - i * 24 * 3600 * 1000);
-					var month = d.getMonth() + 1;
-					var day = d.getDate();
-					fullDataX.push((month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day));
-					dataMale.push(Math.round(Math.random() * 100) + 50); // 男生随机数据
-					dataFemale.push(Math.round(Math.random() * 100) + 50); // 女生随机数据
-				}
-				return { fullDataX, dataMale, dataFemale };
-			}
-
-			// 存储全量数据
-			var fullData = generateFullData();
-
-			// 初始化 ECharts 实例
-			var myChart = echarts.init(document.getElementById('echart1'));
-
-			// 更新统计数据
-			function updateStats(dataMale, dataFemale) {
-				// 计算所有数据的总和
-				const total = dataMale.reduce((a, b) => a + b, 0) + dataFemale.reduce((a, b) => a + b, 0);
-				// 只计算最近7天的数据总和
-				const weekTotal = (dataMale.slice(-7).reduce((a, b) => a + b, 0) + dataFemale.slice(-7).reduce((a, b) => a + b, 0)) * 0.8;
-				document.querySelector('.ysnm2 div:first-child span').textContent = total;
-				document.querySelector('.ysnm2 div:last-child span').textContent = Math.round(weekTotal);
-			}
-
-			// 更新图表函数
-			function updateChart(range) {
-				let dataX = [];
-				let dataMale = [];
-				let dataFemale = [];
-				let total = fullData.fullDataX.length;
-
-				// 处理不同时间范围的数据
-				if (range === 'week') {
-					dataX = fullData.fullDataX.slice(total - 7);
-					dataMale = fullData.dataMale.slice(total - 7);
-					dataFemale = fullData.dataFemale.slice(total - 7);
-				} else if (range === 'month') {
-					dataX = fullData.fullDataX.slice(total - 30);
-					dataMale = fullData.dataMale.slice(total - 30);
-					dataFemale = fullData.dataFemale.slice(total - 30);
-				} else if (range === 'all') {
-					dataX = fullData.fullDataX;
-					dataMale = fullData.dataMale;
-					dataFemale = fullData.dataFemale;
-				}
-
-				// 更新统计数据
-				updateStats(dataMale, dataFemale);
-
-				// 设置图表配置
-				const option = {
-					tooltip: {
-						trigger: 'axis',
-						axisPointer: {
-							type: 'cross'
-						}
-					},
-					toolbox: {
-						orient: 'vertical',
-						top: 'center',
-						feature: {
-							show: true,
-							magicType: {
-								type: ['stack', 'tiled', 'line', 'bar']
-							}
-						}
-					},
-					color: ["#0080ff", "#4cd5ce"],
-					legend: {
-						textStyle: { color: '#999' }
-					},
-					dataZoom: [],  // 默认为空数组
-					xAxis: {
-						type: 'category',
-						boundaryGap: false,
-						data: dataX,
-						splitLine: {
-							show: true,
-							lineStyle: { color: '#666', type: 'dotted' }
-						},
-						axisTick: {
-							show: false
-						},
-						axisLine: {
-							show: false
-						},
-						axisLabel: {
-							textStyle: { color: '#777' }
-						}
-					},
-					yAxis: {
-						type: 'value',
-						position: 'right',
-						axisLine: {
-							show: false
-						},
-						axisTick: {
-							show: false
-						},
-						splitNumber: 3,
-						splitLine: {
-							show: true,
-							lineStyle: { color: '#666', type: 'dotted' }
-						},
-						axisLabel: {
-							textStyle: { color: '#777' }
-						}
-					},
-					grid: {
-						top: '10%',
-						bottom: '10%',
-						right: '5%',
-						left: '5%',
-						containLabel: true
-					},
-					series: [{
-						name: '男生',
-						type: 'line',
-						stack: '1',
-						showSymbol: false,
-						symbolSize: 0,
-						data: dataMale,
-						itemStyle: {
-							color: '#fff',
-							borderWidth: 10,
-							borderColor: "#FF69B4"
-						},
-						itemStyle: {
-							color: {
-								type: 'linear',
-								colorStops: [
-									{ offset: 0, color: '#4B96FF' },
-									{ offset: 1, color: '#2B5FF7' }
-								]
-							},
-						},
-						lineStyle: {
-							width: 3,
-							shadowColor: 'rgba(43,95,247, 0.3)',
-							shadowBlur: 10,
-							shadowOffsetY: 20
-						},
-						areaStyle: {}
-					}, {
-						name: '女生',
-						type: 'line',
-						showSymbol: false,
-						symbolSize: 0,
-						stack: '1',
-						data: dataFemale,
-						itemStyle: {
-							color: {
-								type: 'linear',
-								colorStops: [
-									{ offset: 0, color: '#FF69B4' },
-									{ offset: 1, color: '#FF1493' }
-								]
-							},
-						},
-						lineStyle: {
-							width: 3,
-							shadowColor: 'rgba(255,105,180, 0.3)',
-							shadowBlur: 10,
-							shadowOffsetY: 20
-						},
-						areaStyle: {}
-					}]
-				};
-
-				// 为'all'范围添加dataZoom配置
-				if (range === 'all') {
-					option.dataZoom = [{
-						type: 'slider',
-						start: ((total - 30) / total) * 100,
-						end: 100
-					}];
-				} else {
-					// 确保在周视图和月视图时移除dataZoom组件
-					option.dataZoom = [];
-				}
-
-				// 更新图表，强制清除之前的配置
-				myChart.clear();
-				myChart.setOption(option);
-			}
-
-			// 将updateChart函数暴露到全局作用域
-			window.updateChart = updateChart;
-
-			// 默认加载"一周"数据
-			updateChart('week');
-			
-			// 监听窗口大小变化和全屏状态变化，保证自适应
-			function handleResize() {
-				setTimeout(() => {
-					myChart.resize();
-				}, 200);
-			}
-
-			// 监听窗口大小变化
-			window.addEventListener("resize", handleResize);
-
-			// 监听全屏状态变化
-			document.addEventListener("fullscreenchange", handleResize);
-			document.addEventListener("webkitfullscreenchange", handleResize);
-			document.addEventListener("mozfullscreenchange", handleResize);
-			document.addEventListener("MSFullscreenChange", handleResize);
-
-		})
-	</script>
-
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/smooth-scrollbar.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/echarts.min.js"></script>
+    <script>
+        $(function () {
+            $("#sidebar-container").load("sidebar.html", function () {
+                // 加载完成后设置 active 状态
+                var currentPage = window.location.pathname.split("/").pop();
+                $("#sidebar-container a").each(function () {
+                    var href = $(this).attr("href");
+                    // 如果 href 和当前页面文件名相同，则添加 active 类
+                    if (href === currentPage) {
+                        $(this).addClass("active");
+                        // 如果是子菜单，则还需要展开父级菜单
+                        $(this).closest("ul.iq-submenu").parent("li").addClass("active");
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 <script src="./js/index.js"></script>
 
