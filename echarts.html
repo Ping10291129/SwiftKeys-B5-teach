@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="zh">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>SwiftKeys后台管理</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="./css/index.css">
+</head>
+
+<body>
+    <div id="loading">
+        <div id="loading-center"></div>
+    </div>
+    <div class="wrapper">
+        <div class="iq-sidebar">
+            <div class="iq-sidebar-logo d-flex justify-content-between">
+                <a href=""> <span>SwiftKeys后台管理</span>
+                </a>
+            </div>
+            <div id="sidebar-scrollbar">
+                <nav class="iq-sidebar-menu">
+                    <ul class="iq-menu">
+                        <li>
+                            <a href="index.html" class="iq-waves-effect"><i
+                                    class="ri-home-8-fill"></i><span>首页</span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="iq-waves-effect"><i
+                                    class="ri-shield-user-fill"></i><span>管理员中心</span><i
+                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                            <ul class="iq-submenu">
+                                <li><a href="edit_profile.html">资料编辑</a></li>
+                                <li><a href="change_password.html">修改密码</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="iq-waves-effect"><i
+                                    class="ri-user-settings-fill"></i>用户列表<i
+                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                            <ul class="iq-submenu">
+                                <li><a href="my_users.html">我的用户</a></li>
+                                <li><a href="add_user.html">添加用户</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-todo-fill"></i>打字测试<i
+                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                            <ul class="iq-submenu">
+                                <li><a href="typing_test.html">打字测试</a></li>
+                                <li><a href="test_records.html">测试记录</a></li>
+                            </ul>
+                        </li>
+                        <li class="active">
+                            <a href="javascript:void(0);" class="iq-waves-effect"><i
+                                    class="ri-bar-chart-2-fill"></i><span>成绩统计</span><i
+                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                            <ul class="iq-submenu">
+                                <li class="active"><a href="score_list.html">成绩列表</a></li>
+                                <li><a href="score_review.html">成绩审核</a></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="anomaly_monitoring.html" class="iq-waves-effect"><i
+                                    class="ri-alarm-warning-fill"></i><span>异常监控</span></a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0);" class="iq-waves-effect"><i
+                                    class="ri-file-edit-fill"></i><span>题库管理</span><i
+                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+                            <ul class="iq-submenu">
+                                <li><a href="question_bank.html">所有题目</a></li>
+                                <li><a href="package_management.html">套餐管理</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+        <!-- Page Content  -->
+        <div id="content-page" class="content-page">
+            <!-- TOP Nav Bar -->
+            <div class="iq-top-navbar">
+                <div class="iq-navbar-custom">
+                    <nav class="navbar navbar-expand-lg navbar-light p-0">
+                        <div class="iq-search-bar">
+                            <form action="javascript:;" class="searchbox">
+                                <input type="text" class="text search-input" placeholder="请输入搜索内容...">
+                                <a class="search-link" href="#"><i class="ri-search-line"></i></a>
+                            </form>
+                        </div>
+                        <div class="iq-menu-bt align-self-center align-right-san">
+                            <div class="wrapper-menu">
+                                <div class="main-circle"><i class="ri-more-fill"></i></div>
+                                <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
+                            </div>
+                        </div>
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                            <ul class="navbar-nav ml-auto navbar-list">
+                                <li class="nav-item iq-full-screen">
+                                    <a href="#" class="iq-waves-effect" id="btnFullscreen"><i
+                                            class="ri-fullscreen-line"></i></a>
+                                </li>
+                            </ul>
+                        </div>
+                        <ul class="navbar-list">
+                            <li>
+                                <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+                                    <img src="images/user1.jpg" class="img-fluid rounded mr-3" alt="user">
+                                    <div class="caption">
+                                        <h6 class="mb-0 line-height">ZYX</h6>
+                                        <span class="font-size-12">超级🐂富燕军</span>
+                                    </div>
+                                </a>
+                                <div class="iq-sub-dropdown iq-user-dropdown">
+                                    <div class="iq-card shadow-none m-0">
+                                        <div class="iq-card-body p-0 ">
+                                            <div class="bg-primary p-3">
+                                                <h5 class="mb-0 text-white line-height">你好-胡松鹤</h5>
+                                            </div>
+                                            <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
+                                                <div class="media align-items-center">
+                                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                                        <i class="ri-file-user-line"></i>
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">个人中心</h6>
+                                                    </div>
+                                                </div>
+                                            </a>
+                                            <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+                                                <div class="media align-items-center">
+                                                    <div class="rounded iq-card-icon iq-bg-primary">
+                                                        <i class="ri-profile-line"></i>
+                                                    </div>
+                                                    <div class="media-body ml-3">
+                                                        <h6 class="mb-0 ">修改密码</h6>
+                                                    </div>
+                                                </div>
+                                                <a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
+                                                    <div class="media align-items-center">
+                                                        <div class="rounded iq-card-icon iq-bg-primary">
+                                                            <i class="ri-account-box-line"></i>
+                                                        </div>
+                                                        <div class="media-body ml-3">
+                                                            <h6 class="mb-0 ">系统设置</h6>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                                <div class="d-inline-block w-100 text-center p-3">
+                                                    <a class="bg-primary iq-sign-btn" href="login.html"
+                                                        role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
+                                                </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+            <!-- TOP Nav Bar END -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="iq-card">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Footer -->
+            <footer class="bg-white iq-footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-inline mb-0">
+                                <li class="list-inline-item"><a href="#">使用帮助</a></li>
+                                <li class="list-inline-item"><a href="#">进入官网</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 text-right">
+                            Copyright 2024 <a href="">SwiftKeys后台管理</a> 版权所有
+                        </div>
+                    </div>
+                </div>
+            </footer>
+            <!-- Footer END -->
+        </div>
+    </div>
+    <!-- Wrapper END -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/smooth-scrollbar.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/echarts.min.js"></script>
+
+    <script>
+        $(function () {
+            // 生成最近 60 天的数据
+            function generateFullData() {
+                var fullDataX = [];
+                var dataMale = [];
+                var dataFemale = [];
+                var now = new Date();
+                for (var i = 59; i >= 0; i--) {
+                    var d = new Date(now.getTime() - i * 24 * 3600 * 1000);
+                    var month = d.getMonth() + 1;
+                    var day = d.getDate();
+                    fullDataX.push((month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day));
+                    dataMale.push(Math.round(Math.random() * 100) + 50); // 男生随机数据
+                    dataFemale.push(Math.round(Math.random() * 100) + 50); // 女生随机数据
+                }
+                return { fullDataX, dataMale, dataFemale };
+            }
+
+            // 存储全量数据
+            var fullData = generateFullData();
+
+            // 初始化 ECharts 实例
+            var myChart = echarts.init(document.getElementById('echart1'));
+
+            // 更新统计数据
+            function updateStats(dataMale, dataFemale) {
+                // 计算所有数据的总和
+                const total = dataMale.reduce((a, b) => a + b, 0) + dataFemale.reduce((a, b) => a + b, 0);
+                // 只计算最近7天的数据总和
+                const weekTotal = (dataMale.slice(-7).reduce((a, b) => a + b, 0) + dataFemale.slice(-7).reduce((a, b) => a + b, 0)) * 0.8;
+                document.querySelector('.ysnm2 div:first-child span').textContent = total;
+                document.querySelector('.ysnm2 div:last-child span').textContent = Math.round(weekTotal);
+            }
+
+            // 更新图表函数
+            function updateChart(range) {
+                let dataX = [];
+                let dataMale = [];
+                let dataFemale = [];
+                let total = fullData.fullDataX.length;
+
+                // 处理不同时间范围的数据
+                if (range === 'week') {
+                    dataX = fullData.fullDataX.slice(total - 7);
+                    dataMale = fullData.dataMale.slice(total - 7);
+                    dataFemale = fullData.dataFemale.slice(total - 7);
+                } else if (range === 'month') {
+                    dataX = fullData.fullDataX.slice(total - 30);
+                    dataMale = fullData.dataMale.slice(total - 30);
+                    dataFemale = fullData.dataFemale.slice(total - 30);
+                } else if (range === 'all') {
+                    dataX = fullData.fullDataX;
+                    dataMale = fullData.dataMale;
+                    dataFemale = fullData.dataFemale;
+                }
+
+                // 更新统计数据
+                updateStats(dataMale, dataFemale);
+
+                // 设置图表配置
+                const option = {
+                    tooltip: {
+                        trigger: 'axis',
+                        axisPointer: {
+                            type: 'cross'
+                        }
+                    },
+                    toolbox: {
+                        orient: 'vertical',
+                        top: 'center',
+                        feature: {
+                            show: true,
+                            magicType: {
+                                type: ['stack', 'tiled', 'line', 'bar']
+                            }
+                        }
+                    },
+                    color: ["#0080ff", "#4cd5ce"],
+                    legend: {
+                        textStyle: { color: '#999' }
+                    },
+                    dataZoom: [],  // 默认为空数组
+                    xAxis: {
+                        type: 'category',
+                        boundaryGap: false,
+                        data: dataX,
+                        splitLine: {
+                            show: true,
+                            lineStyle: { color: '#666', type: 'dotted' }
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        axisLine: {
+                            show: false
+                        },
+                        axisLabel: {
+                            textStyle: { color: '#777' }
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        position: 'right',
+                        axisLine: {
+                            show: false
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        splitNumber: 3,
+                        splitLine: {
+                            show: true,
+                            lineStyle: { color: '#666', type: 'dotted' }
+                        },
+                        axisLabel: {
+                            textStyle: { color: '#777' }
+                        }
+                    },
+                    grid: {
+                        top: '10%',
+                        bottom: '10%',
+                        right: '5%',
+                        left: '5%',
+                        containLabel: true
+                    },
+                    series: [{
+                        name: '男生',
+                        type: 'line',
+                        stack: '1',
+                        showSymbol: false,
+                        symbolSize: 0,
+                        data: dataMale,
+                        itemStyle: {
+                            color: '#fff',
+                            borderWidth: 10,
+                            borderColor: "#FF69B4"
+                        },
+                        itemStyle: {
+                            color: {
+                                type: 'linear',
+                                colorStops: [
+                                    { offset: 0, color: '#4B96FF' },
+                                    { offset: 1, color: '#2B5FF7' }
+                                ]
+                            },
+                        },
+                        lineStyle: {
+                            width: 3,
+                            shadowColor: 'rgba(43,95,247, 0.3)',
+                            shadowBlur: 10,
+                            shadowOffsetY: 20
+                        },
+                        areaStyle: {}
+                    }, {
+                        name: '女生',
+                        type: 'line',
+                        showSymbol: false,
+                        symbolSize: 0,
+                        stack: '1',
+                        data: dataFemale,
+                        itemStyle: {
+                            color: {
+                                type: 'linear',
+                                colorStops: [
+                                    { offset: 0, color: '#FF69B4' },
+                                    { offset: 1, color: '#FF1493' }
+                                ]
+                            },
+                        },
+                        lineStyle: {
+                            width: 3,
+                            shadowColor: 'rgba(255,105,180, 0.3)',
+                            shadowBlur: 10,
+                            shadowOffsetY: 20
+                        },
+                        areaStyle: {}
+                    }]
+                };
+
+                // 为'all'范围添加dataZoom配置
+                if (range === 'all') {
+                    option.dataZoom = [{
+                        type: 'slider',
+                        start: ((total - 30) / total) * 100,
+                        end: 100
+                    }];
+                } else {
+                    // 确保在周视图和月视图时移除dataZoom组件
+                    option.dataZoom = [];
+                }
+
+                // 更新图表，强制清除之前的配置
+                myChart.clear();
+                myChart.setOption(option);
+            }
+
+            // 将updateChart函数暴露到全局作用域
+            window.updateChart = updateChart;
+
+            // 默认加载"一周"数据
+            updateChart('week');
+
+            // 监听窗口大小变化和全屏状态变化，保证自适应
+            function handleResize() {
+                setTimeout(() => {
+                    myChart.resize();
+                }, 200);
+            }
+
+            // 监听窗口大小变化
+            window.addEventListener("resize", handleResize);
+
+            // 监听全屏状态变化
+            document.addEventListener("fullscreenchange", handleResize);
+            document.addEventListener("webkitfullscreenchange", handleResize);
+            document.addEventListener("mozfullscreenchange", handleResize);
+            document.addEventListener("MSFullscreenChange", handleResize);
+
+        })
+    </script>
+
+</body>
+<script src="./js/index.js"></script>
+
+</html>

@@ -1,0 +1,12 @@
+.btn-upload-avatar {
+    color: #28a745 !important;
+    background-color: #e6f3e6 !important;
+    border: 1px solid #28a745 !important;
+    transition: all 0.3s ease !important;
+    box-sizing: border-box !important;
+}
+
+.btn-upload-avatar:hover {
+    color: #fff !important;
+    background-color: #28a745 !important;
+}

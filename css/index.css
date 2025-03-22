@@ -65,59 +65,71 @@
 /* 从typing.css移动过来的样式 */
 /* 任务状态标签 */
 .task-status {
-    display: inline-block;
-    padding: 3px 8px;
-    border-radius: 3px;
-    font-size: 12px;
-    font-weight: 500;
-    color: #fff;
+    display: inline-block !important;
+    padding: 0px 8px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
 }
 
 .task-status-ongoing {
-    background-color: #0080ff;
+    background-color: #dfefff !important;
+    border: 1px solid #0080ff !important;
+    color: #0080ff;
 }
 
 .task-status-completed {
-    background-color: #00c851;
+    background-color: #e6f9ef !important;
+    border: 1px solid #00c851 !important;
+    color: #00c851;
 }
 
 .task-status-expired {
-    background-color: #ff3547;
+    background-color: #ffe6e8 !important;
+    border: 1px solid #ff3547 !important;
+    color: #ff3547;
 }
 
 .task-status-pending {
-    background-color: #ffbb33;
+    background-color: #fff8e6 !important;
+    border: 1px solid #ffaa01 !important;
+    color: #ffaa01;
 }
 
 /* 违规标签 */
 .violation-tag {
-    display: inline-block;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 12px;
-    background-color: #ff3547;
-    color: #fff;
+    display: inline-block !important;
+    padding: 0px 8px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    background-color: #ff3547 !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 /* 违规类型标签 */
 .violation-type {
-    display: inline-block;
-    padding: 2px 6px;
-    border-radius: 3px;
-    font-size: 12px;
-    color: #fff;
+    display: inline-block !important;
+    padding: 0px 8px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
 }
 
 .violation-type-copy {
-    background-color: #ff3547;
+    background-color: #ff3547 !important;
 }
 
 .violation-type-ai {
-    background-color: #ff9800;
+    background-color: #ff9800 !important;
 }
 
 .violation-type-cheat {
-    background-color: #9c27b0;
+    background-color: #9c27b0 !important;
 }
 
 /* 学生信息 */
@@ -141,42 +153,40 @@
     color: #999;
 }
 
-/* 操作按钮 */
-.action-btn {
-    display: inline-block;
-    padding: 4px 10px;
-    border-radius: 4px;
-    font-size: 12px;
-    margin-right: 5px;
-    text-decoration: none;
-    transition: all 0.2s ease;
-}
-
 .action-btn-primary {
     background-color: #0080ff;
-    color: #fff;
+    color: #fff !important;
+    ;
+}
+
+/* 操作按钮 */
+.action-btn {
+    display: inline-block !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    margin-right: 5px !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease !important;
+    font-weight: 500 !important;
+    box-sizing: border-box !important;
 }
 
 .action-btn-primary:hover {
-    background-color: #0066cc;
-}
-
-.action-btn-secondary {
-    background-color: #444;
-    color: #fff;
+    background-color: #0066cc !important;
 }
 
 .action-btn-secondary:hover {
-    background-color: #555;
+    background-color: #666 !important;
 }
 
 .action-btn-warning {
-    background-color: #ff9800;
-    color: #fff;
+    background-color: #ff9800 !important;
+    color: #fff !important;
 }
 
 .action-btn-warning:hover {
-    background-color: #f57c00;
+    background-color: #f57c00 !important;
 }
 
 /* 打字相关信息 */
