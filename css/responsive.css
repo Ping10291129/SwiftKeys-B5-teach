@@ -245,7 +245,7 @@ NOTE: This file contains the styling for responsive Template.
 	.iq-top-navbar .iq-navbar-custom .iq-menu-bt {
 		display: inline-block;
 		position: absolute;
-		right: 440px;
+		right: 220px;
 		opacity: 1;
 		color: #089bab;
 	}
@@ -446,7 +446,7 @@ NOTE: This file contains the styling for responsive Template.
 	}
 
 	.iq-top-navbar .iq-navbar-custom .iq-menu-bt {
-		right: 130px;
+		right: 100px;
 		top: 18px;
 	}
 
