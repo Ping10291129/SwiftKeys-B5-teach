@@ -59,7 +59,7 @@
 									class="ri-bar-chart-2-fill"></i><span>成绩统计</span><i
 									class="ri-arrow-right-s-line iq-arrow-right"></i></a>
 							<ul class="iq-submenu">
-								<li><a href="echarts.html">成绩列表</a></li>
+								<li><a href="ranking_list.html">成绩列表</a></li>
 								<li><a href="score_review.html">成绩审核</a></li>
 							</ul>
 						</li>
@@ -253,22 +253,18 @@
 								<div class="iq-header-title">
 									<h4 class="card-title">数据统计</h4>
 								</div>
-                                <div>
-                                    <a href="echarts.html" style="color: #666; font-size: 14px;">查看全部</a>
-                                </div>
+								<div>
+									<a href="echarts.html" style="color: #666; font-size: 14px;">查看全部</a>
+								</div>
 							</div>
 							<div class="iq-card-body">
 								<ul class="clearfix row">
 									<li class="col-md-2">
-
 										<div class="ysnm ysnm2">
-
 											<div>
 												<p>累计用户打字数量</p>
-
 												<span>4320</span><i>人</i>
 											</div>
-
 											<div>
 												<p>本周用户打字数量</p>
 												<span>342</span><i>人</i>
@@ -297,7 +293,6 @@
 												</span> -->
 											</div>
 										</div>
-
 										<!-- 图表容器 -->
 										<div id="echart1" style="height: 200px;"></div>
 									</li>
@@ -312,102 +307,154 @@
 								<div class="iq-header-title">
 									<h4 class="card-title">已发布打字任务</h4>
 								</div>
-                                <div>
-                                    <a href="active_students.html" style="color: #666; font-size: 14px;">查看全部</a>
-                                </div>
+								<div>
+									<a href="active_students.html" style="color: #666; font-size: 14px;">查看全部</a>
+								</div>
 							</div>
 							<div class="iq-card-body">
-								<table class="table tablemd">
-									<thead>
-										<tr>
-											<th>任务名称</th>
-											<th>班级/学生</th>
-											<th>文章信息</th>
-											<th>截止时间</th>
-											<th>状态</th>
-											<th>操作</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<p><strong>期中打字测试</strong></p>
-												<p class="typing-time">发布于：2024-05-10</p>
-											</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">已完成：24/45人</p>
-											</td>
-											<td>
-												<p>《计算机基础知识》</p>
-												<p class="typing-time">字数：1500字</p>
-											</td>
-											<td>
-												<p>2024-05-20</p>
-												<p class="typing-time">剩余：3天</p>
-											</td>
-											<td>
-												<span class="task-status task-status-ongoing">进行中</span>
-											</td>
-											<td>
-												<a href="#" class="action-btn action-btn-primary">查看详情</a>
-												<a href="#" class="action-btn action-btn-secondary">编辑</a>
-											</td>
-										</tr>
-
-										<tr>
-											<td>
-												<p><strong>英文打字练习</strong></p>
-												<p class="typing-time">发布于：2024-05-08</p>
-											</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">已完成：38/42人</p>
-											</td>
-											<td>
-												<p>《The Digital Age》</p>
-												<p class="typing-time">字数：1200字</p>
-											</td>
-											<td>
-												<p>2024-05-15</p>
-												<p class="typing-time">已截止</p>
-											</td>
-											<td>
-												<span class="task-status task-status-completed">已完成</span>
-											</td>
-											<td>
-												<a href="#" class="action-btn action-btn-primary">查看详情</a>
-												<a href="#" class="action-btn action-btn-secondary">导出成绩</a>
-											</td>
-										</tr>
-
-										<tr>
-											<td>
-												<p><strong>速度挑战赛</strong></p>
-												<p class="typing-time">发布于：2024-05-12</p>
-											</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">已完成：12/46人</p>
-											</td>
-											<td>
-												<p>《信息技术与现代生活》</p>
-												<p class="typing-time">字数：2000字</p>
-											</td>
-											<td>
-												<p>2024-05-25</p>
-												<p class="typing-time">剩余：8天</p>
-											</td>
-											<td>
-												<span class="task-status task-status-ongoing">进行中</span>
-											</td>
-											<td>
-												<a href="#" class="action-btn action-btn-primary">查看详情</a>
-												<a href="#" class="action-btn action-btn-secondary">编辑</a>
-											</td>
-										</tr>
-									</tbody>
-								</table>
+								<!-- 增加滚动容器 -->
+								<div class="overflow-auto" style="max-height:300px;">
+									<table class="table tablemd">
+										<thead>
+											<tr>
+												<th>任务名称</th>
+												<th>班级/学生</th>
+												<th>文章信息</th>
+												<th>截止时间</th>
+												<th>状态</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<p><strong>期中打字测试</strong></p>
+													<p class="typing-time">发布于：2024-05-10</p>
+												</td>
+												<td>
+													<p>高一(3)班</p>
+													<p class="typing-time">已完成：24/45人</p>
+												</td>
+												<td>
+													<p>《计算机基础知识》</p>
+													<p class="typing-time">字数：1500字</p>
+												</td>
+												<td>
+													<p>2024-05-20</p>
+													<p class="typing-time">剩余：3天</p>
+												</td>
+												<td>
+													<span class="task-status task-status-ongoing">进行中</span>
+												</td>
+												<td>
+													<a href="#" class="action-btn action-btn-primary">查看详情</a>
+													<a href="#" class="action-btn action-btn-secondary">编辑</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<p><strong>英文打字练习</strong></p>
+													<p class="typing-time">发布于：2024-05-08</p>
+												</td>
+												<td>
+													<p>高二(1)班</p>
+													<p class="typing-time">已完成：38/42人</p>
+												</td>
+												<td>
+													<p>《The Digital Age》</p>
+													<p class="typing-time">字数：1200字</p>
+												</td>
+												<td>
+													<p>2024-05-15</p>
+													<p class="typing-time">已截止</p>
+												</td>
+												<td>
+													<span class="task-status task-status-completed">已完成</span>
+												</td>
+												<td>
+													<a href="#" class="action-btn action-btn-primary">查看详情</a>
+													<a href="#" class="action-btn action-btn-secondary">导出成绩</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<p><strong>速度挑战赛</strong></p>
+													<p class="typing-time">发布于：2024-05-12</p>
+												</td>
+												<td>
+													<p>高三(5)班</p>
+													<p class="typing-time">已完成：12/46人</p>
+												</td>
+												<td>
+													<p>《信息技术与现代生活》</p>
+													<p class="typing-time">字数：2000字</p>
+												</td>
+												<td>
+													<p>2024-05-25</p>
+													<p class="typing-time">剩余：8天</p>
+												</td>
+												<td>
+													<span class="task-status task-status-ongoing">进行中</span>
+												</td>
+												<td>
+													<a href="#" class="action-btn action-btn-primary">查看详情</a>
+													<a href="#" class="action-btn action-btn-secondary">编辑</a>
+												</td>
+											</tr>
+											<!-- 增加更多数据行测试滚动 -->
+											<tr>
+												<td>
+													<p><strong>期末综合测试</strong></p>
+													<p class="typing-time">发布于：2024-04-28</p>
+												</td>
+												<td>
+													<p>高一(1)班</p>
+													<p class="typing-time">已完成：30/40人</p>
+												</td>
+												<td>
+													<p>《综合知识测试》</p>
+													<p class="typing-time">字数：1800字</p>
+												</td>
+												<td>
+													<p>2024-05-05</p>
+													<p class="typing-time">已截止</p>
+												</td>
+												<td>
+													<span class="task-status task-status-completed">已完成</span>
+												</td>
+												<td>
+													<a href="#" class="action-btn action-btn-primary">查看详情</a>
+													<a href="#" class="action-btn action-btn-secondary">导出成绩</a>
+												</td>
+											</tr>
+											<tr>
+												<td>
+													<p><strong>专项练习</strong></p>
+													<p class="typing-time">发布于：2024-05-01</p>
+												</td>
+												<td>
+													<p>高二(2)班</p>
+													<p class="typing-time">已完成：20/35人</p>
+												</td>
+												<td>
+													<p>《速度与准确性》</p>
+													<p class="typing-time">字数：1600字</p>
+												</td>
+												<td>
+													<p>2024-05-10</p>
+													<p class="typing-time">剩余：1天</p>
+												</td>
+												<td>
+													<span class="task-status task-status-ongoing">进行中</span>
+												</td>
+												<td>
+													<a href="#" class="action-btn action-btn-primary">查看详情</a>
+													<a href="#" class="action-btn action-btn-secondary">编辑</a>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -417,103 +464,139 @@
 								<div class="iq-header-title">
 									<h4 class="card-title">学生名单</h4>
 								</div>
-                                <div>
-                                    <a href="active_students.html" style="color: #666; font-size: 14px;">查看全部</a>
-                                </div>
+								<div>
+									<a href="active_students.html" style="color: #666; font-size: 14px;">查看全部</a>
+								</div>
 							</div>
 							<div class="iq-card-body">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>学生信息</th>
-											<th>班级/学号</th>
-											<th>打字速度</th>
-											<th>完成情况</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">李明</span>
-												</div>
-											</td>
-											<td>
-												<p>高一(2)班</p>
-												<p class="typing-time">学号：20240089</p>
-											</td>
-											<td>
-												<p><strong>85</strong> 字/分钟</p>
-												<p class="typing-time">准确率：92.5%</p>
-											</td>
-											<td><span class="task-status task-status-ongoing">进行中</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">张伟</span>
-												</div>
-											</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">学号：20240078</p>
-											</td>
-											<td>
-												<p><strong>108</strong> 字/分钟</p>
-												<p class="typing-time">准确率：97.8%</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">王浩</span>
-												</div>
-											</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">学号：20230105</p>
-											</td>
-											<td>
-												<p><strong>120</strong> 字/分钟</p>
-												<p class="typing-time">准确率：98.5%</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">陈静</span>
-												</div>
-											</td>
-											<td>
-												<p>高二(3)班</p>
-												<p class="typing-time">学号：20230142</p>
-											</td>
-											<td>
-												<p><strong>102</strong> 字/分钟</p>
-												<p class="typing-time">准确率：96.5%</p>
-											</td>
-											<td><span class="task-status task-status-pending">待完成</span></td>
-										</tr>
-										<tr>
-											<td>
-												<div class="student-info">
-													<span class="name">李梅</span>
-												</div>
-											</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">学号：20220211</p>
-											</td>
-											<td>
-												<p><strong>115</strong> 字/分钟</p>
-												<p class="typing-time">准确率：99.2%</p>
-											</td>
-											<td><span class="task-status task-status-expired">已过期</span></td>
-										</tr>
-									</tbody>
-								</table>
+								<!-- 滚动容器 -->
+								<div class="overflow-auto" style="max-height:300px;">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>学生信息</th>
+												<th>班级/学号</th>
+												<th>打字速度</th>
+												<th>完成情况</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>
+													<div class="student-info">
+														<span class="name">李明</span>
+													</div>
+												</td>
+												<td>
+													<p>高一(2)班</p>
+													<p class="typing-time">学号：20240089</p>
+												</td>
+												<td>
+													<p><strong>85</strong> 字/分钟</p>
+													<p class="typing-time">准确率：92.5%</p>
+												</td>
+												<td><span class="task-status task-status-ongoing">进行中</span></td>
+											</tr>
+											<tr>
+												<td>
+													<div class="student-info">
+														<span class="name">张伟</span>
+													</div>
+												</td>
+												<td>
+													<p>高一(3)班</p>
+													<p class="typing-time">学号：20240078</p>
+												</td>
+												<td>
+													<p><strong>108</strong> 字/分钟</p>
+													<p class="typing-time">准确率：97.8%</p>
+												</td>
+												<td><span class="task-status task-status-completed">已完成</span></td>
+											</tr>
+											<tr>
+												<td>
+													<div class="student-info">
+														<span class="name">王浩</span>
+													</div>
+												</td>
+												<td>
+													<p>高二(1)班</p>
+													<p class="typing-time">学号：20230105</p>
+												</td>
+												<td>
+													<p><strong>120</strong> 字/分钟</p>
+													<p class="typing-time">准确率：98.5%</p>
+												</td>
+												<td><span class="task-status task-status-completed">已完成</span></td>
+											</tr>
+											<tr>
+												<td>
+													<div class="student-info">
+														<span class="name">陈静</span>
+													</div>
+												</td>
+												<td>
+													<p>高二(3)班</p>
+													<p class="typing-time">学号：20230142</p>
+												</td>
+												<td>
+													<p><strong>102</strong> 字/分钟</p>
+													<p class="typing-time">准确率：96.5%</p>
+												</td>
+												<td><span class="task-status task-status-pending">待完成</span></td>
+											</tr>
+											<tr>
+												<td>
+													<div class="student-info">
+														<span class="name">李梅</span>
+													</div>
+												</td>
+												<td>
+													<p>高三(5)班</p>
+													<p class="typing-time">学号：20220211</p>
+												</td>
+												<td>
+													<p><strong>115</strong> 字/分钟</p>
+													<p class="typing-time">准确率：99.2%</p>
+												</td>
+												<td><span class="task-status task-status-expired">已过期</span></td>
+											</tr>
+											<!-- 新增多行数据 -->
+											<tr>
+												<td>
+													<div class="student-info">
+														<span class="name">赵强</span>
+													</div>
+												</td>
+												<td>
+													<p>高一(1)班</p>
+													<p class="typing-time">学号：20240012</p>
+												</td>
+												<td>
+													<p><strong>95</strong> 字/分钟</p>
+													<p class="typing-time">准确率：93.5%</p>
+												</td>
+												<td><span class="task-status task-status-ongoing">进行中</span></td>
+											</tr>
+											<tr>
+												<td>
+													<div class="student-info">
+														<span class="name">孙丽</span>
+													</div>
+												</td>
+												<td>
+													<p>高二(2)班</p>
+													<p class="typing-time">学号：20230133</p>
+												</td>
+												<td>
+													<p><strong>110</strong> 字/分钟</p>
+													<p class="typing-time">准确率：97.0%</p>
+												</td>
+												<td><span class="task-status task-status-completed">已完成</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -523,69 +606,90 @@
 								<div class="iq-header-title">
 									<h4 class="card-title">违规学生名单</h4>
 								</div>
-                                <div>
-                                    <a href="violation_list.html" style="color: #666; font-size: 14px;">查看全部</a>
-                                </div>
+								<div>
+									<a href="violation_list.html" style="color: #666; font-size: 14px;">查看全部</a>
+								</div>
 							</div>
 							<div class="iq-card-body">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>学生信息</th>
-											<th>班级/学号</th>
-											<th>违规类型</th>
-											<th>操作</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>张明</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">学号：20240101</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
-										<tr>
-											<td>李华</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">学号：20230205</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
-										<tr>
-											<td>王芳</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">学号：20220318</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
-										<tr>
-											<td>赵强</td>
-											<td>
-												<p>高一(2)班</p>
-												<p class="typing-time">学号：20240056</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
-										<tr>
-											<td>陈明</td>
-											<td>
-												<p>高二(3)班</p>
-												<p class="typing-time">学号：20230127</p>
-											</td>
-											<td><span class="violation-type violation-type-copy">数据异常</span></td>
-											<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
-										</tr>
-
-									</tbody>
-								</table>
+								<!-- 滚动容器 -->
+								<div class="overflow-auto" style="max-height:300px;">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>学生信息</th>
+												<th>班级/学号</th>
+												<th>违规类型</th>
+												<th>操作</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>张明</td>
+												<td>
+													<p>高一(3)班</p>
+													<p class="typing-time">学号：20240101</p>
+												</td>
+												<td><span class="violation-type violation-type-copy">数据异常</span></td>
+												<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+											</tr>
+											<tr>
+												<td>李华</td>
+												<td>
+													<p>高二(1)班</p>
+													<p class="typing-time">学号：20230205</p>
+												</td>
+												<td><span class="violation-type violation-type-copy">数据异常</span></td>
+												<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+											</tr>
+											<tr>
+												<td>王芳</td>
+												<td>
+													<p>高三(5)班</p>
+													<p class="typing-time">学号：20220318</p>
+												</td>
+												<td><span class="violation-type violation-type-copy">数据异常</span></td>
+												<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+											</tr>
+											<tr>
+												<td>赵强</td>
+												<td>
+													<p>高一(2)班</p>
+													<p class="typing-time">学号：20240056</p>
+												</td>
+												<td><span class="violation-type violation-type-copy">数据异常</span></td>
+												<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+											</tr>
+											<tr>
+												<td>陈明</td>
+												<td>
+													<p>高二(3)班</p>
+													<p class="typing-time">学号：20230127</p>
+												</td>
+												<td><span class="violation-type violation-type-copy">数据异常</span></td>
+												<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+											</tr>
+											<!-- 增加更多数据行 -->
+											<tr>
+												<td>孙强</td>
+												<td>
+													<p>高一(1)班</p>
+													<p class="typing-time">学号：20240034</p>
+												</td>
+												<td><span class="violation-type violation-type-copy">数据异常</span></td>
+												<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+											</tr>
+											<tr>
+												<td>刘红</td>
+												<td>
+													<p>高二(2)班</p>
+													<p class="typing-time">学号：20230178</p>
+												</td>
+												<td><span class="violation-type violation-type-copy">数据异常</span></td>
+												<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -596,85 +700,111 @@
 								<div class="iq-header-title">
 									<h4 class="card-title">打字速度排行榜</h4>
 								</div>
-                                <div>
-                                    <a href="ranking_list.html" style="color: #666; font-size: 14px;">查看全部</a>
-                                </div>
+								<div>
+									<a href="ranking_list.html" style="color: #666; font-size: 14px;">查看全部</a>
+								</div>
 							</div>
 							<div class="iq-card-body">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>排名</th>
-											<th>学生信息</th>
-											<th>班级/学号</th>
-											<th>打字速度</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td><span class="rank-badge rank-1">1</span></td>
-											<td>王浩</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">学号：20230105</p>
-											</td>
-											<td>
-												<p><strong>120</strong> 字/分钟</p>
-												<p class="typing-time">准确率：98.5%</p>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="rank-badge rank-2">2</span></td>
-											<td>李梅</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">学号：20220211</p>
-											</td>
-											<td>
-												<p><strong>115</strong> 字/分钟</p>
-												<p class="typing-time">准确率：99.2%</p>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="rank-badge rank-3">3</span></td>
-											<td>张伟</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">学号：20240078</p>
-											</td>
-											<td>
-												<p><strong>108</strong> 字/分钟</p>
-												<p class="typing-time">准确率：97.8%</p>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="rank-badge">4</span></td>
-											<td>陈静</td>
-											<td>
-												<p>高二(3)班</p>
-												<p class="typing-time">学号：20230142</p>
-											</td>
-											<td>
-												<p><strong>102</strong> 字/分钟</p>
-												<p class="typing-time">准确率：96.5%</p>
-											</td>
-										</tr>
-										<tr>
-											<td><span class="rank-badge">5</span></td>
-											<td>赵阳</td>
-											<td>
-												<p>高一(2)班</p>
-												<p class="typing-time">学号：20240033</p>
-											</td>
-											<td>
-												<p><strong>98</strong> 字/分钟</p>
-												<p class="typing-time">准确率：95.9%</p>
-											</td>
-										</tr>
-
-
-									</tbody>
-								</table>
+								<!-- 滚动容器 -->
+								<div class="overflow-auto" style="max-height:300px;">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>排名</th>
+												<th>学生信息</th>
+												<th>班级/学号</th>
+												<th>打字速度</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td><span class="rank-badge rank-1">1</span></td>
+												<td>王浩</td>
+												<td>
+													<p>高二(1)班</p>
+													<p class="typing-time">学号：20230105</p>
+												</td>
+												<td>
+													<p><strong>120</strong> 字/分钟</p>
+													<p class="typing-time">准确率：98.5%</p>
+												</td>
+											</tr>
+											<tr>
+												<td><span class="rank-badge rank-2">2</span></td>
+												<td>李梅</td>
+												<td>
+													<p>高三(5)班</p>
+													<p class="typing-time">学号：20220211</p>
+												</td>
+												<td>
+													<p><strong>115</strong> 字/分钟</p>
+													<p class="typing-time">准确率：99.2%</p>
+												</td>
+											</tr>
+											<tr>
+												<td><span class="rank-badge rank-3">3</span></td>
+												<td>张伟</td>
+												<td>
+													<p>高一(3)班</p>
+													<p class="typing-time">学号：20240078</p>
+												</td>
+												<td>
+													<p><strong>108</strong> 字/分钟</p>
+													<p class="typing-time">准确率：97.8%</p>
+												</td>
+											</tr>
+											<tr>
+												<td><span class="rank-badge">4</span></td>
+												<td>陈静</td>
+												<td>
+													<p>高二(3)班</p>
+													<p class="typing-time">学号：20230142</p>
+												</td>
+												<td>
+													<p><strong>102</strong> 字/分钟</p>
+													<p class="typing-time">准确率：96.5%</p>
+												</td>
+											</tr>
+											<tr>
+												<td><span class="rank-badge">5</span></td>
+												<td>赵阳</td>
+												<td>
+													<p>高一(2)班</p>
+													<p class="typing-time">学号：20240033</p>
+												</td>
+												<td>
+													<p><strong>98</strong> 字/分钟</p>
+													<p class="typing-time">准确率：95.9%</p>
+												</td>
+											</tr>
+											<!-- 增加更多数据行 -->
+											<tr>
+												<td><span class="rank-badge">6</span></td>
+												<td>孙红</td>
+												<td>
+													<p>高二(2)班</p>
+													<p class="typing-time">学号：20230188</p>
+												</td>
+												<td>
+													<p><strong>105</strong> 字/分钟</p>
+													<p class="typing-time">准确率：97.2%</p>
+												</td>
+											</tr>
+											<tr>
+												<td><span class="rank-badge">7</span></td>
+												<td>周杰</td>
+												<td>
+													<p>高三(1)班</p>
+													<p class="typing-time">学号：20220345</p>
+												</td>
+												<td>
+													<p><strong>99</strong> 字/分钟</p>
+													<p class="typing-time">准确率：96.0%</p>
+												</td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -686,78 +816,106 @@
 								</div>
 							</div>
 							<div class="iq-card-body">
-								<table class="table">
-									<thead>
-										<tr>
-											<th>学生信息</th>
-											<th>班级/学号</th>
-											<th>最近活动</th>
-											<th>完成情况</th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>刘洋</td>
-											<td>
-												<p>高一(3)班</p>
-												<p class="typing-time">学号：20240102</p>
-											</td>
-											<td>
-												<p>完成《计算机基础知识》</p>
-												<p class="typing-time">2024-05-15 14:30</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-										<tr>
-											<td>张丽</td>
-											<td>
-												<p>高二(1)班</p>
-												<p class="typing-time">学号：20230118</p>
-											</td>
-											<td>
-												<p>开始《The Digital Age》</p>
-												<p class="typing-time">2024-05-15 13:45</p>
-											</td>
-											<td><span class="task-status task-status-ongoing">进行中</span></td>
-										</tr>
-										<tr>
-											<td>王强</td>
-											<td>
-												<p>高三(5)班</p>
-												<p class="typing-time">学号：20220056</p>
-											</td>
-											<td>
-												<p>完成《信息技术与现代生活》</p>
-												<p class="typing-time">2024-05-15 11:20</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-										<tr>
-											<td>李明</td>
-											<td>
-												<p>高一(2)班</p>
-												<p class="typing-time">学号：20240089</p>
-											</td>
-											<td>
-												<p>开始《速度挑战赛》</p>
-												<p class="typing-time">2024-05-15 10:15</p>
-											</td>
-											<td><span class="task-status task-status-ongoing">进行中</span></td>
-										</tr>
-										<tr>
-											<td>陈华</td>
-											<td>
-												<p>高二(3)班</p>
-												<p class="typing-time">学号：20230075</p>
-											</td>
-											<td>
-												<p>完成《英文打字练习》</p>
-												<p class="typing-time">2024-05-15 09:30</p>
-											</td>
-											<td><span class="task-status task-status-completed">已完成</span></td>
-										</tr>
-									</tbody>
-								</table>
+								<!-- 滚动容器 -->
+								<div class="overflow-auto" style="max-height:300px;">
+									<table class="table">
+										<thead>
+											<tr>
+												<th>学生信息</th>
+												<th>班级/学号</th>
+												<th>最近活动</th>
+												<th>完成情况</th>
+											</tr>
+										</thead>
+										<tbody>
+											<tr>
+												<td>刘洋</td>
+												<td>
+													<p>高一(3)班</p>
+													<p class="typing-time">学号：20240102</p>
+												</td>
+												<td>
+													<p>完成《计算机基础知识》</p>
+													<p class="typing-time">2024-05-15 14:30</p>
+												</td>
+												<td><span class="task-status task-status-completed">已完成</span></td>
+											</tr>
+											<tr>
+												<td>张丽</td>
+												<td>
+													<p>高二(1)班</p>
+													<p class="typing-time">学号：20230118</p>
+												</td>
+												<td>
+													<p>开始《The Digital Age》</p>
+													<p class="typing-time">2024-05-15 13:45</p>
+												</td>
+												<td><span class="task-status task-status-ongoing">进行中</span></td>
+											</tr>
+											<tr>
+												<td>王强</td>
+												<td>
+													<p>高三(5)班</p>
+													<p class="typing-time">学号：20220056</p>
+												</td>
+												<td>
+													<p>完成《信息技术与现代生活》</p>
+													<p class="typing-time">2024-05-15 11:20</p>
+												</td>
+												<td><span class="task-status task-status-completed">已完成</span></td>
+											</tr>
+											<tr>
+												<td>李明</td>
+												<td>
+													<p>高一(2)班</p>
+													<p class="typing-time">学号：20240089</p>
+												</td>
+												<td>
+													<p>开始《速度挑战赛》</p>
+													<p class="typing-time">2024-05-15 10:15</p>
+												</td>
+												<td><span class="task-status task-status-ongoing">进行中</span></td>
+											</tr>
+											<tr>
+												<td>陈华</td>
+												<td>
+													<p>高二(3)班</p>
+													<p class="typing-time">学号：20230075</p>
+												</td>
+												<td>
+													<p>完成《英文打字练习》</p>
+													<p class="typing-time">2024-05-15 09:30</p>
+												</td>
+												<td><span class="task-status task-status-completed">已完成</span></td>
+											</tr>
+											<!-- 增加更多数据行 -->
+											<tr>
+												<td>赵敏</td>
+												<td>
+													<p>高一(4)班</p>
+													<p class="typing-time">学号：20240123</p>
+												</td>
+												<td>
+													<p>完成《基础打字练习》</p>
+													<p class="typing-time">2024-05-15 08:50</p>
+												</td>
+												<td><span class="task-status task-status-completed">已完成</span></td>
+											</tr>
+											<tr>
+												<td>周玲</td>
+												<td>
+													<p>高二(4)班</p>
+													<p class="typing-time">学号：20230210</p>
+												</td>
+												<td>
+													<p>开始《速度挑战赛》</p>
+													<p class="typing-time">2024-05-15 08:20</p>
+												</td>
+												<td><span class="task-status task-status-ongoing">进行中</span></td>
+											</tr>
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>
@@ -860,25 +1018,41 @@
 						trigger: 'axis',
 						axisPointer: {
 							type: 'cross'
-						}
+						},
+						backgroundColor: 'rgba(30, 36, 42, 0.38)',
+						textStyle: {
+							color: '#fff',
+							fontSize: 12
+						},
+						extraCssText: 'backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 10px; border-radius: 8px;'
 					},
 					toolbox: {
-						orient: 'vertical',
-						top: 'center',
+						top: '0%',
+						right: '10%',
 						feature: {
-							show: true,
+							saveAsImage: { title: '保存图片' },
+							dataView: { title: '数据视图' },
 							magicType: {
-								type: ['stack', 'tiled', 'line', 'bar']
+								type: ['stack', 'tiled', 'line', 'bar'],
+								title: {
+									stack: '堆叠',
+									tiled: '平铺',
+									line: '折线',
+									bar: '柱状'
+								}
 							}
 						}
 					},
-					color: ["#0080ff", "#4cd5ce"],
+					color: ["#0080ff", "#FF69B4"],
 					legend: {
-						textStyle: { color: '#999' }
+						top: '5%',
+						textStyle: { color: '#666', fontSize: 12 },
 					},
-					dataZoom: [],  // 默认为空数组
+					dataZoom: [],  // 默认为空数组，可根据需要加入缩放
 					xAxis: {
 						type: 'category',
+						name: '日期',
+						nameLocation: 'start',
 						boundaryGap: false,
 						data: dataX,
 						splitLine: {
@@ -889,32 +1063,35 @@
 							show: false
 						},
 						axisLine: {
-							show: false
+							show: true,
+							lineStyle: { color: '#666' }
 						},
 						axisLabel: {
-							textStyle: { color: '#777' }
+							textStyle: { color: '#777', fontSize: 12 }
 						}
 					},
 					yAxis: {
 						type: 'value',
+						name: '人数',
 						position: 'right',
 						axisLine: {
-							show: false
+							show: true,
+							lineStyle: { color: '#665' }
 						},
 						axisTick: {
 							show: false
 						},
-						splitNumber: 3,
+						splitNumber: 4,
 						splitLine: {
 							show: true,
 							lineStyle: { color: '#666', type: 'dotted' }
 						},
 						axisLabel: {
-							textStyle: { color: '#777' }
+							textStyle: { color: '#999', fontSize: 12 }
 						}
 					},
 					grid: {
-						top: '10%',
+						top: '20%',
 						bottom: '10%',
 						right: '5%',
 						left: '5%',
@@ -923,23 +1100,24 @@
 					series: [{
 						name: '男生',
 						type: 'line',
-						stack: '1',
+						stack: '总量',
+						smooth: true,
 						showSymbol: false,
 						symbolSize: 0,
 						data: dataMale,
 						itemStyle: {
-							color: '#fff',
-							borderWidth: 10,
-							borderColor: "#FF69B4"
-						},
-						itemStyle: {
+							// 使用渐变色
 							color: {
 								type: 'linear',
+								x: 0,
+								y: 0,
+								x2: 0,
+								y2: 1,
 								colorStops: [
 									{ offset: 0, color: '#4B96FF' },
 									{ offset: 1, color: '#2B5FF7' }
 								]
-							},
+							}
 						},
 						lineStyle: {
 							width: 3,
@@ -947,22 +1125,57 @@
 							shadowBlur: 10,
 							shadowOffsetY: 20
 						},
-						areaStyle: {}
+						areaStyle: {
+							opacity: 0.2,
+							color: {
+								type: 'linear',
+								x: 0,
+								y: 0,
+								x2: 0,
+								y2: 1,
+								colorStops: [
+									{ offset: 0, color: '#4B96FF' },
+									{ offset: 1, color: '#fff' }
+								]
+							}
+						},
+						markLine: {
+							data: [
+								{ type: 'average', name: '均' }
+							],
+							label: {
+								position: 'start',
+								formatter: function (params) {
+									let val = params.value || ((params.data && params.data.value) || 0);
+									let rounded = Math.round(val);
+									return '平均:' + rounded;
+								},
+								fontSize: 12,
+								color: '#4B96FF'
+							}
+						},
+						animationDuration: 1000,
+						animationEasing: 'cubicOut'
 					}, {
 						name: '女生',
 						type: 'line',
+						smooth: true,
 						showSymbol: false,
 						symbolSize: 0,
-						stack: '1',
+						stack: '总量',
 						data: dataFemale,
 						itemStyle: {
 							color: {
 								type: 'linear',
+								x: 0,
+								y: 0,
+								x2: 0,
+								y2: 1,
 								colorStops: [
 									{ offset: 0, color: '#FF69B4' },
 									{ offset: 1, color: '#FF1493' }
 								]
-							},
+							}
 						},
 						lineStyle: {
 							width: 3,
@@ -970,7 +1183,37 @@
 							shadowBlur: 10,
 							shadowOffsetY: 20
 						},
-						areaStyle: {}
+						areaStyle: {
+							opacity: 0.2,
+							color: {
+								type: 'linear',
+								x: 0,
+								y: 0,
+								x2: 0,
+								y2: 1,
+								colorStops: [
+									{ offset: 0, color: '#FF69B4' },
+									{ offset: 1, color: '#fff' }
+								]
+							}
+						},
+						markLine: {
+							data: [
+								{ type: 'average', name: '均' }
+							],
+							label: {
+								position: 'start',
+								formatter: function (params) {
+									let val = params.value || ((params.data && params.data.value) || 0);
+									let rounded = Math.round(val);
+									return '平均:' + rounded;
+								},
+								fontSize: 12,
+								color: '#FF69B4'
+							}
+						},
+						animationDuration: 1000,
+						animationEasing: 'cubicOut'
 					}]
 				};
 
@@ -996,7 +1239,7 @@
 
 			// 默认加载"一周"数据
 			updateChart('week');
-			
+
 			// 监听窗口大小变化和全屏状态变化，保证自适应
 			function handleResize() {
 				setTimeout(() => {

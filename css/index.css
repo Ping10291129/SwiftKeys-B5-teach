@@ -253,3 +253,25 @@
     background: linear-gradient(to right, #0080ff, #00c851);
     border-radius: 3px;
 }
+
+/* 针对 WebKit 浏览器 */
+.overflow-auto::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    /* 半透明白色 */
+    border-radius: 3px;
+}
+
+/* 针对 Firefox 浏览器 */
+.overflow-auto {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}
