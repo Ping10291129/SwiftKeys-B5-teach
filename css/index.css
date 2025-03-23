@@ -176,10 +176,6 @@
     background-color: #0066cc !important;
 }
 
-.action-btn-secondary:hover {
-    background-color: #666 !important;
-}
-
 .action-btn-warning {
     background-color: #ff9800 !important;
     color: #fff !important;

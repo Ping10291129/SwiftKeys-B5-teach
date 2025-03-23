@@ -1,0 +1,72 @@
+/* 任务状态标签 */
+.task-status {
+    display: inline-block !important;
+    padding: 0px 8px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+.task-status-ongoing {
+    background-color: #dfefff !important;
+    border: 1px solid #0080ff !important;
+    color: #0080ff;
+}
+
+.task-status-completed {
+    background-color: #e6f9ef !important;
+    border: 1px solid #00c851 !important;
+    color: #00c851;
+}
+
+.task-status-expired {
+    background-color: #ffe6e8 !important;
+    border: 1px solid #ff3547 !important;
+    color: #ff3547;
+}
+
+.task-status-pending {
+    background-color: #fff8e6 !important;
+    border: 1px solid #ffaa01 !important;
+    color: #ffaa01;
+}
+
+/* 按钮悬停样式 */
+.btn {
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary {
+    background-color: #089bab !important;
+    border-color: #089bab !important;
+}
+
+.btn-primary:hover {
+    background-color: #067d8a !important;
+    border-color: #067d8a !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-default {
+    background-color: #f8f9fa !important;
+    border-color: #ddd !important;
+    color: #333 !important;
+}
+
+.btn-default:hover {
+    background-color: #e9ecef !important;
+    border-color: #c8c9ca !important;
+    transform: translateY(-2px) !important;
+}
+
+.btn-bg-gradient-x-purple-red {
+    background: linear-gradient(45deg, #7c4dff, #ff4081) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.btn-bg-gradient-x-purple-red:hover {
+    background: linear-gradient(45deg, #6f45e6, #e63973) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+}
