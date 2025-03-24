@@ -1,67 +1,79 @@
-// const register = document.getElementById("register");
-const login = document.getElementById("login");
-const hint = document.querySelector('.hint')
-localStorage.setItem('ip', 'http://10.11.126.174:809')
+document.addEventListener('DOMContentLoaded', function() {
+    localStorage.setItem('ip', 'http://10.11.126.174:809/userLogin/');
+    const hint = document.getElementById('login-hint');
 
-login.addEventListener('click',()=>{
-	const username = document.getElementById('username').value;
-	const password = document.getElementById('password').value;
-	// 检查用户名和密码是否已输入
-	if(!username || !password) {
-		hint.style.color = 'red';
-		hint.textContent = '请输入用户名和密码';
-		return;
-	}
-	const xhr = new XMLHttpRequest();
-	const formData = new FormData();
-	formData.append('username', username);
-	formData.append('password', password);
-	xhr.open('POST', localStorage.getItem('ip')+'/userLogin/login', true);
-	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xhr.timeout = 10000;
+    // 显示消息函数
+    function showMessage(type, message) {
+        hint.style.color = type === 'error' ? '#ff4d4f' : '#52c41a';
+        hint.textContent = message;
+    }
 
-	xhr.onload = function() {
-		if (xhr.status === 200) {
-			try {
-				const data = JSON.parse(xhr.responseText);
-				if(data.code === 200){
-					localStorage.setItem('token', data.token);
-					window.location.href = 'index.html';
-				}else if(data.code === 404){
-					hint.style.color = 'red';
-					hint.textContent = data.msg;
-				}
-			} catch(e) {
-				hint.style.color = 'red';
-				hint.textContent = '服务器响应格式错误';
-			}
-		} else {
-			hint.style.color = 'red';
-			hint.textContent = '服务器响应错误: ' + xhr.status;
-		}
-	};
+    // 表单验证函数
+    function validateForm(username, password) {
+        if (!username) {
+            showMessage('error', '请输入用户名');
+            return false;
+        }
+        if (!password) {
+            showMessage('error', '请输入密码');
+            return false;
+        }
+        return true;
+    }
 
-	xhr.onerror = function() {
-		hint.style.color = 'red';
-		hint.textContent = '网络请求失败';
-	};
+    document.getElementById('login').addEventListener('click', function() {
+        const username = document.getElementById('username').value.trim();
+        const password = document.getElementById('password').value;
+        
+        // 进行表单验证
+        if (!validateForm(username, password)) {
+            return;
+        }
 
-	xhr.ontimeout = function() {
-		hint.style.color = 'red';
-		hint.textContent = '请求超时';
-	};
+        // 构建请求数据
+        const data = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
 
-	const urlEncodedData = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
-	xhr.send(urlEncodedData);
-})
+        // 发送登录请求
+        fetch('http://10.11.126.174:809/userLogin/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+                'Accept': 'application/json'
+            },
+            body: data
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            if (data.code === 200) {
+                // 存储token
+                if (data.token) {
+                    localStorage.setItem('token', data.token);
+                }
+                // 登录成功
+                window.location.href = 'index.html';
+            } else {
+                // 登录失败
+                document.getElementById('login-hint').style.color = '#ff4d4f';
+                document.getElementById('login-hint').textContent = data.message || '登录失败，请检查用户名和密码';
+            }
+        })
+        .catch(error => {
+            console.error('登录请求失败:', error);
+            document.getElementById('login-hint').style.color = '#ff4d4f';
+            document.getElementById('login-hint').textContent = '服务器连接失败，请稍后再试';
+        });
+    });
 
-document.querySelectorAll('#username, #password').forEach(function(input) {
-	input.addEventListener('keypress', function(event) {
-		if (event.key == 'Enter') {
-			login.click();
-		}
-	});
+    document.querySelectorAll('#username, #password').forEach(function(input) {
+        input.addEventListener('keypress', function(event) {
+            if (event.key == 'Enter') {
+                document.getElementById('login').click();
+            }
+        });
+    });
 });
-// register.addEventListener('click', () => {
-// 	window.location.href = 'register.html'
-// })

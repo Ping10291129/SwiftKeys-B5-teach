@@ -180,6 +180,7 @@ input:focus {
 .logo:hover {
 	transform: scale(1.1);
 	transition: .4s;
+	box-shadow: 0 3px 8px rgba(52,152,219,0.42);
 }
 
 .pop-top {

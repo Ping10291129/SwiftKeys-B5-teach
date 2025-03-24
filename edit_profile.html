@@ -151,7 +151,8 @@
                                  <div class="iq-card-body p-0 ">
                                     <div class="bg-primary p-3">
                                        <h5 class="mb-0 text-white">所有通知<small
-                                             class="badge  badge-light float-right pt-1">4</small></h5>
+                                             class="badge  badge-light float-right pt-1">4</small>
+                                       </h5>
                                     </div>
 
                                     <a href="#" class="iq-sub-card">
@@ -265,6 +266,15 @@
                                  </fieldset>
                               </li>
                               <li class="col-md-4">
+                                 <h5 class="mt-2">性别</h5>
+                                 <fieldset class="form-group">
+                                    <select class="form-control" id="gender">
+                                       <option value="男">男</option>
+                                       <option value="女">女</option>
+                                    </select>
+                                 </fieldset>
+                              </li>
+                              <li class="col-md-4">
                                  <h5 class="mt-2">管理类型</h5>
                                  <fieldset class="form-group">
                                     <select class="form-control">
@@ -291,8 +301,13 @@
                            </ul>
                         </li>
                         <li class="col-md-3">
-                           <div class="headedit text-center"> <strong>头像</strong>
-                              <div class="imgbox"> <img class="roundimg" src="images/user1.jpg" width="100"> </div>
+                           <div class="headedit text-center"><strong>头像</strong>
+                              <div class="imgbox">
+                                 <div class="touxiangbox">
+                                    <img class="roundimg" src="images/user1.jpg" width="100">
+                                    <div class="touxiangbox-bottom">更换头像</div>
+                                 </div>
+                              </div>
                               <a href="javascript:;" class="btn-upload-avatar upbtn btn-sm"><i
                                     class="ft-upload-cloud "></i>更换头像
                                  <input type="file" name="" id="">
@@ -335,15 +350,124 @@
    <script src="js/bootstrap.min.js"></script>
    <script src="js/smooth-scrollbar.js"></script>
    <script src="js/custom.js"></script>
-
+   <script src="js/edit_profile.js"></script>
+   
+   <link rel="stylesheet" href="laydate/theme/default/laydate.css">
    <script src="laydate/laydate.js"></script>
    <script>
-      lay('#version').html('-v' + laydate.v);
-      laydate.render({
-         elem: '#date'
-         , range: true
-         , theme: '#2c9eae'
+      function showMessage(type, message) {
+         const messageDiv = document.createElement('div');
+         messageDiv.style.cssText = `
+					position: fixed;
+					top: 20px;
+					right: 20px;
+					padding: 15px 20px;
+					border-radius: 4px;
+					color: white;
+					z-index: 9999;
+					opacity: 0;
+					transition: opacity 0.3s ease-in-out;
+				`;
+         messageDiv.style.backgroundColor = type === 'error' ? '#ff4d4f' : '#52c41a';
+         messageDiv.textContent = message;
+         document.body.appendChild(messageDiv);
+
+         setTimeout(() => messageDiv.style.opacity = '1', 100);
+         setTimeout(() => {
+            messageDiv.style.opacity = '0';
+            setTimeout(() => document.body.removeChild(messageDiv), 300);
+         }, 3000);
+      }
+      // 只保留一份检查token的函数
+      function checkLoginStatus() {
+         const token = localStorage.getItem('token');
+         if (!token) {
+            window.location.href = 'login.html';
+            return false;
+         }
+         return true;
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+         checkLoginStatus();
       });
+
+      // 新增倒计时跳转函数：显示文字倒计时，结束后清除token跳转登录
+      function redirectToLoginWithCountdown(seconds) {
+         let counter = seconds;
+         showMessage('error', `服务器内部错误，${counter}秒后将跳转到登录页面`);
+         const intervalId = setInterval(function () {
+            counter--;
+            if (counter > 0) {
+               showMessage('error', `服务器内部错误，${counter}秒后将跳转到登录页面`);
+            } else {
+               clearInterval(intervalId);
+               localStorage.removeItem('token');
+               window.location.href = 'login.html';
+            }
+         }, 1000);
+      }
+
+      // 只保留一份全局ajax错误处理
+      $(document).ajaxError(function (event, jqXHR) {
+         if (jqXHR.status === 401 || jqXHR.status === 500) {
+            redirectToLoginWithCountdown(3);
+         }
+      });
+
+      // 加载用户数据，统一错误分支调用倒计时跳转
+      window.onload = function () {
+         localStorage.setItem('ip', 'http://10.11.126.174:809/userLogin');
+         const xhr = new XMLHttpRequest();
+         const timeout = 10000; // 10秒超时
+         let timeoutId;
+
+         xhr.open('POST', localStorage.getItem('ip') + '/pim', true);
+         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+         xhr.setRequestHeader('Content-Type', 'application/json');
+
+         xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+               clearTimeout(timeoutId);
+               if (xhr.status === 200) {
+                  try {
+                     const response = JSON.parse(xhr.responseText);
+                     if (response.code === 200) {
+                        const userData = response.rows;
+                        // 更新表单数据
+                        document.querySelector('input[placeholder=""]').value = userData.name || '';
+                        document.querySelector('#gender').value = userData.gender || '男';
+                        document.querySelector('input[value="admin@yahoo.com"]').value = userData.branch || '';
+                        // 更新头像
+                        if (userData.img) {
+                           document.querySelector('.roundimg').src = localStorage.getItem('ip') + userData.img;
+                           console.log(localStorage.getItem('ip') + userData.img);
+                        }
+                     } else {
+                        redirectToLoginWithCountdown(3);
+                     }
+                  } catch (error) {
+                     showMessage('error', '解析响应数据失败');
+                     console.error('解析响应数据失败:', error);
+                  }
+               } else {
+                  redirectToLoginWithCountdown(3);
+               }
+            }
+         };
+
+         xhr.onerror = function () {
+            clearTimeout(timeoutId);
+            redirectToLoginWithCountdown(3);
+         };
+
+         // 设置请求超时
+         timeoutId = setTimeout(() => {
+            xhr.abort();
+            redirectToLoginWithCountdown(3);
+         }, timeout);
+
+         xhr.send();
+      };
    </script>
 </body>
 

@@ -382,7 +382,8 @@
                                 </li>
                                 <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">1</a></li>
                                 <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">2</a></li>
-                                <li class="custom-page-item active"><a class="custom-page-link" href="javascript:;">3</a></li>
+                                <li class="custom-page-item active"><a class="custom-page-link"
+                                        href="javascript:;">3</a></li>
                                 <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">4</a></li>
                                 <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">5</a></li>
                                 <li class="custom-page-item">
@@ -480,11 +481,11 @@
             , theme: '#2c9eae'
         });
 
-        // 分页控制功能
-        document.addEventListener('DOMContentLoaded', function() {
+        // 分页控制
+        document.addEventListener('DOMContentLoaded', function () {
             let currentPage = 1;
-            const pageLinks = document.querySelectorAll('.page-link');
-            const pageItems = document.querySelectorAll('.page-item');
+            const pageLinks = document.querySelectorAll('.custom-page-link');
+            const pageItems = document.querySelectorAll('.custom-page-item');
             const itemsPerPage = 10; // 每页显示的数据条数
             const tableBody = document.querySelector('table tbody');
 
@@ -519,7 +520,7 @@
 
             // 为所有分页按钮添加点击事件
             pageLinks.forEach((link, index) => {
-                link.addEventListener('click', function(e) {
+                link.addEventListener('click', function (e) {
                     e.preventDefault();
                     if (index === 0 && currentPage > 1) { // 上一页
                         updatePagination(currentPage - 1);

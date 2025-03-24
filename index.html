@@ -673,7 +673,6 @@
 														<p class="typing-time">学号：20230127</p>
 													</td>
 													<td><span class="violation-type violation-type-copy">数据异常</span>
-													</td>
 													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
 												</tr>
 												<!-- 增加更多数据行 -->
@@ -684,7 +683,6 @@
 														<p class="typing-time">学号：20240034</p>
 													</td>
 													<td><span class="violation-type violation-type-copy">数据异常</span>
-													</td>
 													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
 												</tr>
 												<tr>
@@ -694,7 +692,6 @@
 														<p class="typing-time">学号：20230178</p>
 													</td>
 													<td><span class="violation-type violation-type-copy">数据异常</span>
-													</td>
 													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
 												</tr>
 											</tbody>
@@ -961,6 +958,7 @@
 		<script src="js/smooth-scrollbar.js"></script>
 		<script src="js/custom.js"></script>
 		<script src="js/echarts.min.js"></script>
+		<script src="js/index.js"></script>
 
 		<script>
 			$(function() {
@@ -1320,7 +1318,113 @@
 
 			})
 		</script>
+		<script>
+			// 显示消息提示框
+			function showMessage(type, message) {
+				const messageDiv = document.createElement('div');
+				messageDiv.style.cssText = `
+					position: fixed;
+					top: 20px;
+					right: 20px;
+					padding: 15px 20px;
+					border-radius: 4px;
+					color: white;
+					z-index: 9999;
+					opacity: 0;
+					transition: opacity 0.3s ease-in-out;
+				`;
+				messageDiv.style.backgroundColor = type === 'error' ? '#ff4d4f' : '#52c41a';
+				messageDiv.textContent = message;
+				document.body.appendChild(messageDiv);
+				setTimeout(() => messageDiv.style.opacity = '1', 100);
+				setTimeout(() => {
+					messageDiv.style.opacity = '0';
+					setTimeout(() => document.body.removeChild(messageDiv), 300);
+				}, 3000);
+			}
 
+			// 倒计时跳转函数（错误时清除 token 跳转登录）
+			function redirectToLoginWithCountdown(seconds) {
+				let counter = seconds;
+				showMessage('error', `服务器内部错误，${counter}秒后将跳转到登录页面`);
+				const intervalId = setInterval(function() {
+					counter--;
+					if (counter > 0) {
+						showMessage('error', `服务器内部错误，${counter}秒后将跳转到登录页面`);
+					} else {
+						clearInterval(intervalId);
+						localStorage.removeItem('token');
+						window.location.href = 'login.html';
+					}
+				}, 1000);
+			}
+
+			// 调用接口更新页面头部的用户信息（头像、姓名、机构）
+			function updateHeaderUserInfo() {
+				localStorage.setItem('ip', 'http://10.11.126.174:809/userLogin');
+				const xhr = new XMLHttpRequest();
+				const timeout = 10000; // 超时10秒
+				let timeoutId;
+
+				xhr.open('POST', localStorage.getItem('ip') + '/pim', true);
+				xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+				xhr.setRequestHeader('Content-Type', 'application/json');
+
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === 4) {
+						clearTimeout(timeoutId);
+						if (xhr.status === 200) {
+							try {
+								const response = JSON.parse(xhr.responseText);
+								if (response.code === 200) {
+									const userData = response.rows;
+									
+									// 更新头部头像（.navbar-list 里第一个 a 标签中的 img）
+									const headerImg = document.querySelector('.navbar-list li a.search-toggle img');
+									if (headerImg && userData.img) {
+										headerImg.src = localStorage.getItem('ip') + userData.img;
+									}
+									// 更新头部用户名（h6 标签）
+									const headerName = document.querySelector('.navbar-list li a.search-toggle .caption h6');
+									if (headerName) {
+										headerName.textContent = userData.name || '用户';
+									}
+									// 更新机构或其他信息（span 标签，此处可根据实际需求调整）
+									const headerInfo = document.querySelector('.navbar-list li a.search-toggle .caption span');
+									if (headerInfo) {
+										headerInfo.textContent = userData.branch || '';
+									}
+								} else {
+									redirectToLoginWithCountdown(3);
+								}
+							} catch (error) {
+								showMessage('error', '解析响应数据失败');
+								console.error('解析响应数据失败:', error);
+							}
+						} else {
+							redirectToLoginWithCountdown(3);
+						}
+					}
+				};
+
+				xhr.onerror = function() {
+					clearTimeout(timeoutId);
+					redirectToLoginWithCountdown(3);
+				};
+
+				// 设置请求超时
+				timeoutId = setTimeout(() => {
+					xhr.abort();
+					redirectToLoginWithCountdown(3);
+				}, 10000);
+
+				xhr.send();
+			}
+
+			document.addEventListener('DOMContentLoaded', function () {
+				updateHeaderUserInfo();
+			});
+		</script>
 	</body>
 	<script src="./js/index.js"></script>
 

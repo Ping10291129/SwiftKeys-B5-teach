@@ -957,13 +957,13 @@ a:hover {
 }
 
 .iq-sidebar-menu .iq-menu li.active .iq-submenu li.active>a {
-	background: #ceebee;
+	background: #a7f7ff24;
 	color: #089bab;
 	border-radius: 0;
 }
 
 .iq-sidebar-menu .iq-menu li.active .iq-submenu li:last-child>a {
-	border-radius: 0 0 15px 15px;
+	border-radius: 0 0 25px 25px;
 }
 
 .iq-sidebar-menu .iq-menu li .iq-submenu li>a::before {
