@@ -5,7 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>心理健康管理系统</title>
+    <title>SwiftKeys后台管理</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/publish_task.css">
     <link rel="stylesheet" href="./css/font.css">
@@ -240,8 +240,9 @@
                                         <select class="form-control">
                                             <option>所有状态</option>
                                             <option>进行中</option>
-                                            <option>已结束</option>
-                                            <option>未开始</option>
+                                            <option>已完成</option>
+                                            <option>已过期</option>
+                                            <option>准备中</option>
                                         </select>
                                     </li>
                                     <li class="col-xs-4" style="padding-left: 10px">
@@ -260,7 +261,7 @@
                                         <th>任务名称</th>
                                         <th>文章标题</th>
                                         <th>字数</th>
-                                        <th>时间限制</th>
+                                        <th>时间限制(分钟)</th>
                                         <th>班级</th>
                                         <th>任务状态</th>
                                         <th>操作</th>
@@ -269,108 +270,101 @@
                                 <tbody>
                                     <tr>
                                         <td><input type="checkbox"></td>
-                                        <td>12</td>
-                                        <td>认知筛查与评定</td>
-                                        <td>1</td>
-                                        <td><a href="套餐量表管理.html">管理</a></td>
-                                        <td>医师：白雪芹</td>
-                                        <td>私有</td>
+                                        <td>101</td>
+                                        <td>期中考试打字任务</td>
+                                        <td>《计算机基础知识》</td>
+                                        <td>1500</td>
+                                        <td>30</td>
+                                        <td>计算机科学1班</td>
                                         <td><span class="task-status task-status-ongoing">进行中</span></td>
                                         <td>
                                             <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
                                             <a href="javascript:;">删除</a>
                                         </td>
-
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox"></td>
-                                        <td>5</td>
-                                        <td>我的套餐1</td>
-                                        <td>3</td>
-                                        <td><a href="套餐量表管理.html">管理</a></td>
-                                        <td>医师：白雪芹</td>
-                                        <td>开放</td>
+                                        <td>102</td>
+                                        <td>英文打字练习</td>
+                                        <td>《英语短文集锦》</td>
+                                        <td>800</td>
+                                        <td>20</td>
+                                        <td>英语专业2班</td>
                                         <td><span class="task-status task-status-ongoing">进行中</span></td>
                                         <td>
                                             <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
                                             <a href="javascript:;">删除</a>
                                         </td>
-
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox"></td>
-                                        <td>8</td>
-                                        <td>睡眠障碍</td>
-                                        <td>1</td>
-                                        <td><a href="套餐量表管理.html">管理</a></td>
-                                        <td>医师：白雪芹</td>
-                                        <td>开放</td>
+                                        <td>103</td>
+                                        <td>速度测试</td>
+                                        <td>《五笔打字入门》</td>
+                                        <td>500</td>
+                                        <td>10</td>
+                                        <td>文秘专业1班</td>
                                         <td><span class="task-status task-status-pending">准备中</span></td>
                                         <td>
                                             <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
                                             <a href="javascript:;">删除</a>
                                         </td>
-
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox"></td>
-                                        <td>12</td>
-                                        <td>孕妇评测系统-孕早期</td>
-                                        <td>1</td>
-                                        <td><a href="套餐量表管理.html">管理</a></td>
-                                        <td>医师：白雪芹</td>
-                                        <td>开放</td>
+                                        <td>104</td>
+                                        <td>期末考试打字任务</td>
+                                        <td>《信息技术概论》</td>
+                                        <td>2000</td>
+                                        <td>45</td>
+                                        <td>信息管理3班</td>
                                         <td><span class="task-status task-status-ongoing">进行中</span></td>
                                         <td>
                                             <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
                                             <a href="javascript:;">删除</a>
                                         </td>
-
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox"></td>
-                                        <td>12</td>
-                                        <td>孕妇评测系统-产后</td>
-                                        <td>1</td>
-                                        <td><a href="套餐量表管理.html">管理</a></td>
-                                        <td>医师：白雪芹</td>
-                                        <td>开放</td>
+                                        <td>105</td>
+                                        <td>中文打字练习</td>
+                                        <td>《现代文选读》</td>
+                                        <td>1200</td>
+                                        <td>25</td>
+                                        <td>中文系2班</td>
+                                        <td><span class="task-status task-status-completed">已完成</span></td>
+                                        <td>
+                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
+                                            <a href="javascript:;">删除</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td>106</td>
+                                        <td>编程代码输入测试</td>
+                                        <td>《Python基础语法》</td>
+                                        <td>1000</td>
+                                        <td>30</td>
+                                        <td>软件工程4班</td>
+                                        <td><span class="task-status task-status-expired">已过期</span></td>
+                                        <td>
+                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
+                                            <a href="javascript:;">删除</a>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td><input type="checkbox"></td>
+                                        <td>107</td>
+                                        <td>数字录入练习</td>
+                                        <td>《数据录入指南》</td>
+                                        <td>600</td>
+                                        <td>15</td>
+                                        <td>会计专业1班</td>
                                         <td><span class="task-status task-status-ongoing">进行中</span></td>
                                         <td>
                                             <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
                                             <a href="javascript:;">删除</a>
                                         </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>12</td>
-                                        <td>认知筛查与评定</td>
-                                        <td>1</td>
-                                        <td><a href="套餐量表管理.html">管理</a></td>
-                                        <td>医师：白雪芹</td>
-                                        <td>开放</td>
-                                        <td><span class="task-status task-status-ongoing">进行中</span></td>
-                                        <td>
-                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
-                                            <a href="javascript:;">删除</a>
-                                        </td>
-
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>12</td>
-                                        <td>认知筛查与评定</td>
-                                        <td>1</td>
-                                        <td><a href="套餐量表管理.html">管理</a></td>
-                                        <td>医师：白雪芹</td>
-                                        <td>开放</td>
-                                        <td><span class="task-status task-status-ongoing">进行中</span></td>
-                                        <td>
-                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
-                                            <a href="javascript:;">删除</a>
-                                        </td>
-
                                     </tr>
                                 </tbody>
                             </table>
@@ -380,19 +374,19 @@
                             <a href="javascript:;" class="bottom bottom-danger">删除</a>
                         </div>
                         <nav aria-label="Page navigation" class="page">
-                            <ul class="pagination">
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript:;" aria-label="Previous">
+                            <ul class="custom-pagination">
+                                <li class="custom-page-item">
+                                    <a class="custom-page-link" href="javascript:;" aria-label="Previous">
                                         <span aria-hidden="true">上一页</span>
                                     </a>
                                 </li>
-                                <li class="page-item"><a class="page-link" href="javascript:;">1</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:;">2</a></li>
-                                <li class="page-item active"><a class="page-link" href="javascript:;">3</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:;">4</a></li>
-                                <li class="page-item"><a class="page-link" href="javascript:;">5</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="javascript:;" aria-label="Next">
+                                <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">1</a></li>
+                                <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">2</a></li>
+                                <li class="custom-page-item active"><a class="custom-page-link" href="javascript:;">3</a></li>
+                                <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">4</a></li>
+                                <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">5</a></li>
+                                <li class="custom-page-item">
+                                    <a class="custom-page-link" href="javascript:;" aria-label="Next">
                                         <span aria-hidden="true">下一页</span>
                                     </a>
                                 </li>
@@ -484,6 +478,61 @@
             elem: '#date'
             , range: true
             , theme: '#2c9eae'
+        });
+
+        // 分页控制功能
+        document.addEventListener('DOMContentLoaded', function() {
+            let currentPage = 1;
+            const pageLinks = document.querySelectorAll('.page-link');
+            const pageItems = document.querySelectorAll('.page-item');
+            const itemsPerPage = 10; // 每页显示的数据条数
+            const tableBody = document.querySelector('table tbody');
+
+            // 更新表格数据
+            function updateTableData(page) {
+                const rows = tableBody.querySelectorAll('tr');
+                const start = (page - 1) * itemsPerPage;
+                const end = start + itemsPerPage;
+
+                rows.forEach((row, index) => {
+                    if (index >= start && index < end) {
+                        row.style.display = '';
+                    } else {
+                        row.style.display = 'none';
+                    }
+                });
+            }
+
+            // 更新分页状态
+            function updatePagination(page) {
+                currentPage = page;
+                pageItems.forEach(item => item.classList.remove('active'));
+                pageItems[page].classList.add('active');
+
+                // 禁用或启用上一页/下一页按钮
+                pageItems[0].classList.toggle('disabled', currentPage === 1);
+                pageItems[pageItems.length - 1].classList.toggle('disabled', currentPage === pageItems.length - 2);
+
+                // 更新表格数据
+                updateTableData(page);
+            }
+
+            // 为所有分页按钮添加点击事件
+            pageLinks.forEach((link, index) => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    if (index === 0 && currentPage > 1) { // 上一页
+                        updatePagination(currentPage - 1);
+                    } else if (index === pageLinks.length - 1 && currentPage < pageItems.length - 2) { // 下一页
+                        updatePagination(currentPage + 1);
+                    } else if (index !== 0 && index !== pageLinks.length - 1) { // 页码
+                        updatePagination(index);
+                    }
+                });
+            });
+
+            // 初始化分页状态
+            updatePagination(1);
         });
     </script>
 </body>
