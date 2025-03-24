@@ -1,4 +1,3 @@
-/* 任务状态标签 */
 .task-status {
     display: inline-block !important;
     padding: 0px 8px !important;
@@ -32,31 +31,48 @@
 }
 
 /* 按钮悬停样式 */
-.btn {
-    transition: all 0.3s ease !important;
+.bottom {
+    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
+    padding: 6px 12px !important;
+    line-height: 1.5 !important;
+    box-sizing: border-box !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    display: inline-block !important;
+    text-decoration: none !important;
 }
 
-.btn-primary {
+.bottom-primary {
     background-color: #089bab !important;
     border-color: #089bab !important;
+    color: white !important;
 }
 
-.btn-primary:hover {
+.bottom-primary:hover {
     background-color: #067d8a !important;
     border-color: #067d8a !important;
-    transform: translateY(-2px) !important;
 }
 
-.btn-default {
+.bottom-default {
     background-color: #f8f9fa !important;
     border-color: #ddd !important;
     color: #333 !important;
 }
 
-.btn-default:hover {
+.bottom-default:hover {
     background-color: #e9ecef !important;
     border-color: #c8c9ca !important;
-    transform: translateY(-2px) !important;
+}
+
+.bottom-danger {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+    color: white !important;
+}
+
+.bottom-danger:hover {
+    background-color: #c82333 !important;
+    border-color: #bd2130 !important;
 }
 
 .btn-bg-gradient-x-purple-red {
@@ -67,6 +83,65 @@
 
 .btn-bg-gradient-x-purple-red:hover {
     background: linear-gradient(45deg, #6f45e6, #e63973) !important;
-    transform: translateY(-2px) !important;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.2) !important;
+}
+
+.btn-gradient-primary {
+    background: linear-gradient(45deg, #089bab, #067d8a) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.btn-gradient-primary:hover {
+    background: linear-gradient(45deg, #067d8a, #056d79) !important;
+}
+
+.btn-gradient-default {
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef) !important;
+    border: 1px solid #ddd !important;
+    color: #333 !important;
+}
+
+.btn-gradient-default:hover {
+    background: linear-gradient(45deg, #e9ecef, #ddd) !important;
+    border-color: #c8c9ca !important;
+}
+
+.btn-gradient-danger {
+    background: linear-gradient(45deg, #dc3545, #c82333) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.page-link {
+    color: #333 !important;
+    background: #fff !important;
+    border: 1px solid #ddd !important;
+    transition: all 0.3s ease !important;
+    padding: 8px 16px !important;
+    margin: 0 2px !important;
+}
+
+.page-link:hover {
+    color: #089bab !important;
+    background: linear-gradient(45deg, #f8f9fa, #e9ecef) !important;
+    border-color: #089bab !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.page-item.active .page-link {
+    color: #fff !important;
+    background: linear-gradient(45deg, #089bab, #067d8a) !important;
+    border-color: #067d8a !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+}
+
+.page-item.disabled .page-link {
+    color: #6c757d !important;
+    background: #f8f9fa !important;
+    border-color: #ddd !important;
+    cursor: not-allowed !important;
+}
+
+.btn-gradient-danger:hover {
+    background: linear-gradient(45deg, #c82333, #bd2130) !important;
 }
