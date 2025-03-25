@@ -81,9 +81,17 @@
 }
 
 .badge-success {
-    background-color: #1a472a !important;
+    background: rgba(46, 204, 113, 0.1) !important;
     color: #2ecc71 !important;
     border: 1px solid #2ecc71 !important;
+    padding: 5px 10px !important;
+    border-radius: 4px !important;
+}
+
+.badge-frozen {
+    background: rgba(231, 76, 60, 0.1) !important;
+    color: #e74c3c !important;
+    border: 1px solid #e74c3c !important;
     padding: 5px 10px !important;
     border-radius: 4px !important;
 }
@@ -108,6 +116,9 @@
     margin-bottom: 1rem;
     background-color: #2a2a2a !important;
     color: #e0e0e0 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    margin: 15px 0;
 }
 
 .table th,
@@ -120,16 +131,30 @@
 .table th {
     background-color: #333333 !important;
     color: #ffffff !important;
-    border-bottom: 1px solid #3a3a3a !important;
+    border-bottom: 2px solid #3a3a3a !important;
+    padding: 12px 15px !important;
+    font-weight: 500;
 }
 
 .table td {
     color: #e0e0e0 !important;
     border-top: 1px solid #3a3a3a !important;
+    padding: 12px 15px !important;
+    transition: background-color 0.3s ease !important;
 }
 
 .table tr:hover {
     background-color: #353535 !important;
+}
+
+.table tbody tr {
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.table tbody tr:hover {
+    background-color: #353535 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) !important;
 }
 
 /* 状态标签样式 */
@@ -139,4 +164,432 @@
     border-radius: 4px !important;
     font-size: 12px !important;
     font-weight: 500 !important;
+}
+
+/* 基础样式重置 */
+.iq-card {
+    background: #2a2a2a !important;
+    border: 1px solid #3a3a3a !important;
+}
+
+.form-control {
+    background-color: #333 !important;
+    border: 1px solid #444 !important;
+    color: #e0e0e0 !important;
+}
+
+.form-control:focus {
+    background-color: #383838 !important;
+    border-color: #067d8a !important;
+    box-shadow: 0 0 0 0.2rem rgba(6, 125, 138, 0.25) !important;
+}
+
+/* 按钮样式 */
+.btn {
+    border-radius: 4px !important;
+    padding: 8px 16px !important;
+    transition: all 0.3s ease !important;
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #089bab, #067d8a) !important;
+    border: none !important;
+    color: white !important;
+}
+
+.btn-default {
+    background: #333 !important;
+    border: 1px solid #444 !important;
+    color: #e0e0e0 !important;
+}
+
+.btn-success {
+    background: linear-gradient(45deg, #28a745, #218838) !important;
+    border: none !important;
+}
+
+.btn-warning {
+    background: linear-gradient(45deg, #ffc107, #d39e00) !important;
+    border: none !important;
+}
+
+/* 链接样式 */
+.table a {
+    color: #089bab !important;
+    text-decoration: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.table a:hover {
+    color: #067d8a !important;
+    text-transform: scale(1.05) !important;
+}
+
+/* 搜索框样式 */
+.selbox {
+    background: #2a2a2a !important;
+    border: 1px solid #3a3a3a !important;
+    border-radius: 8px !important;
+    padding: 20px !important;
+    margin: 15px 0 !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.selbox span {
+    color: #e0e0e0 !important;
+}
+
+/* 新增动画效果 */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.table-responsive {
+    animation: fadeIn 0.5s ease-out;
+}
+
+.table tbody tr {
+    animation: fadeIn 0.5s ease-out backwards;
+}
+
+.table tbody tr:nth-child(n) { animation-delay: calc((var(--n, 1) - 1) * 0.1s); }
+.table tbody tr:nth-child(1) { --n: 1; }
+.table tbody tr:nth-child(2) { --n: 2; }
+.table tbody tr:nth-child(3) { --n: 3; }
+.table tbody tr:nth-child(4) { --n: 4; }
+.table tbody tr:nth-child(5) { --n: 5; }
+.table tbody tr:nth-child(n+6) { animation-delay: 0.5s; }
+
+/* 表单样式优化 */
+.form1 ul {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+
+.form1 li {
+    padding: 0 10px;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.form1 span {
+    min-width: 80px;
+    color: #e0e0e0;
+    font-size: 14px;
+    margin-right: 10px;
+}
+
+.form1 .form-control {
+    flex: 1;
+    height: 36px;
+    background: #333;
+    border: 1px solid #444;
+    border-radius: 4px;
+    color: #e0e0e0;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.form1 .form-control:focus {
+    border-color: #089bab;
+    box-shadow: 0 0 0 2px rgba(8, 154, 171, 0.1);
+}
+
+/* 按钮组样式 */
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* 自定义按钮样式 */
+.u-btn {
+    height: 36px;
+    padding: 0 16px;
+    border-radius: 4px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    border: none;
+}
+
+.u-btn-primary {
+    background: linear-gradient(45deg, #089bab, #067d8a);
+    color: #fff;
+}
+
+.u-btn-primary:hover {
+    background: linear-gradient(45deg, #067d8a, #045d66);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(6, 125, 138, 0.3);
+    color: #fff;
+}
+
+.u-btn-default {
+    background: #333;
+    border: 1px solid #444;
+    color: #e0e0e0;
+}
+
+.u-btn-default:hover {
+    background: #3a3a3a;
+    border-color: #089bab;
+    color: #fff;
+}
+
+.u-btn-toggle {
+    color: #089bab;
+    padding: 0;
+    background: transparent;
+}
+
+.u-btn-toggle:hover {
+    color: #067d8a;
+    text-decoration: none;
+}
+
+/* 操作按钮样式 */
+.action-link {
+    color: #089bab !important;
+    text-decoration: none !important;
+    transition: all 0.3s ease !important;
+    padding: 4px 8px !important;
+    border-radius: 4px !important;
+}
+
+.action-link:hover {
+    color: #067d8a !important;
+    background: rgba(8, 154, 171, 0.1) !important;
+}
+
+/* 状态标签样式 */
+.badge {
+    display: inline-block;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.badge-success {
+    background: rgba(46, 204, 113, 0.1) !important;
+    color: #2ecc71 !important;
+    border: 1px solid #2ecc71 !important;
+}
+
+/* 操作按钮统一样式 */
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid transparent;
+    margin: 0 5px;
+    cursor: pointer;
+}
+
+/* 主要按钮 */
+.action-btn-primary {
+    background: linear-gradient(45deg, #089bab, #067d8a);
+    color: #fff;
+}
+
+.action-btn-primary:hover {
+    background: linear-gradient(45deg, #067d8a, #045d66);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(6, 125, 138, 0.3);
+    color: #fff;
+}
+
+/* 信息按钮 */
+.action-btn-info {
+    background: linear-gradient(45deg, #0080ff, #1a90ff);
+    color: #fff;
+}
+
+.action-btn-info:hover {
+    background: linear-gradient(45deg, #1a90ff, #0070e0);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0, 128, 255, 0.3);
+    color: #fff;
+}
+
+/* 默认按钮 */
+.action-btn-default {
+    background: #333;
+    border: 1px solid #444;
+    color: #e0e0e0;
+}
+
+.action-btn-default:hover {
+    background: #3a3a3a;
+    border-color: #089bab;
+    color: #fff;
+}
+
+/* 成功按钮 */
+.action-btn-success {
+    background: linear-gradient(45deg, #28a745, #218838);
+    color: #fff;
+}
+
+.action-btn-success:hover {
+    background: linear-gradient(45deg, #218838, #1e7e34);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+    color: #fff;
+}
+
+/* 警告按钮 */
+.action-btn-warning {
+    background: linear-gradient(45deg, #ffc107, #d39e00);
+    color: #fff;
+}
+
+.action-btn-warning:hover {
+    background: linear-gradient(45deg, #d39e00, #ba8b00);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+    color: #fff;
+}
+
+/* 文本按钮 */
+.action-btn-text {
+    background: transparent;
+    color: #089bab;
+    padding: 0;
+}
+
+.action-btn-text:hover {
+    color: #067d8a;
+    text-decoration: none;
+}
+
+/* 表格中的链接按钮样式 */
+.table .action-link {
+    color: #089bab;
+    text-decoration: none;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.table .action-link:hover {
+    color: #067d8a;
+    background: rgba(8, 154, 171, 0.1);
+}
+
+/* 按钮基础样式 */
+.action-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 36px;
+    padding: 0 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+/* 蓝色主题按钮 */
+.action-btn-blue {
+    background: linear-gradient(45deg, #089bab, #067d8a) !important;
+    color: #fff !important;
+}
+
+.action-btn-blue:hover {
+    background: linear-gradient(45deg, #067d8a, #045d66) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(6, 125, 138, 0.3);
+    color: #fff !important;
+}
+
+/* 绿色主题按钮 */
+.action-btn-green {
+    background: linear-gradient(45deg, #28a745, #218838) !important;
+    color: #fff !important;
+}
+
+.action-btn-green:hover {
+    background: linear-gradient(45deg, #218838, #1e7e34) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(40, 167, 69, 0.3);
+    color: #fff !important;
+}
+
+/* 橙色主题按钮 */
+.action-btn-orange {
+    background: linear-gradient(45deg, #ffc107, #d39e00) !important;
+    color: #fff !important;
+}
+
+.action-btn-orange:hover {
+    background: linear-gradient(45deg, #d39e00, #ba8b00) !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(255, 193, 7, 0.3);
+    color: #fff !important;
+}
+
+/* 线框按钮 */
+.action-btn-outline {
+    background: #333 !important;
+    border: 1px solid #444 !important;
+    color: #e0e0e0 !important;
+}
+
+.action-btn-outline:hover {
+    background: rgba(8, 154, 171, 0.1) !important;
+    border: 1px solid #089bab !important;
+    color: #089bab !important;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(6, 125, 138, 0.1);
+}
+
+/* 链接按钮 */
+.action-btn-link {
+    background: transparent !important;
+    color: #089bab !important;
+    padding: 0 !important;
+}
+
+.action-btn-link:hover {
+    color: #067d8a !important;
+    background: linear-gradient(45deg, transparent, transparent) !important;
+}
+
+/* 操作按钮组 */
+.operation-group {
+    margin: 15px 0;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+/* 按钮组 */
+.button-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
