@@ -6,6 +6,7 @@
 	<title>SwiftKeys</title>
 	<link rel="stylesheet" href="css/font.css">
 	<link rel="stylesheet" href="css/login.css" />
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
 <body>
@@ -31,6 +32,9 @@
 						<div class="input-c">
 							<input type="password" id="password" required />
 							<label for="password">输入您的密码</label>
+							<span class="toggle-password" onclick="togglePassword()">
+								<i class="ri-eye-off-line"></i>
+							</span>
 						</div>
 						<div class="form-bottom">
 								<p id="login-hint" class="hint" style="color: #8e9399;transition: color 0.3s ease;">

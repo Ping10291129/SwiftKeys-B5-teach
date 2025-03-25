@@ -25,6 +25,54 @@ a:hover {
 	width: 100%;
 }
 
+.password-toggle {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 0;
+	border: none;
+	background: none;
+	color: #666;
+	cursor: pointer;
+	z-index: 2;
+}
+
+.password-toggle:hover {
+	color: #0080ff;
+}
+
+.password-toggle:focus {
+	outline: none;
+	box-shadow: none;
+}
+
+.password-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #8e9399;
+    transition: .3s;
+    padding: 8px;
+    z-index: 3;
+}
+
+.toggle-password:hover {
+    color: #3498db;
+}
+
+/* 确保label在toggle按钮下方 */
+.input-c label {
+    z-index: 2;
+}
+
 form {
 	display: flex;
 	flex-direction: column;

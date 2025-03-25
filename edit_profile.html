@@ -416,12 +416,12 @@
 
       // 加载用户数据，统一错误分支调用倒计时跳转
       window.onload = function () {
-         localStorage.setItem('ip', 'http://10.11.126.174:809/userLogin');
+         localStorage.setItem('ip', 'http://10.11.126.174:809');
          const xhr = new XMLHttpRequest();
          const timeout = 10000; // 10秒超时
          let timeoutId;
 
-         xhr.open('POST', localStorage.getItem('ip') + '/pim', true);
+         xhr.open('POST', localStorage.getItem('ip') + '/userLogin/pim', true);
          xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
          xhr.setRequestHeader('Content-Type', 'application/json');
 

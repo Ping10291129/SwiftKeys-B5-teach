@@ -1,25 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // 显示消息提示框
+    // 复用优化后的消息提示函数
     function showMessage(type, message) {
-        const messageDiv = document.createElement('div');
-        messageDiv.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 4px;
-            color: white;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        `;
+        let messageDiv = document.querySelector('.message-div');
+        if (!messageDiv) {
+            messageDiv = document.createElement('div');
+            messageDiv.className = 'message-div';
+            messageDiv.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                padding: 15px 20px;
+                border-radius: 4px;
+                color: white;
+                z-index: 9999;
+                opacity: 0;
+                transition: opacity 0.3s ease-in-out;
+            `;
+            document.body.appendChild(messageDiv);
+        }
         messageDiv.style.backgroundColor = type === 'error' ? '#ff4d4f' : '#52c41a';
         messageDiv.textContent = message;
-        document.body.appendChild(messageDiv);
-        setTimeout(() => messageDiv.style.opacity = '1', 100);
+        messageDiv.style.opacity = '1';
         setTimeout(() => {
             messageDiv.style.opacity = '0';
-            setTimeout(() => document.body.removeChild(messageDiv), 300);
+            setTimeout(() => messageDiv.remove(), 300);
         }, 3000);
     }
 
@@ -40,52 +44,50 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 更新页面用户信息
-    function updateUserInfo() {
-        localStorage.setItem('ip', 'http://10.11.126.174:809/userLogin');
-        const xhr = new XMLHttpRequest();
-        const timeout = 10000;
-        let timeoutId;
-
-        xhr.open('POST', localStorage.getItem('ip') + '/pim', true);
-        xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
-        xhr.setRequestHeader('Content-Type', 'application/json');
-
-        xhr.onreadystatechange = function() {
-            if (xhr.readyState === 4) {
-                clearTimeout(timeoutId);
-                if (xhr.status === 200) {
-                    try {
-                        const response = JSON.parse(xhr.responseText);
-                        if (response.code === 200) {
-                            const userData = response.rows;
-                            // 更新头部信息
-                            updateHeaderInfo(userData);
-                            // 更新表单信息
-                            updateFormInfo(userData);
-                        } else {
-                            redirectToLoginWithCountdown(3);
-                        }
-                    } catch (error) {
-                        showMessage('error', '解析响应数据失败');
-                        console.error('解析响应数据失败:', error);
-                    }
-                } else {
-                    redirectToLoginWithCountdown(3);
-                }
+    async function updateUserInfo() {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                redirectToLoginWithCountdown(3);
+                return;
             }
-        };
 
-        xhr.onerror = function() {
-            clearTimeout(timeoutId);
-            redirectToLoginWithCountdown(3);
-        };
+            const response = await fetch(localStorage.getItem('ip') + '/pim', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': token
+                }
+            });
 
-        timeoutId = setTimeout(() => {
-            xhr.abort();
-            redirectToLoginWithCountdown(3);
-        }, timeout);
+            if (!response.ok) {
+                // 同时处理401和500状态码
+                if (response.status === 401 || response.status === 500) {
+                    redirectToLoginWithCountdown(3);
+                    return;
+                }
+                throw new Error('网络请求失败');
+            }
 
-        xhr.send();
+            const data = await response.json();
+            
+            if (data.code === 200) {
+                updateHeaderInfo(data.rows);
+                updateFormInfo(data.rows);
+            } else if (data.code === 401 || data.code === 500) {
+                // 同时处理401和500业务状态码
+                redirectToLoginWithCountdown(3);
+            } else {
+                throw new Error(data.message || '获取用户信息失败');
+            }
+        } catch (error) {
+            showMessage('error', error.message);
+            console.error('获取用户信息失败:', error);
+            // 同时处理401和500相关的错误信息
+            if (error.message.includes('401') || error.message.includes('500')) {
+                redirectToLoginWithCountdown(3);
+            }
+        }
     }
 
     // 更新头部信息
@@ -145,29 +147,7 @@ document.addEventListener('DOMContentLoaded', function() {
         uploadInput.addEventListener('change', function(e) {
             const file = e.target.files[0];
             if (file) {
-                const formData = new FormData();
-                formData.append('avatar', file);
-
-                fetch(localStorage.getItem('ip') + '/upload-avatar', {
-                    method: 'POST',
-                    headers: {
-                        'Authorization': localStorage.getItem('token')
-                    },
-                    body: formData
-                })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.code === 200) {
-                        showMessage('success', '头像上传成功');
-                        updateUserInfo();
-                    } else {
-                        showMessage('error', data.message || '头像上传失败');
-                    }
-                })
-                .catch(error => {
-                    showMessage('error', '头像上传失败');
-                    console.error('上传失败:', error);
-                });
+                uploadAvatar(file);
             }
         });
     }
@@ -176,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
     function checkLoginStatus() {
         const token = localStorage.getItem('token');
         if (!token) {
-            window.location.href = 'login.html';
+            redirectToLoginWithCountdown(3);
             return false;
         }
         return true;
@@ -188,16 +168,51 @@ document.addEventListener('DOMContentLoaded', function() {
         updateUserInfo();
     }
 
-    // 初始化全局ajax错误处理
-    $(document).ajaxError(function (event, jqXHR) {
-        if (jqXHR.status === 401 || jqXHR.status === 500) {
-            redirectToLoginWithCountdown(3);
-        }
-    });
-
-    // 初始化头像上传
-    initAvatarUpload();
-    
     // 页面加载完成后初始化
     initPage();
 });
+
+async function uploadAvatar(file) {
+    try {
+        const token = localStorage.getItem('token');
+        if (!token) {
+            redirectToLoginWithCountdown(3);
+            return;
+        }
+
+        const formData = new FormData();
+        formData.append('avatar', file);
+
+        const response = await fetch(localStorage.getItem('ip') + '/upload-avatar', {
+            method: 'POST',
+            headers: {
+                'Authorization': token
+            },
+            body: formData
+        });
+
+        if (!response.ok) {
+            if (response.status === 401 || response.status === 500) {
+                redirectToLoginWithCountdown(3);
+                return;
+            }
+            throw new Error('网络请求失败');
+        }
+
+        const data = await response.json();
+        if (data.code === 200) {
+            showMessage('success', '头像上传成功');
+            updateUserInfo();
+        } else if (data.code === 401 || data.code === 500) {
+            redirectToLoginWithCountdown(3);
+        } else {
+            throw new Error(data.message || '头像上传失败');
+        }
+    } catch (error) {
+        showMessage('error', error.message);
+        console.error('上传失败:', error);
+        if (error.message.includes('401') || error.message.includes('500')) {
+            redirectToLoginWithCountdown(3);
+        }
+    }
+}

@@ -1361,12 +1361,12 @@
 
 			// 调用接口更新页面头部的用户信息（头像、姓名、机构）
 			function updateHeaderUserInfo() {
-				localStorage.setItem('ip', 'http://10.11.126.174:809/userLogin');
+				localStorage.setItem('ip', 'http://10.11.126.174:809');
 				const xhr = new XMLHttpRequest();
 				const timeout = 10000; // 超时10秒
 				let timeoutId;
 
-				xhr.open('POST', localStorage.getItem('ip') + '/pim', true);
+				xhr.open('POST', localStorage.getItem('ip') + '/userLogin/pim', true);
 				xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
 				xhr.setRequestHeader('Content-Type', 'application/json');
 

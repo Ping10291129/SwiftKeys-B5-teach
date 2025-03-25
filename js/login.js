@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    localStorage.setItem('ip', 'http://10.11.126.174:809/userLogin/');
+    localStorage.setItem('ip', 'http://10.11.126.174:809');
     const hint = document.getElementById('login-hint');
 
     // 显示消息函数
@@ -21,52 +21,47 @@ document.addEventListener('DOMContentLoaded', function() {
         return true;
     }
 
-    document.getElementById('login').addEventListener('click', function() {
+    document.getElementById('login').addEventListener('click', async function() {
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
         
-        // 进行表单验证
         if (!validateForm(username, password)) {
             return;
         }
 
-        // 构建请求数据
-        const data = `username=${encodeURIComponent(username)}&password=${encodeURIComponent(password)}`;
+        try {
+            // 使用URLSearchParams构造请求体
+            const formData = new URLSearchParams();
+            formData.append('username', username);
+            formData.append('password', password);
 
-        // 发送登录请求
-        fetch('http://10.11.126.174:809/userLogin/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/x-www-form-urlencoded',
-                'Accept': 'application/json'
-            },
-            body: data
-        })
-        .then(response => {
+            const response = await fetch('http://10.11.126.174:809/userLogin/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded',
+                    'Accept': 'application/json'
+                },
+                body: formData.toString()
+            });
+
             if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+                throw new Error('网络请求失败');
             }
-            return response.json();
-        })
-        .then(data => {
+
+            const data = await response.json();
+            
             if (data.code === 200) {
-                // 存储token
                 if (data.token) {
                     localStorage.setItem('token', data.token);
                 }
-                // 登录成功
                 window.location.href = 'index.html';
             } else {
-                // 登录失败
-                document.getElementById('login-hint').style.color = '#ff4d4f';
-                document.getElementById('login-hint').textContent = data.message || '登录失败，请检查用户名和密码';
+                showMessage('error', data.message || '登录失败，请检查用户名和密码');
             }
-        })
-        .catch(error => {
+        } catch (error) {
+            showMessage('error', '服务器连接失败，请稍后再试');
             console.error('登录请求失败:', error);
-            document.getElementById('login-hint').style.color = '#ff4d4f';
-            document.getElementById('login-hint').textContent = '服务器连接失败，请稍后再试';
-        });
+        }
     });
 
     document.querySelectorAll('#username, #password').forEach(function(input) {
@@ -76,4 +71,19 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     });
+
+    function togglePassword() {
+        const passwordInput = document.getElementById('password');
+        const icon = document.querySelector('.toggle-password i');
+        
+        if (passwordInput.type === 'password') {
+            passwordInput.type = 'text';
+            icon.className = 'ri-eye-line';
+        } else {
+            passwordInput.type = 'password';
+            icon.className = 'ri-eye-off-line';
+        }
+    }
+
+    window.togglePassword = togglePassword;
 });

@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="./css/font.css">
     <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/ranking_list.css">
 </head>
 
 <body>
@@ -181,20 +182,15 @@
                                     <h4 class="card-title m-0">成绩排行榜</h4>
                                 </div>
                                 <div>
-                                    <ul class="nav nav-tabs" id="rankingTabs" role="tablist">
-                                        <li class="nav-item">
-                                            <a class="nav-link active" id="score-tab" data-bs-toggle="tab" href="#score"
-                                                role="tab" aria-controls="score" aria-selected="true">总分排行</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="speed-tab" data-bs-toggle="tab" href="#speed"
-                                                role="tab" aria-controls="speed" aria-selected="false">打字速度</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" id="accuracy-tab" data-bs-toggle="tab" href="#accuracy"
-                                                role="tab" aria-controls="accuracy" aria-selected="false">准确率</a>
-                                        </li>
-                                    </ul>
+                                    <div class="tabs-wrapper">
+                                        <div class="tabs">
+                                            <!-- 滑块，用于高亮当前选中项 -->
+                                            <div class="tabs__slider"></div>
+                                            <a href="#" class="tabs__item tabs__item--active" data-target="score">总分排行</a>
+                                            <a href="#" class="tabs__item" data-target="speed">打字速度</a>
+                                            <a href="#" class="tabs__item" data-target="accuracy">准确率</a>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <div class="iq-card-body">
@@ -294,74 +290,10 @@
     <script src="js/jquery.min.js"></script>
     <!-- <script src="js/bootstrap.bundle.min.js"></script> -->
     <script>
-        $(function () {
-            // 定义全局变量存储加载后的数据
-            var rankingData = {};
-
-            // 使用 XMLHttpRequest 加载 JSON 数据
-            var xhr = new XMLHttpRequest();
-            xhr.open("GET", "data/rankings.json", true);
-            xhr.responseType = "json";
-            xhr.onload = function () {
-                if (xhr.status === 200) {
-                    // 数据加载成功，保存数据并渲染默认的总分排行
-                    rankingData = xhr.response;
-                    renderRanking("score");
-                } else {
-                    console.error("Error loading JSON, status code:", xhr.status);
-                }
-            };
-            xhr.onerror = function () {
-                console.error("Request error occurred");
-            };
-            xhr.send();
-
-            // 渲染排行榜表格内容
-            function renderRanking(type) {
-                var data = rankingData[type] || [];
-                var html = "";
-                if (type === "score") {
-                    $.each(data, function (i, item) {
-                        html += "<tr>" +
-                            "<td>" + item.rank + "</td>" +
-                            "<td>" + item.name + "</td>" +
-                            "<td>" + item.class + " / " + item.id + "</td>" +
-                            "<td>" + item.score + "</td>" +
-                            "</tr>";
-                    });
-                } else if (type === "speed") {
-                    $.each(data, function (i, item) {
-                        html += "<tr>" +
-                            "<td>" + item.rank + "</td>" +
-                            "<td>" + item.name + "</td>" +
-                            "<td>" + item.class + " / " + item.id + "</td>" +
-                            "<td>" + item.speed + "</td>" +
-                            "</tr>";
-                    });
-                } else if (type === "accuracy") {
-                    $.each(data, function (i, item) {
-                        html += "<tr>" +
-                            "<td>" + item.rank + "</td>" +
-                            "<td>" + item.name + "</td>" +
-                            "<td>" + item.class + " / " + item.id + "</td>" +
-                            "<td>" + item.accuracy + "</td>" +
-                            "</tr>";
-                    });
-                }
-                // 更新当前激活 Tab 内表格的 tbody 内容
-                $("#" + type + " table tbody").html(html);
-            }
-
-            // 监听 Bootstrap 5 Tab 切换事件
-            $('a[data-bs-toggle="tab"]').on('shown.bs.tab', function (e) {
-                var target = $(e.target).attr("href").replace("#", "");
-                renderRanking(target);
-            });
-        });
-
+        
     </script>
 
 </body>
-<script src="./js/index.js"></script>
+<script src="./js/ranking_list.js"></script>
 
 </html>
