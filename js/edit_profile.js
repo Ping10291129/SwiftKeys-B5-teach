@@ -52,7 +52,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 return;
             }
 
-            const response = await fetch(localStorage.getItem('ip') + '/pim', {
+            const response = await fetch(localStorage.getItem('ip') + '/userLogin/pim', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
