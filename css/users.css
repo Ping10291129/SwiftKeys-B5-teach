@@ -1,0 +1,142 @@
+/* 直接从 publish_task.css 复制分页样式 */
+.custom-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.custom-page-item {
+    list-style: none;
+    margin: 0 2px;
+}
+
+.custom-page-link {
+    color: #e0e0e0 !important;
+    background-color: #2a2a2a !important;
+    border: 1px solid #3a3a3a !important;
+    transition: all 0.3s ease !important;
+    padding: 8px 16px !important;
+    margin: 0 2px !important;
+    border-radius: 4px !important;
+    display: inline-block;
+    text-decoration: none;
+    box-sizing: border-box !important;
+}
+
+.custom-page-link:hover {
+    color: #ffffff !important;
+    background: linear-gradient(45deg, #089bab, #067d8a) !important;
+    border: 1px solid #067d8a !important;
+    box-shadow: 0 2px 8px rgba(6, 125, 138, 0.3) !important;
+}
+
+.custom-page-item.active .custom-page-link {
+    color: #ffffff !important;
+    background: linear-gradient(45deg, #067d8a, #045d66) !important;
+    border-color: #056d77 !important;
+    box-shadow: 0 2px 8px rgba(6, 125, 138, 0.3) !important;
+}
+
+.custom-page-item.disabled .custom-page-link {
+    color: #666666 !important;
+    background-color: #222222 !important;
+    border-color: #333333 !important;
+    cursor: not-allowed !important;
+    opacity: 0.7 !important;
+}
+
+/* 新增用户列表特有样式 */
+.tablebox {
+    margin: 20px 0;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.tablebox table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.tablebox th {
+    background-color: #f8f9fa;
+    padding: 12px 15px;
+    font-weight: 500;
+    text-align: left;
+    border-bottom: 2px solid #dee2e6;
+}
+
+.tablebox td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dee2e6;
+    vertical-align: middle;
+}
+
+/* 状态样式 */
+.badge {
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-weight: normal;
+}
+
+.badge-success {
+    background-color: #1a472a !important;
+    color: #2ecc71 !important;
+    border: 1px solid #2ecc71 !important;
+    padding: 5px 10px !important;
+    border-radius: 4px !important;
+}
+
+/* 操作按钮样式 */
+.action-btn {
+    padding: 4px 8px;
+    margin: 0 4px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.btn-bg-gradient-x-purple-red {
+    background: linear-gradient(45deg, #7c4dff, #ff4081) !important;
+    border: none !important;
+    color: white !important;
+}
+
+/* 表格样式 */
+.table {
+    width: 100%;
+    margin-bottom: 1rem;
+    background-color: #2a2a2a !important;
+    color: #e0e0e0 !important;
+}
+
+.table th,
+.table td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.table th {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+    border-bottom: 1px solid #3a3a3a !important;
+}
+
+.table td {
+    color: #e0e0e0 !important;
+    border-top: 1px solid #3a3a3a !important;
+}
+
+.table tr:hover {
+    background-color: #353535 !important;
+}
+
+/* 状态标签样式 */
+.task-status {
+    display: inline-block !important;
+    padding: 0px 8px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}

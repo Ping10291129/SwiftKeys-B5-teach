@@ -11,104 +11,12 @@
    <link rel="stylesheet" href="css/style.css">
 </head>
 
-<body>
+<body data-page="edit_profile">
    <div id="loading">
       <div id="loading-center"></div>
    </div>
    <div class="wrapper">
-      <div class="iq-sidebar">
-         <div class="iq-sidebar-logo d-flex justify-content-between">
-            <a href=""><span>SwiftKeys后台管理</span>
-            </a>
-         </div>
-         <div id="sidebar-scrollbar">
-            <nav class="iq-sidebar-menu">
-               <ul class="iq-menu">
-
-                  <li>
-                     <a href="index.html" class="iq-waves-effect"><i class="ri-home-8-fill"></i><span>首页</span></a>
-                  </li>
-                  <li class="active menu-open">
-                     <a href="javascript:void(0);" class="iq-waves-effect"><i
-                           class="ri-shield-user-fill"></i><span>管理员中心 </span><i
-                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                     <ul class="iq-submenu">
-                        <li class="active"><a href="">资料编辑</a></li>
-                        <li><a href="change_password.html">修改密码</a></li>
-                     </ul>
-                  </li>
-                  <li>
-                     <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-user-settings-fill"></i>用户列表<i
-                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                     <ul class="iq-submenu">
-                        <li><a href="user_list.html">用户列表</a></li>
-                        <li><a href="add_user.html">添加用户</a></li>
-                     </ul>
-                  </li>
-                  <li>
-                     <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-todo-fill"></i>打字测试<i
-                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                     <ul class="iq-submenu">
-                        <li><a href="typing_test.html">测试管理</a></li>
-                        <li><a href="test_records.html">测试记录</a></li>
-                     </ul>
-                  </li>
-                  <li>
-                     <a href="javascript:void(0);" class="iq-waves-effect"><i
-                           class="ri-bar-chart-2-fill"></i><span>成绩统计</span><i
-                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                     <ul class="iq-submenu">
-                        <li><a href="score_list.html">成绩列表</a></li>
-                        <li><a href="score_analysis.html">成绩分析</a></li>
-                     </ul>
-                  </li>
-
-                  <li>
-                     <a href="abnormal_monitor.html" class="iq-waves-effect"><i
-                           class="ri-alarm-warning-fill"></i><span>异常监控</span></a>
-                  </li>
-
-
-                  <li>
-                     <a href="javascript:void(0);" class="iq-waves-effect"><i
-                           class="ri-file-edit-fill"></i><span>题库管理</span><i
-                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                     <ul class="iq-submenu">
-                        <li><a href="question_bank.html">题库列表</a></li>
-                        <li><a href="test_package.html">测试套餐</a></li>
-                     </ul>
-                  </li>
-                  <li><a href="data_analysis.html" class="iq-waves-effect"><i
-                           class="ri-pie-chart-2-fill"></i><span>数据分析</span></a>
-                  </li>
-
-
-                  <li>
-                     <a href="javascript:void(0);" class="iq-waves-effect"><i
-                           class="ri-alarm-fill"></i><span>考试安排</span><i
-                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                     <ul class="iq-submenu">
-                        <li><a href="exam_schedule.html">考试管理</a></li>
-                        <li><a href="schedule_management.html">排期管理</a></li>
-                     </ul>
-                  </li>
-
-                  <li>
-                     <a href="javascript:void(0);" class="iq-waves-effect"><i
-                           class="ri-folder-5-fill"></i><span>练习管理</span><i
-                           class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                     <ul class="iq-submenu">
-                        <li><a href="practice_management.html">练习管理</a></li>
-                        <li><a href="add_practice.html">添加练习</a></li>
-                        <li><a href="practice_package.html">练习套餐</a></li>
-                     </ul>
-                  </li>
-
-               </ul>
-            </nav>
-            <div class="p-3"></div>
-         </div>
-      </div>
+      <div id="sidebar"></div>
 
       <!-- Page Content  -->
       <div id="content-page" class="content-page">
@@ -221,7 +129,7 @@
    <script src="js/smooth-scrollbar.js"></script>
    <script src="js/custom.js"></script>
    <script src="js/edit_profile.js"></script>
-   
+
    <link rel="stylesheet" href="laydate/theme/default/laydate.css">
    <script src="laydate/laydate.js"></script>
    <script>
