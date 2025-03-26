@@ -35,9 +35,9 @@ th { }
 /*----------------------------------------------
 loading
 ------------------------------------------------*/
-#loading { background: #fff url(../images/loader.gif) no-repeat scroll center center; height: 100%; width: 100%; background-size: 10%; position: fixed; margin-top: 0px; top: 0px; left: 0px; bottom: 0px; overflow: hidden !important; right: 0px; z-index: 999999; }
-#loading-center { width: 100%; height: 100%; position: relative; }
-.loader { width: 3em; height: 3em; margin: auto; left: 0; right: 0; top: 0; bottom: 0; position: absolute; }
+#loading { background: rgba(26, 26, 26, 0.9); height: 100%; width: 100%; position: fixed; margin-top: 0px; top: 0px; left: 0px; bottom: 0px; overflow: hidden !important; right: 0px; z-index: 999999; display: flex; justify-content: center; align-items: center; }
+#loading-center { width: 3rem; height: 3rem; }
+#loading-center .spinner-border { width: 100%; height: 100%; }
 @-webkit-keyframes rotate {
   0% { -webkit-transform: rotateX(-37.5deg) rotateY(45deg); transform: rotateX(-37.5deg) rotateY(45deg); }
   50% { -webkit-transform: rotateX(-37.5deg) rotateY(405deg); transform: rotateX(-37.5deg) rotateY(405deg); }

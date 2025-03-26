@@ -30,11 +30,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // 倒计时跳转函数
     function redirectToLoginWithCountdown(seconds) {
         let counter = seconds;
-        showMessage('error', `服务器内部错误，${counter}秒后将跳转到登录页面`);
+        showMessage('error', `登录已经失效，${counter}秒后将跳转到登录页面`);
         const intervalId = setInterval(function() {
             counter--;
             if (counter > 0) {
-                showMessage('error', `服务器内部错误，${counter}秒后将跳转到登录页面`);
+                showMessage('error', `登录已经失效，${counter}秒后将跳转到登录页面`);
             } else {
                 clearInterval(intervalId);
                 localStorage.removeItem('token');
