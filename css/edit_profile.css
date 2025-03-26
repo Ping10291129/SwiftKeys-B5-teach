@@ -39,7 +39,6 @@ label {
     -webkit-mask-image: -webkit-radial-gradient(white, black);
 }
 
-
 .touxiangbox-bottom {
     cursor: pointer;
     width: 100%;
@@ -56,4 +55,27 @@ label {
     left: 0;
     -webkit-backdrop-filter: blur(24px);
     backdrop-filter: blur(24px);
+}
+
+/* 修改保存按钮样式，与修改密码页面保持一致 */
+.btn-primary {
+    min-width: 120px !important;
+    padding: 8px 24px !important;
+    font-size: 14px !important;
+    border-radius: 10px !important; // 修改为10px圆角
+    transition: opacity 0.3s ease !important;
+    background: linear-gradient(45deg, #089bab, #0db5c8) !important;
+    border: none !important;
+    color: #fff !important;
+    margin-top: 10px !important;
+}
+
+.btn-primary:hover {
+    opacity: 0.85 !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+.btn-primary:active {
+    opacity: 1 !important;
 }

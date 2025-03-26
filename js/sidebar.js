@@ -114,16 +114,13 @@ function initSidebar() {
             item.classList.add('active');
         }
         
-        // 子菜单项处理
+        // 子菜单项处理 - 增加修改密码页面的判断
         const submenuItems = item.querySelectorAll('.iq-submenu li');
         submenuItems.forEach(subItem => {
-            if (subItem.getAttribute('data-page') === currentPage) {
-                // 父级菜单添加 active 和 menu-open 类
-                item.classList.add('active');
-                item.classList.add('menu-open');
-                // 子菜单项添加 active 类
+            if (subItem.getAttribute('data-page') === currentPage || 
+                (currentPage === 'change_password' && subItem.querySelector('a').getAttribute('href') === 'change_password.html')) {
+                item.classList.add('active', 'menu-open');
                 subItem.classList.add('active');
-                // 显示子菜单
                 const submenu = $(subItem).closest('.iq-submenu');
                 submenu.show();
                 submenu.parent().addClass('menu-open');
