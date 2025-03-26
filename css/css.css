@@ -70,7 +70,18 @@ textarea {
 	background: #2a2a2a;
 	border-color: var(--border-color);
 }
-
+.back-fil{
+	background-color: #1e242abd !important;
+	/* 添加浏览器前缀以支持更多浏览器 */
+	-webkit-backdrop-filter: blur(12px) !important;
+	-moz-backdrop-filter: blur(12px) !important; 
+	-o-backdrop-filter: blur(12px) !important;
+	-ms-backdrop-filter: blur(12px) !important;
+	backdrop-filter: blur(12px) !important;
+}
+.back-tra{
+	background: transparent !important;
+}
 .dropdown-menu {
 	background: #2a2a2a;
 	border-color: var(--border-color);

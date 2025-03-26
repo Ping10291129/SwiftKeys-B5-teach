@@ -76,15 +76,17 @@
 
 .rank-badge {
     display: inline-block;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
     text-align: center;
     border-radius: 50%;
-    background: #f0f0f0;
-    color: #666;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
     font-weight: 500;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-size: 14px;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .rank-badge.rank-1 {
@@ -115,6 +117,9 @@
     width: 100%;
     margin: 0;
     border-collapse: collapse;
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
 .table th,
@@ -137,6 +142,25 @@
 
 .table th:nth-child(4),
 .table td:nth-child(4) { width: 150px; }
+
+.table thead th {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    border-top: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 16px;
+}
+
+.table tbody td {
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 12px 16px;
+}
+
+.table .text-muted {
+    color: rgba(255, 255, 255, 0.4) !important;
+}
 
 .table-responsive {
     position: relative;
@@ -173,6 +197,7 @@
     transform: translateY(20px);
     opacity: 0;
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: background-color 0.3s ease;
 }
 
 .rank-row.show {
@@ -180,13 +205,48 @@
     opacity: 1;
 }
 
+.rank-row:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
 .rank-badge {
     transform-origin: center;
     transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    width: 36px;
+    height: 36px;
+    line-height: 36px;
+    font-size: 15px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .rank-badge:hover {
     transform: scale(1.2) rotate(360deg);
+}
+
+.rank-badge.rank-1 {
+    background: linear-gradient(45deg, #FFD700, #FFA000);
+    box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+}
+
+.rank-badge.rank-2 {
+    background: linear-gradient(45deg, #C0C0C0, #9E9E9E);
+    box-shadow: 0 2px 10px rgba(192, 192, 192, 0.2);
+}
+
+.rank-badge.rank-3 {
+    background: linear-gradient(45deg, #CD7F32, #8D6E63);
+    box-shadow: 0 2px 10px rgba(205, 127, 50, 0.2);
+}
+
+.rank-badge-wrapper {
+    padding: 4px 0;
+}
+
+.rank-number {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 14px;
+    font-weight: 500;
 }
 
 .tab-pane {
@@ -198,4 +258,262 @@
     padding: 15px;
     font-size: 16px;
     color: #999;
+}
+
+.avatar {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+.progress {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(45deg, #4CAF50, #45a049);
+    transition: width 0.8s ease, background-color 0.3s ease;
+    border-radius: 2px;
+}
+
+.score-info {
+    min-width: 120px;
+}
+
+.score-info .font-weight-bold {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 15px;
+}
+
+.date-range {
+    color: #666;
+    font-size: 13px;
+    margin-left: 15px;
+}
+
+.speed-info .h5 {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 16px;
+}
+
+.speed-info small {
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: normal;
+}
+
+/* 恢复奖牌原始样式 */
+.rank-badge {
+    display: inline-block;
+    width: 32px;
+    height: 32px;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    font-size: 14px;
+    position: relative;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.rank-badge.rank-1 {
+    background: linear-gradient(45deg, #ffd700, #ffc107);
+    box-shadow: 0 2px 8px rgba(255, 215, 0, 0.3);
+    color: #fff;
+}
+
+.rank-badge.rank-2 {
+    background: linear-gradient(45deg, #e0e0e0, #bdbdbd);
+    box-shadow: 0 2px 8px rgba(189, 189, 189, 0.3);
+    color: #fff;
+}
+
+.rank-badge.rank-3 {
+    background: linear-gradient(45deg, #cd7f32, #a0522d);
+    box-shadow: 0 2px 8px rgba(205, 127, 50, 0.3);
+    color: #fff;
+}
+
+/* 确保列表动画效果 */
+.rank-row {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.rank-row.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* 优化奖牌样式 */
+.rank-badge {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: visible;
+}
+
+.rank-badge.rank-1 {
+    background: linear-gradient(45deg, #ffd700, #ffbb33);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    color: #fff;
+}
+
+.rank-badge.rank-2 {
+    background: linear-gradient(45deg, #e0e0e0, #d5d5d5);
+    box-shadow: 0 4px 15px rgba(224, 224, 224, 0.3);
+    color: #fff;
+}
+
+.rank-badge.rank-3 {
+    background: linear-gradient(45deg, #cd7f32, #c07229);
+    box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+    color: #fff;
+}
+
+.rank-badge::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    background: inherit;
+    filter: blur(3px);
+    opacity: 0.7;
+    z-index: -1;
+}
+
+/* 优化进度条样式 */
+.progress {
+    background: rgba(255, 255, 255, 0.08);
+    height: 4px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    background: linear-gradient(45deg, #0080ff, #1a90ff);
+    border-radius: 2px;
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.progress-bar.high {
+    background: linear-gradient(45deg, #00c853, #64dd17);
+}
+
+.progress-bar.medium {
+    background: linear-gradient(45deg, #0080ff, #1a90ff);
+}
+
+.progress-bar.low {
+    background: linear-gradient(45deg, #ff9100, #ff6d00);
+}
+
+/* 列表行动画 */
+.rank-row {
+    transform: translateY(20px);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease;
+}
+
+.rank-row.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+/* 奖牌样式 */
+.rank-badge {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 16px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    position: relative;
+    overflow: visible;
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s;
+}
+
+.rank-badge:hover {
+    transform: scale(1.2) rotate(360deg);
+}
+
+.rank-badge::before {
+    content: '';
+    position: absolute;
+    top: -3px;
+    left: -3px;
+    right: -3px;
+    bottom: -3px;
+    border-radius: 50%;
+    background: inherit;
+    filter: blur(3px);
+    opacity: 0.7;
+    z-index: -1;
+}
+
+.rank-badge.rank-1 {
+    background: linear-gradient(45deg, #ffd700, #ffbb33);
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
+    color: #fff;
+}
+
+.rank-badge.rank-2 {
+    background: linear-gradient(45deg, #e0e0e0, #d5d5d5);
+    box-shadow: 0 4px 15px rgba(224, 224, 224, 0.3);
+    color: #fff;
+}
+
+.rank-badge.rank-3 {
+    background: linear-gradient(45deg, #cd7f32, #c07229);
+    box-shadow: 0 4px 15px rgba(205, 127, 50, 0.3);
+    color: #fff;
+}
+
+/* 进度条样式 */
+.progress {
+    background: rgba(255, 255, 255, 0.08);
+    height: 6px;
+    border-radius: 3px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-bar {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 3px;
+    transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.3s;
+}
+
+.progress-bar.high {
+    background: linear-gradient(45deg, #00c853, #64dd17);
+}
+
+.progress-bar.medium {
+    background: linear-gradient(45deg, #0080ff, #1a90ff);
+}
+
+.progress-bar.low {
+    background: linear-gradient(45deg, #ff9100, #ff6d00);
+}
+
+/* 数值动画相关样式 */
+.score-value {
+    transition: color 0.3s ease;
 }

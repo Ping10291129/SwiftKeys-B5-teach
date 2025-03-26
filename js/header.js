@@ -31,8 +31,8 @@ export default function renderHeader() {
                                     <span class="font-size-12">角色信息</span>
                                 </div>
                             </a>
-                            <div class="iq-sub-dropdown iq-user-dropdown">
-                                <div class="iq-card shadow-none m-0">
+                            <div class="iq-sub-dropdown iq-user-dropdown back-fil">
+                                <div class="iq-card shadow-none m-0 back-tra">
                                     <div class="iq-card-body p-0">
                                         <div class="bg-primary p-3">
                                             <h5 class="mb-0 text-white line-height">你好</h5>
