@@ -42,7 +42,7 @@
                               <li class="col-md-4">
                                  <h5 class="mt-2">昵称</h5>
                                  <fieldset class="form-group">
-                                    <input type="text" class="form-control" placeholder="" value="时迁">
+                                    <input type="text" class="form-control" placeholder="" value="">
                                  </fieldset>
                               </li>
                               <li class="col-md-4">
@@ -84,14 +84,19 @@
                            <div class="headedit text-center"><strong>头像</strong>
                               <div class="imgbox">
                                  <div class="touxiangbox">
-                                    <img class="roundimg" src="images/user1.jpg" width="100">
-                                    <div class="touxiangbox-bottom">更换头像</div>
+                                    <img class="roundimg" src="./images/user1.jpg" width="100">
+                                    <label class="touxiangbox-bottom" for="avatarInput">更换头像</label>
                                  </div>
                               </div>
-                              <a href="javascript:;" class="btn-upload-avatar upbtn btn-sm"><i
-                                    class="ft-upload-cloud "></i>更换头像
-                                 <input type="file" name="" id="">
-                              </a>
+                              <div class="avatar-upload-buttons">
+                                 <a href="javascript:;" class="btn-select-avatar upbtn btn-sm mb-2"><i
+                                       class="ft-folder-open"></i>选择文件
+                                    <input type="file" name="avatar" id="avatarInput" accept="image/*">
+                                 </a>
+                                 <a href="javascript:;" class="btn-upload-avatar upbtn btn-sm" id="uploadAvatarBtn"><i
+                                       class="ft-upload-cloud"></i>上传头像
+                                 </a>
+                              </div>
                            </div>
                         </li>
                      </ul>
@@ -132,6 +137,11 @@
    <script src="js/custom.js"></script>
    <script src="js/edit_profile.js"></script>
 
+   <style>
+      .btn-select-avatar {
+         display: none;
+      }
+   </style>
    <link rel="stylesheet" href="laydate/theme/default/laydate.css">
    <script src="laydate/laydate.js"></script>
    <script>
@@ -194,60 +204,63 @@
          }
       });
 
-      // 加载用户数据，统一错误分支调用倒计时跳转
+      // 加载用户数据，使用Fetch API实现
       window.onload = function () {
          localStorage.setItem('ip', 'http://10.11.126.174:809');
-         const xhr = new XMLHttpRequest();
-         const timeout = 10000; // 10秒超时
-         let timeoutId;
+         const token = localStorage.getItem('token');
+         if (!token) {
+            window.location.href = 'login.html';
+            return;
+         }
+         const url = localStorage.getItem('ip') + '/userLogin/pim';
+         const controller = new AbortController();
+         const timeOutId = setTimeout(() => {
+            controller.abort();
+         }, 10000);
 
-         xhr.open('POST', localStorage.getItem('ip') + '/userLogin/pim', true);
-         xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
-         xhr.setRequestHeader('Content-Type', 'application/json');
-
-         xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-               clearTimeout(timeoutId);
-               if (xhr.status === 200) {
-                  try {
-                     const response = JSON.parse(xhr.responseText);
-                     if (response.code === 200) {
-                        const userData = response.rows;
-                        // 更新表单数据
-                        document.querySelector('input[placeholder=""]').value = userData.name || '';
-                        document.querySelector('#gender').value = userData.gender || '男';
-                        document.querySelector('input[value="admin@yahoo.com"]').value = userData.branch || '';
-                        // 更新头像
-                        if (userData.img) {
-                           document.querySelector('.roundimg').src = localStorage.getItem('ip') + userData.img;
-                           console.log(localStorage.getItem('ip') + userData.img);
-                        }
-                     } else {
-                        redirectToLoginWithCountdown(3);
-                     }
-                  } catch (error) {
-                     showMessage('error', '解析响应数据失败');
-                     console.error('解析响应数据失败:', error);
-                  }
-               } else {
-                  redirectToLoginWithCountdown(3);
-               }
+         fetch(url, {
+            method: 'POST',
+            headers: {
+               'Authorization': token,
+               'Content-Type': 'application/json'
+            },
+            signal: controller.signal
+         })
+         .then(response => {
+            clearTimeout(timeOutId);
+            if (!response.ok) {
+               throw response;
             }
-         };
-
-         xhr.onerror = function () {
-            clearTimeout(timeoutId);
-            redirectToLoginWithCountdown(3);
-         };
-
-         // 设置请求超时
-         timeoutId = setTimeout(() => {
-            xhr.abort();
-            redirectToLoginWithCountdown(3);
-         }, timeout);
-
-         xhr.send();
+            return response.json();
+         })
+         .then(data => {
+            if (data.code === 200) {
+               const userData = data.rows;
+               // 更新表单数据
+               document.querySelector('input[placeholder=""]').value = userData.name || '';
+               document.querySelector('#gender').value = userData.gender || '男';
+               document.querySelector('input[value="admin@yahoo.com"]').value = userData.branch || '';
+               // 更新头像
+               if (userData.img) {
+                  document.querySelector('.roundimg').src = localStorage.getItem('ip') + userData.img;
+                  console.log(localStorage.getItem('ip') + userData.img);
+               }
+            } else {
+               redirectToLoginWithCountdown(3);
+            }
+         })
+         .catch(error => {
+            if (error.name === 'AbortError') {
+               redirectToLoginWithCountdown(3);
+            } else if (error.status === 401 || error.status === 500) {
+               redirectToLoginWithCountdown(3);
+            } else {
+               showMessage('error', '加载用户数据时发生错误');
+               console.error('加载用户数据失败:', error);
+            }
+         });
       };
+      
    </script>
    <script type="module" src="js/main.js"></script>
 </body>

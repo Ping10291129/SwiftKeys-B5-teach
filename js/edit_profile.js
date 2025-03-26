@@ -141,14 +141,38 @@ document.addEventListener('DOMContentLoaded', function() {
     // 初始化页面信息
     updateUserInfo();
 
-    // 处理头像上传
-    const uploadInput = document.querySelector('.btn-upload-avatar input[type="file"]');
-    if (uploadInput) {
-        uploadInput.addEventListener('change', function(e) {
-            const file = e.target.files[0];
-            if (file) {
-                uploadAvatar(file);
+    // 处理头像选择和上传
+    const avatarInput = document.querySelector('#avatarInput');
+    const uploadAvatarBtn = document.querySelector('#uploadAvatarBtn');
+    let selectedFile = null;
+
+    if (avatarInput) {
+        avatarInput.addEventListener('change', function(e) {
+            selectedFile = e.target.files[0];
+            if (selectedFile) {
+                // 创建FileReader对象来读取文件
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    // 将读取的图片显示在预览区域
+                    const img = document.querySelector('.roundimg');
+                    img.src = e.target.result;
+                    img.style.width = '100px';
+                    img.style.height = '100px';
+                    img.style.objectFit = 'cover';
+                };
+                reader.readAsDataURL(selectedFile);
+                showMessage('success', '文件已选择：' + selectedFile.name);
             }
+        });
+    }
+
+    if (uploadAvatarBtn) {
+        uploadAvatarBtn.addEventListener('click', function() {
+            if (!selectedFile) {
+                showMessage('error', '请先选择要上传的头像文件');
+                return;
+            }
+            uploadAvatar(selectedFile);
         });
     }
 
@@ -183,7 +207,7 @@ async function uploadAvatar(file) {
         const formData = new FormData();
         formData.append('avatar', file);
 
-        const response = await fetch(localStorage.getItem('ip') + '/upload-avatar', {
+        const response = await fetch(localStorage.getItem('ip') + '/userLogin/changeImg', {
             method: 'POST',
             headers: {
                 'Authorization': token
@@ -202,7 +226,14 @@ async function uploadAvatar(file) {
         const data = await response.json();
         if (data.code === 200) {
             showMessage('success', '头像上传成功');
-            updateUserInfo();
+            // 更新页面上的头像显示
+            const profileImg = document.querySelector('.roundimg');
+            const headerImg = document.querySelector('.navbar-list li a.search-toggle img');
+            if (data.rows && data.rows.img) {
+                const imgUrl = localStorage.getItem('ip') + data.rows.img;
+                if (profileImg) profileImg.src = imgUrl;
+                if (headerImg) headerImg.src = imgUrl;
+            }
         } else if (data.code === 401 || data.code === 500) {
             redirectToLoginWithCountdown(3);
         } else {

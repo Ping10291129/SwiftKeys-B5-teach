@@ -1,116 +1,198 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     initRankingTabs();
-    loadRankingData('score'); // 默认加载总分排行数据
+    loadRankingData('score', 'day'); // 默认加载日排行
 });
-
+localStorage.setItem('ip', 'http://10.11.126.174:809');
 function initRankingTabs() {
     const tabItems = document.querySelectorAll('.tabs__item');
+    const periodTabs = document.querySelectorAll('.period-tab');
     updateSliderPosition(0);
 
-    // 默认显示第一个面板
+    // 初始化默认面板
     document.querySelector('#score').classList.add('show', 'active');
+    let currentPeriod = 'day';
 
-    tabItems.forEach((item, index) => {
-        item.addEventListener('click', function(e) {
+    // 时间段选择监听
+    periodTabs.forEach(tab => {
+        tab.addEventListener('click', function (e) {
             e.preventDefault();
-            
-            // 更新标签状态
+            periodTabs.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            currentPeriod = this.getAttribute('data-period');
+            const activeTab = document.querySelector('.tabs__item--active');
+            loadRankingData(activeTab.getAttribute('data-target'), currentPeriod);
+        });
+    });
+
+    // 标签切换监听
+    tabItems.forEach((item, index) => {
+        item.addEventListener('click', function (e) {
+            e.preventDefault();
             tabItems.forEach(i => i.classList.remove('tabs__item--active'));
             this.classList.add('tabs__item--active');
-            
-            // 更新滑块位置
             updateSliderPosition(index);
-            
-            // 获取目标面板ID
+
             const targetId = this.getAttribute('data-target');
-            
-            // 隐藏所有面板
             document.querySelectorAll('.tab-pane').forEach(pane => {
                 pane.classList.remove('show', 'active');
             });
-            
-            // 显示目标面板
-            const targetPane = document.querySelector(`#${targetId}`);
-            if (targetPane) {
-                targetPane.classList.add('show', 'active');
-            }
-            
-            // 加载对应的排行榜数据
-            loadRankingData(targetId);
+
+            document.querySelector(`#${targetId}`)?.classList.add('show', 'active');
+            loadRankingData(targetId, currentPeriod);
         });
     });
 }
 
 function updateSliderPosition(index) {
-    const slider = document.querySelector('.tabs__slider');
-    slider.style.left = (index * 33.3333) + '%';
+    document.querySelector('.tabs__slider').style.left = (index * 33.3333) + '%';
 }
 
-async function loadRankingData(type) {
+async function loadRankingData(type, period) {
     try {
-        // 这里应该是实际的API调用，现在用模拟数据
-        const data = await fetchRankingData(type);
+        const data = await fetchRankingData(type, period);
+        if (!data || (!data.chinese?.length && !data.english?.length)) {
+            // 如果数据为空，直接显示暂无数据
+            const tableBody = document.querySelector(`#${type} table tbody`);
+            if (tableBody) {
+                tableBody.innerHTML = `<tr><td colspan="4" class="no-data">暂无数据</td></tr>`;
+            }
+            return;
+        }
         updateRankingTable(type, data);
     } catch (error) {
-        showMessage('error', '获取排行榜数据失败');
-        console.error('获取排行榜数据失败:', error);
+        console.error('获取排行榜失败:', error);
+        const tableBody = document.querySelector(`#${type} table tbody`);
+        if (tableBody) {
+            tableBody.innerHTML = `<tr><td colspan="4" class="no-data">数据加载失败</td></tr>`;
+        }
     }
 }
 
-// 模拟获取排行榜数据
-async function fetchRankingData(type) {
-    // 模拟API延迟
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    // 生成测试数据
-    return Array.from({length: 20}, (_, i) => {
-        const baseScore = 100 - i * 2;
-        return {
-            rank: i + 1,
-            name: `学生${i + 1}`,
-            class: `高${Math.ceil(Math.random() * 3)}(${Math.ceil(Math.random() * 5)})班`,
-            studentId: `202${Math.floor(Math.random() * 4)}${String(Math.floor(Math.random() * 10000)).padStart(4, '0')}`,
-            totalScore: Math.round(baseScore + Math.random() * 10),
-            speed: Math.round(120 - i * 3 + Math.random() * 5),
-            accuracy: Math.round(98 - i * 0.5 + Math.random() * 2)
+async function fetchRankingData(type, period) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        showMessage('error', '请先登录');
+        return null;
+    }
+
+    const baseUrl = localStorage.getItem('ip');
+    if (!baseUrl) {
+        showMessage('error', '系统配置错误');
+        return null;
+    }
+
+    let apiEndpoint = '';
+    let method = 'GET';
+    let body = null;
+
+    // 设置接口路径
+    switch (period) {
+        case 'week':
+            apiEndpoint = `${baseUrl}/ranking/week`;
+            break;
+        case 'month':
+            apiEndpoint = `${baseUrl}/ranking/month`;
+            break;
+        case 'class':
+            apiEndpoint = `${baseUrl}/ranking/calculateAllClassAverages`;
+            break;
+        case 'former':
+            apiEndpoint = `${baseUrl}/ranking/former`;
+            method = 'POST';
+            const formData = new FormData();
+            formData.append('dateTime', new Date().toISOString().split('T')[0]);
+            body = formData;
+            break;
+        default:
+            apiEndpoint = `${baseUrl}/ranking/today`;
+    }
+
+    const requestOptions = {
+        method,
+        headers: {
+            'Authorization': token,  // 直接使用token，不加Bearer前缀
+            'Content-Type': 'application/json'  // 添加内容类型头
+        }
+    };
+
+    if (method === 'POST' && body) {
+        requestOptions.body = body;
+    }
+
+    try {
+        console.log('Request URL:', apiEndpoint);  // 调试用
+        console.log('Request Options:', requestOptions);  // 调试用
+        
+        const response = await fetch(apiEndpoint, requestOptions);
+        const data = await response.json();
+        console.log('Response Data:', data);  // 调试用
+        
+        // 只在状态码不为200时显示错误
+        if (data.code !== 200) {
+            showMessage('error', data.message || '获取数据失败');
+            return null;
+        }
+
+        return period === 'class' ? {
+            chinese: Array.isArray(data.rowsChineseOne) ? data.rowsChineseOne : [],
+            english: Array.isArray(data.rowsEnglishOne) ? data.rowsEnglishOne : []
+        } : {
+            chinese: Array.isArray(data.chinese_rows) ? data.chinese_rows : [],
+            english: Array.isArray(data.english_rows) ? data.english_rows : []
         };
-    });
+    } catch (error) {
+        console.error('Request Error:', error);  // 调试用
+        return null;
+    }
 }
 
 function updateRankingTable(type, data) {
     const tableBody = document.querySelector(`#${type} table tbody`);
     if (!tableBody) return;
 
-    const rows = data.map(item => {
-        let score;
-        switch(type) {
-            case 'score':
-                score = `${item.totalScore}`;
-                break;
-            case 'speed':
-                score = `${item.speed} 字/分钟`;
-                break;
-            case 'accuracy':
-                score = `${item.accuracy}%`;
-                break;
+    let rows = [];
+
+    if (type === 'class') {
+        if (!data.chinese.length && !data.english.length) {
+            tableBody.innerHTML = `<tr><td colspan="4" class="no-data">暂无数据</td></tr>`;
+            return;
         }
 
-        return `
-            <tr class="rank-row">
-                <td><span class="rank-badge ${item.rank <= 3 ? 'rank-' + item.rank : ''}">${item.rank}</span></td>
-                <td>${item.name}</td>
-                <td>
-                    <p>${item.class}</p>
-                    <p class="typing-time">学号：${item.studentId}</p>
-                </td>
-                <td>${score}</td>
-            </tr>
-        `;
-    }).join('');
+        rows = data.chinese.map((item, index) => {
+            const englishData = data.english[index] || {};
+            return `
+                <tr class="rank-row">
+                    <td><span class="rank-badge ${index < 3 ? 'rank-' + (index + 1) : ''}">${index + 1}</span></td>
+                    <td>${item.class}</td>
+                    <td>${item.grade}</td>
+                    <td>中文：${item.chinese || 0}<br>英文：${englishData.english || 0}</td>
+                </tr>
+            `;
+        });
+    } else {
+        const rankingData = type === 'chinese' ? data.chinese : data.english;
+        if (!rankingData.length) {
+            tableBody.innerHTML = `<tr><td colspan="4" class="no-data">暂无数据</td></tr>`;
+            return;
+        }
 
-    tableBody.innerHTML = rows;
+        rows = rankingData.map((item, index) => {
+            return `
+                <tr class="rank-row">
+                    <td><span class="rank-badge ${index < 3 ? 'rank-' + (index + 1) : ''}">${index + 1}</span></td>
+                    <td>
+                        <img src="${item.img || '/images/default-avatar.png'}" class="avatar" alt="${item.name}">
+                        ${item.name}
+                    </td>
+                    <td>${item.speed} 字/分钟</td>
+                    <td>${item.accuracy}%</td>
+                </tr>
+            `;
+        });
+    }
 
-    // 优化动画效果
+    tableBody.innerHTML = rows.join('');
+
     requestAnimationFrame(() => {
         document.querySelectorAll(`#${type} .rank-row`).forEach((row, index) => {
             requestAnimationFrame(() => {

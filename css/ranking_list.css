@@ -192,3 +192,10 @@
 .tab-pane {
     min-height: 400px;
 }
+
+.no-data {
+    text-align: center;
+    padding: 15px;
+    font-size: 16px;
+    color: #999;
+}
