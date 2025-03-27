@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./css/font.css">
     <link rel="stylesheet" href="css/publish_task.css">
 </head>
-<body data-page="typing_task">
+<body data-page="publish_task">
     <div id="loading">
         <div id="loading-center">
             <div class="spinner-border text-primary" role="status"></div>
@@ -45,6 +45,13 @@
                                     </div>
                                 </div>
                             </div>
+							<div class="content-type-tabs">
+								<div class="content-switch">
+									<div class="content-switch__slider"></div>
+									<button class="content-switch__item content-switch__item--active" data-type="article">文章</button>
+									<button class="content-switch__item" data-type="task">任务</button>
+								</div>
+							</div>
                             <div class="iq-card-body">
                                 <div class="tab-content" id="taskTabContent">
                                     <!-- 待发布任务 -->
@@ -158,5 +165,6 @@
     <script src="js/smooth-scrollbar.js"></script>
     <script src="js/custom.js"></script>
     <script type="module" src="js/main.js"></script>
+    <script src="js/publish_task.js"></script>
 </body>
 </html>
