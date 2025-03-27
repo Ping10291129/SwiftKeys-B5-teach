@@ -1,12 +1,57 @@
 document.addEventListener('DOMContentLoaded', function () {
     initTabs();
-    loadRankingData('day'); // 默认加载日排行
+    initDateControls();
+    // 默认加载日排行，并确保日期选择器可用
+    updateDatePickerState(true);
+    const dateSelect = document.getElementById('dateSelect');
+    loadRankingData('former', dateSelect.value);
 });
+
+function initDateControls() {
+    const dateSelect = document.getElementById('dateSelect');
+    const todayBtn = document.getElementById('todayBtn');
+    
+    // 设置日期选择器的最大值为今天
+    const today = new Date().toISOString().split('T')[0];
+    dateSelect.max = today;
+    
+    // 初始化为今天的日期
+    dateSelect.value = today;
+    
+    // 日期选择事件
+    dateSelect.addEventListener('change', function() {
+        loadRankingData('former', this.value);
+    });
+    
+    // 今日按钮点击事件
+    todayBtn.addEventListener('click', function() {
+        dateSelect.value = today;
+        loadRankingData('day');
+    });
+}
+
+// 更新日期控件状态
+function updateDatePickerState(isEnabled) {
+    const dateSelect = document.getElementById('dateSelect');
+    const todayBtn = document.getElementById('todayBtn');
+    
+    dateSelect.disabled = !isEnabled;
+    todayBtn.disabled = !isEnabled;
+    
+    // 添加或移除禁用状态的鼠标样式
+    dateSelect.style.cursor = isEnabled ? 'pointer' : 'not-allowed';
+    todayBtn.style.cursor = isEnabled ? 'pointer' : 'not-allowed';
+}
 localStorage.setItem('ip', 'http://10.11.126.174:809');
 
 function initTabs() {
     const tabItems = document.querySelectorAll('.tabs__item');
     updateSliderPosition(0);
+
+    // 更新标签的data-period属性
+    tabItems[0].setAttribute('data-period', 'former');
+    tabItems[1].setAttribute('data-period', 'week');
+    tabItems[2].setAttribute('data-period', 'month');
 
     // 标签切换监听 
     tabItems.forEach((item, index) => {
@@ -17,7 +62,14 @@ function initTabs() {
             updateSliderPosition(index);
             
             const period = this.getAttribute('data-period');
-            loadRankingData(period);
+            const dateSelect = document.getElementById('dateSelect');
+            if (period === 'former') {
+                updateDatePickerState(true);
+                loadRankingData('former', dateSelect.value);
+            } else {
+                updateDatePickerState(false);
+                loadRankingData(period);
+            }
         });
     });
 }
@@ -26,14 +78,14 @@ function updateSliderPosition(index) {
     document.querySelector('.tabs__slider').style.left = (index * 33.3333) + '%';
 }
 
-async function loadRankingData(period) {
+async function loadRankingData(period, date = '') {
     try {
-        const data = await fetchRankingData(period);
+        const data = await fetchRankingData(period, date);
         if (!data || (!data.chinese?.length && !data.english?.length)) {
             // 如果数据为空，直接显示暂无数据
             const tableBody = document.querySelector(`#score table tbody`);
             if (tableBody) {
-                tableBody.innerHTML = `<tr><td colspan="4" class="no-data">暂无数据</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="4" class="no-data">暂无数据，请选择其他日期</td></tr>`;
             }
             return;
         }
@@ -44,10 +96,11 @@ async function loadRankingData(period) {
         if (tableBody) {
             tableBody.innerHTML = `<tr><td colspan="4" class="no-data">数据加载失败</td></tr>`;
         }
+        showMessage('error', '获取排行榜数据失败');
     }
 }
 
-async function fetchRankingData(period) {
+async function fetchRankingData(period, date = '') {
     const token = localStorage.getItem('token');
     if (!token) {
         showMessage('error', '请先登录');
@@ -79,7 +132,7 @@ async function fetchRankingData(period) {
             apiEndpoint = `${baseUrl}/ranking/former`;
             method = 'POST';
             const formData = new FormData();
-            formData.append('dateTime', new Date().toISOString().split('T')[0]);
+            formData.append('dateTime', date || new Date().toISOString().split('T')[0]);
             body = formData;
             break;
         default:
@@ -89,8 +142,7 @@ async function fetchRankingData(period) {
     const requestOptions = {
         method,
         headers: {
-            'Authorization': token,  // 直接使用token，不加Bearer前缀
-            'Content-Type': 'application/json'  // 添加内容类型头
+            'Authorization': token  // 直接使用token，不加Bearer前缀
         }
     };
 
@@ -130,7 +182,7 @@ function updateRankingTable(data) {
     if (!tableBody) return;
 
     if (!data.chinese.length && !data.english.length) {
-        tableBody.innerHTML = `<tr><td colspan="4" class="no-data">暂无数据</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="6" class="no-data">暂无数据</td></tr>`;
         return;
     }
 
@@ -151,7 +203,8 @@ function updateRankingTable(data) {
     if (tableHead) {
         tableHead.innerHTML = `
             <th class="text-center" style="width: 80px;">排名</th>
-            <th>选手信息</th>
+            <th style="width: 120px;">姓名</th>
+            <th style="width: 80px;">类型</th>
             <th style="width: 140px;">打字速度</th>
             <th style="width: 180px;">总分 (速度×准确率)</th>
         `;
@@ -159,7 +212,6 @@ function updateRankingTable(data) {
 
     // 生成表格行
     const rows = allData.map((item, index) => {
-        const imgSrc = item.img ? localStorage.getItem('ip') + item.img : '/images/default-avatar.png';
         const score = Math.round((item.speed * item.accuracy) / 100);
         const progressPercent = (score / maxScore) * 100;
         
@@ -185,12 +237,11 @@ function updateRankingTable(data) {
                 </td>
                 <td>
                     <div class="d-flex align-items-center">
-                        <img src="${imgSrc}" class="avatar mr-2" alt="${item.name}">
-                        <div>
-                            <div class="font-weight-bold mb-1">${item.name || '-'}</div>
-                            <div class="small text-muted">${item.type === 'chinese' ? '中文' : '英文'}</div>
-                        </div>
+                        <div class="h5 mb-0 font-weight-light">${item.name || '-'}</div>
                     </div>
+                </td>
+                <td>
+                    <div class="text-muted">${item.type === 'chinese' ? '中文' : '英文'}</div>
                 </td>
                 <td>
                     <div class="speed-info">

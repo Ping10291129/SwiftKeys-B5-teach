@@ -138,10 +138,13 @@
 .table td:nth-child(2) { width: 120px; }
 
 .table th:nth-child(3),
-.table td:nth-child(3) { width: 200px; }
+.table td:nth-child(3) { width: 80px; }
 
 .table th:nth-child(4),
-.table td:nth-child(4) { width: 150px; }
+.table td:nth-child(4) { width: 140px; }
+
+.table th:nth-child(5),
+.table td:nth-child(5) { width: 180px; }
 
 .table thead th {
     background: rgba(255, 255, 255, 0.05);
@@ -155,7 +158,12 @@
 .table tbody td {
     color: rgba(255, 255, 255, 0.7);
     border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    padding: 12px 16px;
+    padding: 6px 16px;
+}
+
+.table .h4.font-weight-light {
+    font-size: 1.2rem;
+    font-weight: 300 !important;
 }
 
 .table .text-muted {
