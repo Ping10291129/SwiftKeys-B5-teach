@@ -84,7 +84,7 @@
                            <div class="headedit text-center"><strong>头像</strong>
                               <div class="imgbox">
                                  <div class="touxiangbox">
-                                    <img class="roundimg" src="./images/user1.jpg" width="100">
+                                    <img class="roundimg" src="./images/user1.jpg" width="100" height="100">
                                     <label class="touxiangbox-bottom" for="avatarInput">更换头像</label>
                                  </div>
                               </div>
@@ -142,8 +142,7 @@
          display: none;
       }
    </style>
-   <link rel="stylesheet" href="laydate/theme/default/laydate.css">
-   <script src="laydate/laydate.js"></script>
+   <!-- 移除laydate相关引用 -->
    <script>
       function showMessage(type, message) {
          const messageDiv = document.createElement('div');
@@ -260,7 +259,34 @@
             }
          });
       };
+   </script>
+   <script type="module">
+      import { uploadAvatar } from './js/avatar-upload.js';
       
+      // 文件选择预览
+      document.getElementById('avatarInput').addEventListener('change', function() {
+         if (this.files?.[0]) {
+            const reader = new FileReader();
+            reader.onload = e => document.querySelector('.roundimg').src = e.target.result;
+            reader.readAsDataURL(this.files[0]);
+         }
+      });
+
+      // 上传处理
+      document.getElementById('uploadAvatarBtn').addEventListener('click', async function() {
+         const fileInput = document.getElementById('avatarInput');
+         if (!fileInput.files?.[0]) {
+            showMessage('error', '请先选择头像');
+            return;
+         }
+
+         this.disabled = true;
+         const success = await uploadAvatar(fileInput.files[0]);
+         if (success) {
+            setTimeout(() => window.location.reload(), 1500);
+         }
+         this.disabled = false;
+      });
    </script>
    <script type="module" src="js/main.js"></script>
 </body>

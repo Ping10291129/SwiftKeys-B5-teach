@@ -114,42 +114,50 @@ function initSidebar() {
             item.classList.add('active');
         }
         
-        // 子菜单项处理 - 增加修改密码页面的判断
+        // 查找当前页面所在的子菜单
         const submenuItems = item.querySelectorAll('.iq-submenu li');
         submenuItems.forEach(subItem => {
             if (subItem.getAttribute('data-page') === currentPage || 
                 (currentPage === 'change_password' && subItem.querySelector('a').getAttribute('href') === 'change_password.html')) {
-                item.classList.add('active', 'menu-open');
+                // 添加激活状态
+                item.classList.add('active');
                 subItem.classList.add('active');
-                const submenu = $(subItem).closest('.iq-submenu');
-                submenu.show();
-                submenu.parent().addClass('menu-open');
+                
+                // 展开子菜单
+                const submenu = subItem.closest('.iq-submenu');
+                if (submenu) {
+                    submenu.style.display = 'block';
+                    item.classList.add('menu-open');
+                }
             }
         });
     });
 
-    // 修改菜单点击事件处理
+    // 菜单点击事件处理
     $('.iq-sidebar-menu .iq-menu li > a').on('click', function(e) {
         const parent = $(this).parent();
         const submenu = parent.find('> .iq-submenu');
         
         if (submenu.length) {
-            e.preventDefault(); // 阻止默认行为
-            e.stopPropagation(); // 阻止事件冒泡
+            e.preventDefault();
+            e.stopPropagation();
             
             if (parent.hasClass('menu-open')) {
                 // 关闭当前子菜单
                 parent.removeClass('menu-open');
-                submenu.slideUp();
+                submenu.slideUp(300);
             } else {
-                // 关闭其他打开的子菜单
-                const siblings = parent.siblings('.menu-open');
-                siblings.removeClass('menu-open').find('.iq-submenu').slideUp();
-                
-                // 打开当前子菜单
+                // 展开当前子菜单，不关闭其他
                 parent.addClass('menu-open');
-                submenu.slideDown();
+                submenu.slideDown(300);
             }
         }
     });
+
+    // 初始展开当前页面的父菜单
+    const currentMenuItem = $(`.iq-menu li[data-page="${currentPage}"]`);
+    if (currentMenuItem.length) {
+        currentMenuItem.parents('.iq-menu li').addClass('menu-open')
+            .find('> .iq-submenu').show();
+    }
 }

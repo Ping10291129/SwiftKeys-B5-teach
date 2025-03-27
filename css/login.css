@@ -48,29 +48,29 @@ a:hover {
 }
 
 .password-wrapper {
-    position: relative;
-    width: 100%;
+	position: relative;
+	width: 100%;
 }
 
 .toggle-password {
-    position: absolute;
-    right: 55px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    color: #8e9399;
-    transition: .3s;
-    padding: 8px;
-    z-index: 3;
+	position: absolute;
+	right: 55px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	color: #8e9399;
+	transition: .3s;
+	padding: 8px;
+	z-index: 3;
 }
 
 .toggle-password:hover {
-    color: #3498db;
+	color: #3498db;
 }
 
 /* 确保label在toggle按钮下方 */
 .input-c label {
-    z-index: 2;
+	z-index: 2;
 }
 
 form {
@@ -130,20 +130,20 @@ button:hover {
 	color: #fff;
 	padding: 10px 24px;
 	font-weight: 500;
-	box-shadow: 0 2px 8px rgba(52,152,219,0.3);
+	box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
 }
 
 #login .button-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
 }
 
 #login .spinner-border {
-    width: 1rem;
-    height: 1rem;
-    margin-left: 8px;
+	width: 1rem;
+	height: 1rem;
+	margin-left: 8px;
 }
 
 #login:active {
@@ -202,7 +202,7 @@ input:focus {
 	flex-direction: column;
 	justify-content: center;
 	position: relative;
-	box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
 .pop-left,
@@ -234,14 +234,14 @@ input:focus {
 	user-select: none;
 	cursor: pointer;
 	transition: .4s;
-	box-shadow: 0 2px 8px rgba(52,152,219,0.3);
+	box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
 	font-family: Ding;
 }
 
 .logo:hover {
 	transform: scale(1.1);
 	transition: .4s;
-	box-shadow: 0 3px 8px rgba(52,152,219,0.42);
+	box-shadow: 0 3px 8px rgba(52, 152, 219, 0.42);
 }
 
 .pop-top {
@@ -279,47 +279,52 @@ h1 {
 
 /* 覆盖Bootstrap的默认样式 */
 .pop button#login {
-    background: #3498db;
-    border: none;
-    color: #fff !important;
-    padding: 10px 24px;
-    font-weight: 500;
-    box-shadow: 0 2px 8px rgba(52,152,219,0.3);
-    width: auto;
-    display: inline-flex;
-    align-items: center;
+	background: #3498db;
+	border: none;
+	color: #fff !important;
+	padding: 10px 24px;
+	font-weight: 500;
+	box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+	width: auto;
+	display: inline-flex;
+	align-items: center;
+}
+
+/* 覆盖Bootstrap的默认样式 */
+.pop button#login:focus {
+	outline: none;
 }
 
 .pop button#login:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
+	opacity: 0.7;
+	cursor: not-allowed;
 }
 
 .pop .input-c input {
-    width: 94%;
-    padding: 12px 3%;
-    border: 2px solid #3a4147;
-    border-radius: 8px;
-    font-size: 18px;
-    outline: none;
-    background-color: #1e242a;
-    color: #fff;
-    height: auto;
+	width: 94%;
+	padding: 12px 3%;
+	border: 2px solid #3a4147;
+	border-radius: 8px;
+	font-size: 18px;
+	outline: none;
+	background-color: #1e242a;
+	color: #fff;
+	height: auto;
 }
 
 .pop .form-bottom a {
-    color: #3498db !important;
-    text-decoration: none;
+	color: #3498db !important;
+	text-decoration: none;
 }
 
 .pop .spinner-border {
-    color: #fff !important;
+	color: #fff !important;
 }
 
 .pop .button-content {
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
 }
 
 /* 确保所有文本颜色正确 */
@@ -328,11 +333,11 @@ h1 {
 .pop p,
 .pop h1,
 .pop .button-text {
-    color: inherit;
+	color: inherit;
 }
 
 /* 修复按钮hover状态 */
 .pop button#login:hover {
-    background: #2980b9;
-    box-shadow: 0 4px 12px rgba(52,152,219,0.4);
+	background: #2980b9;
+	box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
 }

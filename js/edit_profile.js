@@ -144,36 +144,84 @@ document.addEventListener('DOMContentLoaded', function() {
     // 处理头像选择和上传
     const avatarInput = document.querySelector('#avatarInput');
     const uploadAvatarBtn = document.querySelector('#uploadAvatarBtn');
-    let selectedFile = null;
 
     if (avatarInput) {
         avatarInput.addEventListener('change', function(e) {
-            selectedFile = e.target.files[0];
-            if (selectedFile) {
-                // 创建FileReader对象来读取文件
+            if (this.files && this.files[0]) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    // 将读取的图片显示在预览区域
                     const img = document.querySelector('.roundimg');
                     img.src = e.target.result;
-                    img.style.width = '100px';
-                    img.style.height = '100px';
-                    img.style.objectFit = 'cover';
                 };
-                reader.readAsDataURL(selectedFile);
-                showMessage('success', '文件已选择：' + selectedFile.name);
+                reader.readAsDataURL(this.files[0]);
             }
         });
     }
 
     if (uploadAvatarBtn) {
-        uploadAvatarBtn.addEventListener('click', function() {
-            if (!selectedFile) {
-                showMessage('error', '请先选择要上传的头像文件');
+        uploadAvatarBtn.addEventListener('click', async function() {
+            const fileInput = document.getElementById('avatarInput');
+            if (!fileInput.files || !fileInput.files[0]) {
+                showMessage('error', '请先选择要上传的头像');
                 return;
             }
-            uploadAvatar(selectedFile);
+
+            this.disabled = true;
+            try {
+                const success = await uploadAvatar(fileInput.files[0]);
+                if (success) {
+                    // 只需更新用户信息即可，不需要刷新整个页面
+                    await updateUserInfo();
+                }
+            } catch (error) {
+                showMessage('error', '上传失败');
+            } finally {
+                this.disabled = false;
+            }
         });
+    }
+
+    async function uploadAvatar(file) {
+        try {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                redirectToLoginWithCountdown(3);
+                return false;
+            }
+
+            const formData = new FormData();
+            formData.append('avatar', file);
+
+            const response = await fetch(localStorage.getItem('ip') + '/userLogin/changeImg', {
+                method: 'POST',
+                headers: {
+                    'Authorization': token
+                },
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error('网络请求失败');
+            }
+
+            const data = await response.json();
+            
+            if (data.code === 200) {
+                showMessage('success', '头像上传成功');
+                return true;
+            } else {
+                throw new Error(data.message || '上传失败');
+            }
+        } catch (error) {
+            console.error('上传头像失败:', error);
+            showMessage('error', error.message);
+            return false;
+        }
+    }
+
+    function updateAllAvatars(imgUrl) {
+        const avatars = document.querySelectorAll('.roundimg, .navbar-list li a.search-toggle img');
+        avatars.forEach(img => img.src = imgUrl);
     }
 
     // 检查登录状态
@@ -195,55 +243,3 @@ document.addEventListener('DOMContentLoaded', function() {
     // 页面加载完成后初始化
     initPage();
 });
-
-async function uploadAvatar(file) {
-    try {
-        const token = localStorage.getItem('token');
-        if (!token) {
-            redirectToLoginWithCountdown(3);
-            return;
-        }
-
-        const formData = new FormData();
-        formData.append('avatar', file);
-
-        const response = await fetch(localStorage.getItem('ip') + '/userLogin/changeImg', {
-            method: 'POST',
-            headers: {
-                'Authorization': token
-            },
-            body: formData
-        });
-
-        if (!response.ok) {
-            if (response.status === 401 || response.status === 500) {
-                redirectToLoginWithCountdown(3);
-                return;
-            }
-            throw new Error('网络请求失败');
-        }
-
-        const data = await response.json();
-        if (data.code === 200) {
-            showMessage('success', '头像上传成功');
-            // 更新页面上的头像显示
-            const profileImg = document.querySelector('.roundimg');
-            const headerImg = document.querySelector('.navbar-list li a.search-toggle img');
-            if (data.rows && data.rows.img) {
-                const imgUrl = localStorage.getItem('ip') + data.rows.img;
-                if (profileImg) profileImg.src = imgUrl;
-                if (headerImg) headerImg.src = imgUrl;
-            }
-        } else if (data.code === 401 || data.code === 500) {
-            redirectToLoginWithCountdown(3);
-        } else {
-            throw new Error(data.message || '头像上传失败');
-        }
-    } catch (error) {
-        showMessage('error', error.message);
-        console.error('上传失败:', error);
-        if (error.message.includes('401') || error.message.includes('500')) {
-            redirectToLoginWithCountdown(3);
-        }
-    }
-}
