@@ -22,10 +22,23 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     document.getElementById('login').addEventListener('click', async function() {
+        const btn = this;
+        const spinner = btn.querySelector('.spinner-border');
+        const buttonText = btn.querySelector('.button-text');
+        
+        // 显示加载状态
+        spinner.classList.remove('d-none');
+        buttonText.textContent = '登录中...';
+        btn.disabled = true;
+
         const username = document.getElementById('username').value.trim();
         const password = document.getElementById('password').value;
         
         if (!validateForm(username, password)) {
+            // 恢复按钮状态
+            spinner.classList.add('d-none');
+            buttonText.textContent = '登录账号';
+            btn.disabled = false;
             return;
         }
 
@@ -61,6 +74,11 @@ document.addEventListener('DOMContentLoaded', function() {
         } catch (error) {
             showMessage('error', '服务器连接失败，请稍后再试');
             console.error('登录请求失败:', error);
+        } finally {
+            // 恢复按钮状态
+            spinner.classList.add('d-none');
+            buttonText.textContent = '登录账号';
+            btn.disabled = false;
         }
     });
 
