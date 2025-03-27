@@ -1,408 +1,140 @@
 <!doctype html>
 <html lang="zh">
-
 <head>
-    <!-- Required meta tags -->
+    <!-- 必要的meta标签 -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SwiftKeys后台管理</title>
+    <title>SwiftKeys后台管理 - 打字任务管理</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/publish_task.css">
     <link rel="stylesheet" href="./css/font.css">
+    <link rel="stylesheet" href="css/publish_task.css">
 </head>
-
-<body>
+<body data-page="typing_task">
     <div id="loading">
         <div id="loading-center">
             <div class="spinner-border text-primary" role="status"></div>
         </div>
     </div>
     <div class="wrapper">
-        <div class="iq-sidebar">
-            <div class="iq-sidebar-logo d-flex justify-content-between">
-                <a href=""> <span>SwiftKeys后台管理</span>
-                </a>
-            </div>
-            <div id="sidebar-scrollbar">
-                <nav class="iq-sidebar-menu">
-                    <ul class="iq-menu">
-                        <li>
-                            <a href="index.html" class="iq-waves-effect"><i
-                                    class="ri-home-8-fill"></i><span>首页</span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="iq-waves-effect"><i
-                                    class="ri-shield-user-fill"></i><span>管理员中心</span><i
-                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                            <ul class="iq-submenu">
-                                <li><a href="edit_profile.html">资料编辑</a></li>
-                                <li><a href="change_password.html">修改密码</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="iq-waves-effect"><i
-                                    class="ri-user-settings-fill"></i>用户列表<i
-                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                            <ul class="iq-submenu">
-                                <li><a href="users.html">我的用户</a></li>
-                                <li><a href="add_user.html">添加用户</a></li>
-                            </ul>
-                        </li>
-                        <li class="active">
-                            <a href="javascript:void(0);" class="iq-waves-effect"><i class="ri-todo-fill"></i>打字测试<i
-                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                            <ul class="iq-submenu">
-                                <li class="active"><a href="publish_task.html">发布任务</a></li>
-                                <li><a href="unfinished_students.html">未做名单</a></li>
-                                <li><a href="add_article.html">添加文章</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="iq-waves-effect"><i
-                                    class="ri-bar-chart-2-fill"></i><span>成绩统计</span><i
-                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                            <ul class="iq-submenu">
-                                <li><a href="ranking_list.html">成绩列表</a></li>
-                                <li><a href="score_review.html">成绩审核</a></li>
-                            </ul>
-                        </li>
-                        <li>
-                            <a href="anomaly_monitoring.html" class="iq-waves-effect"><i
-                                    class="ri-alarm-warning-fill"></i><span>异常监控</span></a>
-                        </li>
-                        <li>
-                            <a href="javascript:void(0);" class="iq-waves-effect"><i
-                                    class="ri-file-edit-fill"></i><span>题库管理</span><i
-                                    class="ri-arrow-right-s-line iq-arrow-right"></i></a>
-                            <ul class="iq-submenu">
-                                <li><a href="question_bank.html">所有题目</a></li>
-                                <li><a href="package_management.html">套餐管理</a></li>
-                            </ul>
-                            <!-- <div class="p-3"></div> -->
-            </div>
-        </div>
-        <!-- Page Content  -->
+        <div id="sidebar"></div>
+        <!-- 页面内容 -->
         <div id="content-page" class="content-page">
-            <!-- TOP Nav Bar -->
-            <div class="iq-top-navbar">
-                <div class="iq-navbar-custom">
-
-                    <nav class="navbar navbar-expand-lg navbar-light p-0">
-                        <div class="iq-search-bar">
-                            <form action="javascript:;" class="searchbox">
-                                <input type="text" class="text search-input" placeholder="请输入搜索内容...">
-                                <a class="search-link" href="#"><i class="ri-search-line"></i></a>
-                            </form>
-                        </div>
-                        <!-- <button class="navbar-toggler" type="button" data-toggle="collapse"
-        				data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-        				aria-expanded="false" aria-label="Toggle navigation">
-        				<i class="ri-menu-3-line"></i>
-        			</button> -->
-                        <div class="iq-menu-bt align-self-center align-right-san">
-                            <div class="wrapper-menu">
-                                <div class="main-circle"><i class="ri-more-fill"></i></div>
-                                <div class="hover-circle"><i class="ri-more-2-fill"></i></div>
-                            </div>
-                        </div>
-                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                            <ul class="navbar-nav ml-auto navbar-list">
-
-                                <li class="nav-item iq-full-screen">
-                                    <a href="#" class="iq-waves-effect" id="btnFullscreen"><i
-                                            class="ri-fullscreen-line"></i></a>
-                                </li>
-
-                                <li class="nav-item" style="display: none;">
-                                    <a href="#" class="search-toggle iq-waves-effect">
-                                        <i class="ri-notification-3-fill"></i>
-                                        <span class="bg-danger dots"></span>
-                                    </a>
-                                    <div class="iq-sub-dropdown">
-                                        <div class="iq-card shadow-none m-0">
-                                            <div class="iq-card-body p-0 ">
-                                                <div class="bg-primary p-3">
-                                                    <h5 class="mb-0 text-white">所有通知<small
-                                                            class="badge  badge-light float-right pt-1">4</small>
-                                                    </h5>
-                                                </div>
-
-                                                <a href="#" class="iq-sub-card">
-                                                    <div class="media align-items-center">
-                                                        <div class="">
-                                                            <img class="avatar-40 rounded" src="images/user/01.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="media-body ml-3">
-                                                            <h6 class="mb-0 ">艾玛·沃森·比尼。</h6>
-                                                            <small class="float-right font-size-12">刚刚</small>
-                                                            <p class="mb-0">95 MB</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                                <a href="#" class="iq-sub-card">
-                                                    <div class="media align-items-center">
-                                                        <div class="">
-                                                            <img class="avatar-40 rounded" src="images/user/02.jpg"
-                                                                alt="">
-                                                        </div>
-                                                        <div class="media-body ml-3">
-                                                            <h6 class="mb-0 ">新客户加入</h6>
-                                                            <small class="float-right font-size-12">5天前</small>
-                                                            <p class="mb-0">系统管理员</p>
-                                                        </div>
-                                                    </div>
-                                                </a>
-                                            </div>
-                                        </div>
+            <!-- 顶部导航 -->
+            <div id="header"></div>
+            <!-- 顶部导航结束 -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="iq-card">
+                            <div class="iq-card-header d-flex justify-content-between align-items-center">
+                                <div class="iq-header-title">
+                                    <h4 class="card-title m-0">打字任务管理</h4>
+                                </div>
+                                <div class="d-flex align-items-center">
+                                    <div class="date-controls d-flex align-items-center" style="margin-right: 15px;">
+                                        <input type="date" id="dateSelect" class="form-control" style="width: 140px; margin-right: 10px;">
+                                        <button id="addTaskBtn" class="btn btn-primary" style="white-space: nowrap;">新增任务</button>
                                     </div>
-                                </li>
-                            </ul>
-                        </div>
-                        <ul class="navbar-list">
-                            <li>
-                                <a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
-                                    <img src="images/user1.jpg" class="img-fluid rounded mr-3" alt="user">
-                                    <div class="caption">
-                                        <h6 class="mb-0 line-height">ZYX</h6>
-                                        <span class="font-size-12">超级🐂富燕军</span>
-                                    </div>
-                                </a>
-                                <div class="iq-sub-dropdown iq-user-dropdown">
-                                    <div class="iq-card shadow-none m-0">
-                                        <div class="iq-card-body p-0 ">
-                                            <div class="bg-primary p-3">
-                                                <h5 class="mb-0 text-white line-height">你好-胡松鹤</h5>
-                                            </div>
-                                            <a href="profile.html" class="iq-sub-card iq-bg-primary-hover">
-                                                <div class="media align-items-center">
-                                                    <div class="rounded iq-card-icon iq-bg-primary">
-                                                        <i class="ri-file-user-line"></i>
-                                                    </div>
-                                                    <div class="media-body ml-3">
-                                                        <h6 class="mb-0 ">个人中心</h6>
-                                                    </div>
-                                                </div>
-                                            </a>
-                                            <a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
-                                                <div class="media align-items-center">
-                                                    <div class="rounded iq-card-icon iq-bg-primary">
-                                                        <i class="ri-profile-line"></i>
-                                                    </div>
-                                                    <div class="media-body ml-3">
-                                                        <h6 class="mb-0 ">修改密码</h6>
-                                                    </div>
-                                                </div>
-                                                <a href="account-setting.html" class="iq-sub-card iq-bg-primary-hover">
-                                                    <div class="media align-items-center">
-                                                        <div class="rounded iq-card-icon iq-bg-primary">
-                                                            <i class="ri-account-box-line"></i>
-                                                        </div>
-                                                        <div class="media-body ml-3">
-                                                            <h6 class="mb-0 ">系统设置</h6>
-                                                        </div>
-                                                    </div>
-                                                </a>
-
-                                                <div class="d-inline-block w-100 text-center p-3">
-                                                    <a class="bg-primary iq-sign-btn" href="login.html"
-                                                        role="button">退出登录<i class="ri-login-box-line ml-2"></i></a>
-                                                </div>
+                                    <div class="tabs-wrapper">
+                                        <div class="tabs">
+                                            <div class="tabs__slider"></div>
+                                            <a href="#" class="tabs__item tabs__item--active" data-tab="pending">待发布任务</a>
+                                            <a href="#" class="tabs__item" data-tab="ongoing">进行中任务</a>
+                                            <a href="#" class="tabs__item" data-tab="history">历史任务</a>
                                         </div>
                                     </div>
                                 </div>
-                            </li>
-                        </ul>
-                    </nav>
-
-                </div>
-            </div>
-            <!-- TOP Nav Bar END -->
-            <div class="container-fluid">
-                <div class="iq-card">
-                    <div class="iq-card-header d-flex justify-content-between">
-                        <div class="iq-header-title">
-                            <h4 class="card-title">打字任务管理</h4>
-                        </div>
-                    </div>
-                    <div class="iq-card-body">
-                        <div class="topbtn">
-                            <a href="javascript:;" class="btn btn-task-publish" data-toggle="modal"
-                                data-target="#myModal">发布打字任务</a>
-                        </div>
-                        <div class="selbox">
-                            <div class="form1">
-                                <ul class="row">
-                                    <li class="col-xs-4">
-                                        <span>任务名称：</span>
-                                        <input type="text" class="form-control">
-                                    </li>
-                                    <li class="col-xs-4">
-                                        <span>任务状态：</span>
-                                        <select class="form-control">
-                                            <option>所有状态</option>
-                                            <option>进行中</option>
-                                            <option>已完成</option>
-                                            <option>已过期</option>
-                                            <option>准备中</option>
-                                        </select>
-                                    </li>
-                                    <li class="col-xs-4" style="padding-left: 10px">
-                                        <a href="javascript:;" class="bottom bottom-primary">查询</a>
-                                        <a href="javascript:;" class="bottom bottom-default">重置</a>
-                                    </li>
-                                </ul>
+                            </div>
+                            <div class="iq-card-body">
+                                <div class="tab-content" id="taskTabContent">
+                                    <!-- 待发布任务 -->
+                                    <div class="tab-pane fade show active" id="pending" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>序号</th>
+                                                        <th>任务名称</th>
+                                                        <th>任务描述</th>
+                                                        <th>发布时间</th>
+                                                        <th>截止时间</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- 默认初始数据占位，后续通过JS更新 -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- 进行中任务 -->
+                                    <div class="tab-pane fade" id="ongoing" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>序号</th>
+                                                        <th>任务名称</th>
+                                                        <th>任务描述</th>
+                                                        <th>开始时间</th>
+                                                        <th>剩余时间</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- 默认初始数据占位 -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <!-- 历史任务 -->
+                                    <div class="tab-pane fade" id="history" role="tabpanel">
+                                        <div class="table-responsive">
+                                            <table class="table">
+                                                <thead>
+                                                    <tr>
+                                                        <th>序号</th>
+                                                        <th>任务名称</th>
+                                                        <th>任务描述</th>
+                                                        <th>完成时间</th>
+                                                        <th>结果</th>
+                                                        <th>操作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- 默认初始数据占位 -->
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div><!-- tab-content结束 -->
                             </div>
                         </div>
-                        <div>
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th><input type="checkbox" class="allsel"></th>
-                                        <th>任务ID</th>
-                                        <th>任务名称</th>
-                                        <th>文章标题</th>
-                                        <th>字数</th>
-                                        <th>时间限制(分钟)</th>
-                                        <th>班级</th>
-                                        <th>任务状态</th>
-                                        <th>操作</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>101</td>
-                                        <td>期中考试打字任务</td>
-                                        <td>《计算机基础知识》</td>
-                                        <td>1500</td>
-                                        <td>30</td>
-                                        <td>计算机科学1班</td>
-                                        <td><span class="task-status task-status-ongoing">进行中</span></td>
-                                        <td>
-                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
-                                            <a href="javascript:;">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>102</td>
-                                        <td>英文打字练习</td>
-                                        <td>《英语短文集锦》</td>
-                                        <td>800</td>
-                                        <td>20</td>
-                                        <td>英语专业2班</td>
-                                        <td><span class="task-status task-status-ongoing">进行中</span></td>
-                                        <td>
-                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
-                                            <a href="javascript:;">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>103</td>
-                                        <td>速度测试</td>
-                                        <td>《五笔打字入门》</td>
-                                        <td>500</td>
-                                        <td>10</td>
-                                        <td>文秘专业1班</td>
-                                        <td><span class="task-status task-status-pending">准备中</span></td>
-                                        <td>
-                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
-                                            <a href="javascript:;">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>104</td>
-                                        <td>期末考试打字任务</td>
-                                        <td>《信息技术概论》</td>
-                                        <td>2000</td>
-                                        <td>45</td>
-                                        <td>信息管理3班</td>
-                                        <td><span class="task-status task-status-ongoing">进行中</span></td>
-                                        <td>
-                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
-                                            <a href="javascript:;">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>105</td>
-                                        <td>中文打字练习</td>
-                                        <td>《现代文选读》</td>
-                                        <td>1200</td>
-                                        <td>25</td>
-                                        <td>中文系2班</td>
-                                        <td><span class="task-status task-status-completed">已完成</span></td>
-                                        <td>
-                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
-                                            <a href="javascript:;">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>106</td>
-                                        <td>编程代码输入测试</td>
-                                        <td>《Python基础语法》</td>
-                                        <td>1000</td>
-                                        <td>30</td>
-                                        <td>软件工程4班</td>
-                                        <td><span class="task-status task-status-expired">已过期</span></td>
-                                        <td>
-                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
-                                            <a href="javascript:;">删除</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td><input type="checkbox"></td>
-                                        <td>107</td>
-                                        <td>数字录入练习</td>
-                                        <td>《数据录入指南》</td>
-                                        <td>600</td>
-                                        <td>15</td>
-                                        <td>会计专业1班</td>
-                                        <td><span class="task-status task-status-ongoing">进行中</span></td>
-                                        <td>
-                                            <a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
-                                            <a href="javascript:;">删除</a>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                        <div class="">
-
-                            <a href="javascript:;" class="bottom bottom-danger">删除</a>
-                        </div>
-                        <nav aria-label="Page navigation" class="page">
-                            <ul class="custom-pagination">
-                                <li class="custom-page-item">
-                                    <a class="custom-page-link" href="javascript:;" aria-label="Previous">
-                                        <span aria-hidden="true">上一页</span>
-                                    </a>
-                                </li>
-                                <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">1</a></li>
-                                <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">2</a></li>
-                                <li class="custom-page-item active"><a class="custom-page-link"
-                                        href="javascript:;">3</a></li>
-                                <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">4</a></li>
-                                <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">5</a></li>
-                                <li class="custom-page-item">
-                                    <a class="custom-page-link" href="javascript:;" aria-label="Next">
-                                        <span aria-hidden="true">下一页</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </nav>
-
                     </div>
-
                 </div>
-
-
+                <!-- 分页（如需要） -->
+                <nav aria-label="Page navigation" class="page">
+                    <ul class="custom-pagination">
+                        <li class="custom-page-item">
+                            <a class="custom-page-link" href="javascript:;" aria-label="Previous">
+                                <span aria-hidden="true">上一页</span>
+                            </a>
+                        </li>
+                        <!-- 分页按钮 -->
+                        <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">1</a></li>
+                        <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">2</a></li>
+                        <li class="custom-page-item active"><a class="custom-page-link" href="javascript:;">3</a></li>
+                        <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">4</a></li>
+                        <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">5</a></li>
+                        <li class="custom-page-item">
+                            <a class="custom-page-link" href="javascript:;" aria-label="Next">
+                                <span aria-hidden="true">下一页</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
             </div>
-            <!-- Footer -->
+            <!-- 页脚 -->
             <footer class="bg-white iq-footer">
                 <div class="container-fluid">
                     <div class="row">
@@ -413,182 +145,18 @@
                             </ul>
                         </div>
                         <div class="col-lg-6 text-right">
-                            Copyright 2024 <a href="">心理健康管理系统</a> 版权所有
+                            Copyright 2024 <a href="">SwiftKeys后台管理</a> 版权所有
                         </div>
                     </div>
                 </div>
             </footer>
         </div>
     </div>
-
-
-
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">套餐添加修改</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="form form-horizontal">
-                        <div class="form-body">
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="eventRegInput1">套餐名称</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="eventRegInput2">套餐排序</label>
-                                <div class="col-md-9">
-                                    <input type="text" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group row">
-                                <label class="col-md-3 label-control" for="eventRegInput2">套餐设置</label>
-                                <div class="col-md-9">
-                                    <select class="form-control">
-                                        <option>公有</option>
-                                        <option>私有</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-gradient-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-gradient-danger">执行操作</button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+    <!-- 引入JavaScript文件 -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
     <script src="js/smooth-scrollbar.js"></script>
     <script src="js/custom.js"></script>
-    <script src="laydate/laydate.js"></script>
-    <script>
-        lay('#version').html('-v' + laydate.v);
-        laydate.render({
-            elem: '#date'
-            , range: true
-            , theme: '#2c9eae'
-        });
-    
-        // 分页控制
-        document.addEventListener('DOMContentLoaded', function () {
-            let currentPage = 1;
-            const pageLinks = document.querySelectorAll('.custom-page-link');
-            const pageItems = document.querySelectorAll('.custom-page-item');
-            const itemsPerPage = 20; // 修改为每页显示20条数据
-            const tableBody = document.querySelector('table tbody');
-    
-            // 更新表格数据
-            function updateTableData(page) {
-                const rows = tableBody.querySelectorAll('tr');
-                const start = (page - 1) * itemsPerPage;
-                const end = start + itemsPerPage;
-    
-                rows.forEach((row, index) => {
-                    if (index >= start && index < end) {
-                        row.style.display = '';
-                    } else {
-                        row.style.display = 'none';
-                    }
-                });
-            }
-    
-            // 生成分页按钮
-            function generatePaginationButtons() {
-                const rows = tableBody.querySelectorAll('tr');
-                const totalPages = Math.ceil(rows.length / itemsPerPage);
-                const paginationContainer = document.querySelector('.custom-pagination');
-                
-                // 清空现有的分页按钮
-                paginationContainer.innerHTML = '';
-                
-                // 添加"上一页"按钮
-                paginationContainer.innerHTML += `
-                    <li class="custom-page-item">
-                        <a class="custom-page-link" href="javascript:;" aria-label="Previous">
-                            <span aria-hidden="true">上一页</span>
-                        </a>
-                    </li>
-                `;
-                
-                // 添加页码按钮
-                for (let i = 1; i <= totalPages; i++) {
-                    paginationContainer.innerHTML += `
-                        <li class="custom-page-item">
-                            <a class="custom-page-link" href="javascript:;">${i}</a>
-                        </li>
-                    `;
-                }
-                
-                // 添加"下一页"按钮
-                paginationContainer.innerHTML += `
-                    <li class="custom-page-item">
-                        <a class="custom-page-link" href="javascript:;" aria-label="Next">
-                            <span aria-hidden="true">下一页</span>
-                        </a>
-                    </li>
-                `;
-                
-                // 重新获取更新后的分页元素
-                const newPageLinks = document.querySelectorAll('.custom-page-link');
-                const newPageItems = document.querySelectorAll('.custom-page-item');
-                
-                // 为新的分页按钮添加点击事件
-                newPageLinks.forEach((link, index) => {
-                    link.addEventListener('click', function(e) {
-                        e.preventDefault();
-                        if (index === 0 && currentPage > 1) { // 上一页
-                            updatePagination(currentPage - 1);
-                        } else if (index === newPageLinks.length - 1 && currentPage < totalPages) { // 下一页
-                            updatePagination(currentPage + 1);
-                        } else if (index !== 0 && index !== newPageLinks.length - 1) { // 页码
-                            updatePagination(index);
-                        }
-                    });
-                });
-                
-                return { pageLinks: newPageLinks, pageItems: newPageItems };
-            }
-    
-            // 更新分页状态
-            function updatePagination(page) {
-                currentPage = page;
-                const rows = tableBody.querySelectorAll('tr');
-                const totalPages = Math.ceil(rows.length / itemsPerPage);
-                const { pageItems } = generatePaginationButtons();
-                
-                pageItems.forEach((item, index) => {
-                    if (index === 0) { // 上一页按钮
-                        item.classList.toggle('disabled', currentPage === 1);
-                    } else if (index === pageItems.length - 1) { // 下一页按钮
-                        item.classList.toggle('disabled', currentPage === totalPages);
-                    } else if (index === currentPage) { // 当前页
-                        item.classList.add('active');
-                    }
-                });
-    
-                // 更新表格数据
-                updateTableData(page);
-            }
-    
-            // 初始化分页
-            generatePaginationButtons();
-            updatePagination(1);
-        });
-    </script>
+    <script type="module" src="js/main.js"></script>
 </body>
-
 </html>

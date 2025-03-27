@@ -1,104 +1,164 @@
-.task-status {
-    display: inline-block !important;
-    padding: 0px 8px !important;
-    border-radius: 4px !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
+/* typing_task.css - 打字任务管理页面样式 */
+
+/* 整体页面背景和字体 */
+body {
+    background-color: #121212;
+    color: #e0e0e0;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
-.task-status-ongoing {
-    background-color: #dfefff !important;
-    border: 1px solid #0080ff !important;
-    color: #0080ff;
+/* 基础表格样式 */
+.table {
+    table-layout: fixed;
+    width: 100%;
+    margin: 0;
+    border-collapse: collapse;
+    background: #1a1a1a;
+    border-radius: 8px;
+    overflow: hidden;
 }
 
-.task-status-completed {
-    background-color: #e6f9ef !important;
-    border: 1px solid #00c851 !important;
-    color: #00c851;
+.table th,
+.table td {
+    padding: 12px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
-.task-status-expired {
-    background-color: #ffe6e8 !important;
-    border: 1px solid #ff3547 !important;
-    color: #ff3547;
+.table thead th {
+    background: rgba(255, 255, 255, 0.05);
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.task-status-pending {
-    background-color: #fff8e6 !important;
-    border: 1px solid #ffaa01 !important;
-    color: #ffaa01;
+.table tbody td {
+    color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
 }
 
-/* 按钮悬停样式 */
-.bottom {
-    transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease !important;
-    padding: 6px 12px !important;
-    line-height: 1.5 !important;
-    box-sizing: border-box !important;
-    border-radius: 4px !important;
-    cursor: pointer !important;
-    display: inline-block !important;
-    text-decoration: none !important;
+/* Tabs 样式 */
+.tabs-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 15px 0;
+    width: 300px;
 }
 
-.btn-task-publish {
-    color: #28a745 !important;
-    background-color: #e6f3e6 !important;
-    border: 1px solid #28a745 !important;
-    transition: all 0.3s ease !important;
-    box-sizing: border-box !important;
-    padding: 6px 12px !important;
-    border-radius: 10px !important;
+.tabs {
+    position: relative;
+    display: flex;
+    background: #1a1a1a;
+    padding: 3px;
+    border-radius: 6px;
+    width: 100%;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btn-task-publish:hover {
-    color: #fff !important;
-    background-color: #28a745 !important;
-    border: 1px solid #28a745 !important;
+.tabs__slider {
+    position: absolute;
+    left: 0;
+    top: 7.5%;
+    width: 33.3333%;
+    height: 80%;
+    background: linear-gradient(45deg, #0080ff, #1a90ff);
+    border-radius: 4px;
+    transition: left 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 128, 255, 0.3);
 }
 
-.bottom-primary {
-    background-color: #089bab !important;
-    border-color: #089bab !important;
-    color: white !important;
+.tabs__item {
+    flex: 1;
+    text-align: center;
+    padding: 4px 0;
+    color: rgba(255, 255, 255, 0.6);
+    position: relative;
+    z-index: 1;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    font-size: 13px;
+    letter-spacing: 0.5px;
 }
 
-.bottom-primary:hover {
-    background-color: #067d8a !important;
-    border-color: #067d8a !important;
+.tabs__item:hover {
+    color: rgba(255, 255, 255, 0.9);
 }
 
-.bottom-default {
-    background-color: #f8f9fa !important;
-    border-color: #ddd !important;
-    color: #333 !important;
+.tabs__item--active {
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
 }
 
-.bottom-default:hover {
-    background-color: #e9ecef !important;
-    border-color: #c8c9ca !important;
+/* 分页样式 */
+.custom-pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    padding: 0;
+    margin: 20px 0;
 }
 
-.bottom-danger {
-    background-color: #dc3545 !important;
-    border-color: #dc3545 !important;
-    color: white !important;
+.custom-page-item {
+    margin: 0 5px;
 }
 
-.bottom-danger:hover {
-    background-color: #c82333 !important;
-    border-color: #bd2130 !important;
+.custom-page-link {
+    display: block;
+    padding: 8px 12px;
+    color: #fff;
+    background: #1a1a1a;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.3s ease;
 }
 
-.btn-bg-gradient-x-purple-red {
-    background: linear-gradient(45deg, #7c4dff, #ff4081) !important;
-    border: none !important;
-    color: white !important;
+.custom-page-link:hover {
+    background: #0080ff;
 }
 
-.btn-bg-gradient-x-purple-red:hover {
-    background: linear-gradient(45deg, #6f45e6, #e63973) !important;
+.custom-page-item.active .custom-page-link {
+    background: #1a90ff;
+}
+
+/* 按钮样式 */
+.btn-primary {
+    background: linear-gradient(45deg, #0080ff, #1a90ff);
+    border: none;
+    color: #fff;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background: linear-gradient(45deg, #1a90ff, #0080ff);
+}
+
+/* 新增任务按钮额外样式 */
+#addTaskBtn {
+    margin-left: 10px;
+}
+
+/* 操作按钮样式 */
+.btn-action {
+    padding: 4px 8px;
+    font-size: 12px;
+    border: none;
+    background: linear-gradient(45deg, #0080ff, #1a90ff);
+    color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-action:hover {
+    background: linear-gradient(45deg, #1a90ff, #0080ff);
 }
 
 .btn-gradient-primary {

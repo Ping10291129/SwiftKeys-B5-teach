@@ -1,0 +1,413 @@
+<!doctype html>
+<html lang="zh">
+
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>SwiftKeys后台管理</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="css/publish_task.css">
+		<link rel="stylesheet" href="./css/font.css">
+	</head>
+
+	<body>
+		<div id="loading">
+			<div id="loading-center">
+				<div class="spinner-border text-primary" role="status"></div>
+			</div>
+		</div>
+		<div class="wrapper">
+			<div class="iq-sidebar">
+				<!-- div-此处添加导航栏模块 -->
+			</div>
+			<!-- Page Content  -->
+			<div id="content-page" class="content-page">
+				<!-- TOP Nav Bar -->
+				<!-- 添加header -->
+				<!-- TOP Nav Bar END -->
+				<div class="container-fluid">
+					<div class="iq-card">
+						<div class="iq-card-header d-flex justify-content-between">
+							<div class="iq-header-title">
+								<h4 class="card-title">打字任务管理</h4>
+							</div>
+						</div>
+						<div class="iq-card-body">
+							<div class="topbtn">
+								<a href="javascript:;" class="btn btn-task-publish" data-toggle="modal"
+									data-target="#myModal">发布打字任务</a>
+							</div>
+							<div class="selbox">
+								<div class="form1">
+									<ul class="row">
+										<li class="col-xs-4">
+											<span>任务名称：</span>
+											<input type="text" class="form-control">
+										</li>
+										<li class="col-xs-4">
+											<span>任务状态：</span>
+											<select class="form-control">
+												<option>所有状态</option>
+												<option>进行中</option>
+												<option>已完成</option>
+												<option>已过期</option>
+												<option>准备中</option>
+											</select>
+										</li>
+										<li class="col-xs-4" style="padding-left: 10px">
+											<a href="javascript:;" class="bottom bottom-primary">查询</a>
+											<a href="javascript:;" class="bottom bottom-default">重置</a>
+										</li>
+									</ul>
+								</div>
+							</div>
+							<div>
+								<table class="table">
+									<thead>
+										<tr>
+											<th><input type="checkbox" class="allsel"></th>
+											<th>任务ID</th>
+											<th>任务名称</th>
+											<th>文章标题</th>
+											<th>字数</th>
+											<th>时间限制(分钟)</th>
+											<th>班级</th>
+											<th>任务状态</th>
+											<th>操作</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>101</td>
+											<td>期中考试打字任务</td>
+											<td>《计算机基础知识》</td>
+											<td>1500</td>
+											<td>30</td>
+											<td>计算机科学1班</td>
+											<td><span class="task-status task-status-ongoing">进行中</span></td>
+											<td>
+												<a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
+												<a href="javascript:;">删除</a>
+											</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>102</td>
+											<td>英文打字练习</td>
+											<td>《英语短文集锦》</td>
+											<td>800</td>
+											<td>20</td>
+											<td>英语专业2班</td>
+											<td><span class="task-status task-status-ongoing">进行中</span></td>
+											<td>
+												<a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
+												<a href="javascript:;">删除</a>
+											</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>103</td>
+											<td>速度测试</td>
+											<td>《五笔打字入门》</td>
+											<td>500</td>
+											<td>10</td>
+											<td>文秘专业1班</td>
+											<td><span class="task-status task-status-pending">准备中</span></td>
+											<td>
+												<a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
+												<a href="javascript:;">删除</a>
+											</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>104</td>
+											<td>期末考试打字任务</td>
+											<td>《信息技术概论》</td>
+											<td>2000</td>
+											<td>45</td>
+											<td>信息管理3班</td>
+											<td><span class="task-status task-status-ongoing">进行中</span></td>
+											<td>
+												<a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
+												<a href="javascript:;">删除</a>
+											</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>105</td>
+											<td>中文打字练习</td>
+											<td>《现代文选读》</td>
+											<td>1200</td>
+											<td>25</td>
+											<td>中文系2班</td>
+											<td><span class="task-status task-status-completed">已完成</span></td>
+											<td>
+												<a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
+												<a href="javascript:;">删除</a>
+											</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>106</td>
+											<td>编程代码输入测试</td>
+											<td>《Python基础语法》</td>
+											<td>1000</td>
+											<td>30</td>
+											<td>软件工程4班</td>
+											<td><span class="task-status task-status-expired">已过期</span></td>
+											<td>
+												<a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
+												<a href="javascript:;">删除</a>
+											</td>
+										</tr>
+										<tr>
+											<td><input type="checkbox"></td>
+											<td>107</td>
+											<td>数字录入练习</td>
+											<td>《数据录入指南》</td>
+											<td>600</td>
+											<td>15</td>
+											<td>会计专业1班</td>
+											<td><span class="task-status task-status-ongoing">进行中</span></td>
+											<td>
+												<a href="javascript:;" data-toggle="modal" data-target="#myModal">修改</a>
+												<a href="javascript:;">删除</a>
+											</td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="">
+
+								<a href="javascript:;" class="bottom bottom-danger">删除</a>
+							</div>
+							<nav aria-label="Page navigation" class="page">
+								<ul class="custom-pagination">
+									<li class="custom-page-item">
+										<a class="custom-page-link" href="javascript:;" aria-label="Previous">
+											<span aria-hidden="true">上一页</span>
+										</a>
+									</li>
+									<li class="custom-page-item"><a class="custom-page-link" href="javascript:;">1</a>
+									</li>
+									<li class="custom-page-item"><a class="custom-page-link" href="javascript:;">2</a>
+									</li>
+									<li class="custom-page-item active"><a class="custom-page-link"
+											href="javascript:;">3</a></li>
+									<li class="custom-page-item"><a class="custom-page-link" href="javascript:;">4</a>
+									</li>
+									<li class="custom-page-item"><a class="custom-page-link" href="javascript:;">5</a>
+									</li>
+									<li class="custom-page-item">
+										<a class="custom-page-link" href="javascript:;" aria-label="Next">
+											<span aria-hidden="true">下一页</span>
+										</a>
+									</li>
+								</ul>
+							</nav>
+
+						</div>
+
+					</div>
+
+
+				</div>
+				<!-- Footer -->
+				<footer class="bg-white iq-footer">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-6">
+								<ul class="list-inline mb-0">
+									<li class="list-inline-item"><a href="#">使用帮助</a></li>
+									<li class="list-inline-item"><a href="#">进入官网</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-6 text-right">
+								Copyright 2024 <a href="">心理健康管理系统</a> 版权所有
+							</div>
+						</div>
+					</div>
+				</footer>
+			</div>
+		</div>
+
+
+
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">套餐添加修改</h5>
+						<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							<span aria-hidden="true">×</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form class="form form-horizontal">
+							<div class="form-body">
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="eventRegInput1">套餐名称</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control">
+									</div>
+								</div>
+
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="eventRegInput2">套餐排序</label>
+									<div class="col-md-9">
+										<input type="text" class="form-control">
+									</div>
+								</div>
+								<div class="form-group row">
+									<label class="col-md-3 label-control" for="eventRegInput2">套餐设置</label>
+									<div class="col-md-9">
+										<select class="form-control">
+											<option>公有</option>
+											<option>私有</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</form>
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-gradient-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-gradient-danger">执行操作</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/smooth-scrollbar.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="laydate/laydate.js"></script>
+		<script>
+			lay('#version').html('-v' + laydate.v);
+			laydate.render({
+				elem: '#date',
+				range: true,
+				theme: '#2c9eae'
+			});
+
+			// 分页控制
+			document.addEventListener('DOMContentLoaded', function() {
+				let currentPage = 1;
+				const pageLinks = document.querySelectorAll('.custom-page-link');
+				const pageItems = document.querySelectorAll('.custom-page-item');
+				const itemsPerPage = 20; // 修改为每页显示20条数据
+				const tableBody = document.querySelector('table tbody');
+
+				// 更新表格数据
+				function updateTableData(page) {
+					const rows = tableBody.querySelectorAll('tr');
+					const start = (page - 1) * itemsPerPage;
+					const end = start + itemsPerPage;
+
+					rows.forEach((row, index) => {
+						if (index >= start && index < end) {
+							row.style.display = '';
+						} else {
+							row.style.display = 'none';
+						}
+					});
+				}
+
+				// 生成分页按钮
+				function generatePaginationButtons() {
+					const rows = tableBody.querySelectorAll('tr');
+					const totalPages = Math.ceil(rows.length / itemsPerPage);
+					const paginationContainer = document.querySelector('.custom-pagination');
+
+					// 清空现有的分页按钮
+					paginationContainer.innerHTML = '';
+
+					// 添加"上一页"按钮
+					paginationContainer.innerHTML += `
+                    <li class="custom-page-item">
+                        <a class="custom-page-link" href="javascript:;" aria-label="Previous">
+                            <span aria-hidden="true">上一页</span>
+                        </a>
+                    </li>
+                `;
+
+					// 添加页码按钮
+					for (let i = 1; i <= totalPages; i++) {
+						paginationContainer.innerHTML += `
+                        <li class="custom-page-item">
+                            <a class="custom-page-link" href="javascript:;">${i}</a>
+                        </li>
+                    `;
+					}
+
+					// 添加"下一页"按钮
+					paginationContainer.innerHTML += `
+                    <li class="custom-page-item">
+                        <a class="custom-page-link" href="javascript:;" aria-label="Next">
+                            <span aria-hidden="true">下一页</span>
+                        </a>
+                    </li>
+                `;
+
+					// 重新获取更新后的分页元素
+					const newPageLinks = document.querySelectorAll('.custom-page-link');
+					const newPageItems = document.querySelectorAll('.custom-page-item');
+
+					// 为新的分页按钮添加点击事件
+					newPageLinks.forEach((link, index) => {
+						link.addEventListener('click', function(e) {
+							e.preventDefault();
+							if (index === 0 && currentPage > 1) { // 上一页
+								updatePagination(currentPage - 1);
+							} else if (index === newPageLinks.length - 1 && currentPage <
+								totalPages) { // 下一页
+								updatePagination(currentPage + 1);
+							} else if (index !== 0 && index !== newPageLinks.length - 1) { // 页码
+								updatePagination(index);
+							}
+						});
+					});
+
+					return {
+						pageLinks: newPageLinks,
+						pageItems: newPageItems
+					};
+				}
+
+				// 更新分页状态
+				function updatePagination(page) {
+					currentPage = page;
+					const rows = tableBody.querySelectorAll('tr');
+					const totalPages = Math.ceil(rows.length / itemsPerPage);
+					const {
+						pageItems
+					} = generatePaginationButtons();
+
+					pageItems.forEach((item, index) => {
+						if (index === 0) { // 上一页按钮
+							item.classList.toggle('disabled', currentPage === 1);
+						} else if (index === pageItems.length - 1) { // 下一页按钮
+							item.classList.toggle('disabled', currentPage === totalPages);
+						} else if (index === currentPage) { // 当前页
+							item.classList.add('active');
+						}
+					});
+
+					// 更新表格数据
+					updateTableData(page);
+				}
+
+				// 初始化分页
+				generatePaginationButtons();
+				updatePagination(1);
+			});
+		</script>
+	</body>
+
+</html>
