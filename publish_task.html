@@ -62,7 +62,8 @@
                                                     <tr>
                                                         <th>序号</th>
                                                         <th>任务名称</th>
-                                                        <th>任务描述</th>
+                                                        <th>文章年级</th>
+                                                        <th>文章类型</th>
                                                         <th>发布时间</th>
                                                         <th>截止时间</th>
                                                         <th>操作</th>
@@ -119,7 +120,7 @@
                         </div>
                     </div>
                 </div>
-                <!-- 分页（如需要） -->
+                <!-- 分页 -->
                 <nav aria-label="Page navigation" class="page">
                     <ul class="custom-pagination">
                         <li class="custom-page-item">
@@ -127,7 +128,7 @@
                                 <span aria-hidden="true">上一页</span>
                             </a>
                         </li>
-                        <!-- 分页按钮 -->
+                        <!-- 分页按钮由JS动态生成 -->
                         <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">1</a></li>
                         <li class="custom-page-item"><a class="custom-page-link" href="javascript:;">2</a></li>
                         <li class="custom-page-item active"><a class="custom-page-link" href="javascript:;">3</a></li>
@@ -140,6 +141,117 @@
                         </li>
                     </ul>
                 </nav>
+                <script>
+                    document.addEventListener('DOMContentLoaded', function () {
+                        let currentPage = 1;
+                        const itemsPerPage = 20;
+                        const tableBody = document.querySelector('table tbody');
+
+                        function updateTableData(page) {
+                            const rows = tableBody.querySelectorAll('tr');
+                            const start = (page - 1) * itemsPerPage;
+                            const end = start + itemsPerPage;
+
+                            rows.forEach((row, index) => {
+                                if (index >= start && index < end) {
+                                    row.style.display = '';
+                                } else {
+                                    row.style.display = 'none';
+                                }
+                            });
+                        }
+
+                        function generatePaginationButtons() {
+                            const rows = tableBody.querySelectorAll('tr');
+                            const totalPages = Math.ceil(rows.length / itemsPerPage);
+                            const paginationContainer = document.querySelector('.custom-pagination');
+                            
+                            paginationContainer.innerHTML = `
+                                <li class="custom-page-item">
+                                    <a class="custom-page-link" href="javascript:;" aria-label="Previous">
+                                        <span aria-hidden="true">上一页</span>
+                                    </a>
+                                </li>
+                            `;
+                            
+                            for (let i = 1; i <= totalPages; i++) {
+                                paginationContainer.innerHTML += `
+                                    <li class="custom-page-item ${i === currentPage ? 'active' : ''}">
+                                        <a class="custom-page-link" href="javascript:;">${i}</a>
+                                    </li>
+                                `;
+                            }
+                            
+                            paginationContainer.innerHTML += `
+                                <li class="custom-page-item">
+                                    <a class="custom-page-link" href="javascript:;" aria-label="Next">
+                                        <span aria-hidden="true">下一页</span>
+                                    </a>
+                                </li>
+                            `;
+                            
+                            addPaginationEventListeners();
+                        }
+
+                        function addPaginationEventListeners() {
+                            const pageLinks = document.querySelectorAll('.custom-page-link');
+                            const rows = tableBody.querySelectorAll('tr');
+                            const totalPages = Math.ceil(rows.length / itemsPerPage);
+
+                            pageLinks.forEach((link, index) => {
+                                link.addEventListener('click', function(e) {
+                                    e.preventDefault();
+                                    if (index === 0 && currentPage > 1) {
+                                        updatePagination(currentPage - 1);
+                                    } else if (index === pageLinks.length - 1 && currentPage < totalPages) {
+                                        updatePagination(currentPage + 1);
+                                    } else if (index !== 0 && index !== pageLinks.length - 1) {
+                                        updatePagination(index);
+                                    }
+                                });
+                            });
+                        }
+
+                        function updatePagination(page) {
+                            const rows = tableBody.querySelectorAll('tr');
+                            const totalPages = Math.ceil(rows.length / itemsPerPage);
+                            currentPage = Math.min(Math.max(1, page), totalPages);
+                            
+                            const paginationContainer = document.querySelector('.custom-pagination');
+                            paginationContainer.innerHTML = `
+                                <li class="custom-page-item ${currentPage === 1 ? 'disabled' : ''}">
+                                    <a class="custom-page-link" href="javascript:;" aria-label="Previous">
+                                        <span aria-hidden="true">上一页</span>
+                                    </a>
+                                </li>
+                            `;
+                            
+                            // Show current page and surrounding pages
+                            for (let i = Math.max(1, currentPage - 2); i <= Math.min(totalPages, currentPage + 2); i++) {
+                                paginationContainer.innerHTML += `
+                                    <li class="custom-page-item ${i === currentPage ? 'active' : ''}">
+                                        <a class="custom-page-link" href="javascript:;">${i}</a>
+                                    </li>
+                                `;
+                            }
+                            
+                            paginationContainer.innerHTML += `
+                                <li class="custom-page-item ${currentPage === totalPages ? 'disabled' : ''}">
+                                    <a class="custom-page-link" href="javascript:;" aria-label="Next">
+                                        <span aria-hidden="true">下一页</span>
+                                    </a>
+                                </li>
+                            `;
+                            
+                            updateTableData(currentPage);
+                            addPaginationEventListeners();
+                        }
+
+                        // Initialize pagination
+                        generatePaginationButtons();
+                        updatePagination(1);
+                    });
+                </script>
             </div>
             <!-- 页脚 -->
             <footer class="bg-white iq-footer">
