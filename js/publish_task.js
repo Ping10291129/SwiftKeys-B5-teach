@@ -13,6 +13,10 @@ function initPublishTask() {
     // 任务状态切换功能
     const tabItems = document.querySelectorAll('.tabs__item');
     const tabSlider = document.querySelector('.tabs__slider');
+    
+    // 初始化Bootstrap抽屉组件
+    const viewDrawer = document.getElementById('viewDrawer');
+    const editDrawer = document.getElementById('editDrawer');
 
     let currentPage = 1;
     const itemsPerPage = 20;
@@ -163,7 +167,7 @@ function initPublishTask() {
         }
 
         tableBody.innerHTML = pageData.map(item => `
-            <tr>
+            <tr data-id="${item.id}">
                 <td>${item.id}</td>
                 <td>${item.name}</td>
                 <td>${item.grade || '-'}</td>
@@ -171,7 +175,11 @@ function initPublishTask() {
                 <td>${item.create_time || '-'}</td>
                 <td>${item.update_time || '-'}</td>
                 <td>
-                    <button class="btn btn-primary btn-sm">编辑</button>
+                    <div style="display: flex; gap: 8px;">
+  <button class="btn btn-primary btn-sm view-btn" data-bs-toggle="offcanvas" data-bs-target="#viewDrawer">查看</button>
+  <button class="btn btn-edit btn-sm edit-btn" data-bs-toggle="offcanvas" data-bs-target="#editDrawer">编辑</button>
+  <button class="btn btn-delete btn-sm delete-btn">删除</button>
+</div>
                 </td>
             </tr>
         `).join('');
@@ -280,4 +288,92 @@ function initPublishTask() {
         const firstSwitchWidth = contentSwitchItems[0].offsetWidth;
         contentSwitchSlider.style.width = `${firstSwitchWidth - 6}px`;
     }
+    
+    // 添加查看按钮点击事件
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('view-btn')) {
+            const row = e.target.closest('tr');
+            const itemId = row.getAttribute('data-id');
+            const item = currentData.find(item => item.id == itemId);
+            
+            if (item) {
+                // 填充查看抽屉的内容
+                document.getElementById('view-id').textContent = item.id || '-';
+                document.getElementById('view-name').textContent = item.name || '-';
+                document.getElementById('view-grade').textContent = item.grade || '-';
+                document.getElementById('view-type').textContent = item.type || '-';
+                document.getElementById('view-create-time').textContent = item.create_time || '-';
+                document.getElementById('view-update-time').textContent = item.update_time || '-';
+                document.getElementById('view-content').textContent = item.content || '-';
+            }
+        }
+    });
+    
+    // 添加编辑按钮点击事件
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('edit-btn')) {
+            const row = e.target.closest('tr');
+            const itemId = row.getAttribute('data-id');
+            const item = currentData.find(item => item.id == itemId);
+            
+            if (item) {
+                // 填充编辑抽屉的表单
+                document.getElementById('edit-id').value = item.id || '';
+                document.getElementById('edit-name').value = item.name || '';
+                
+                const gradeSelect = document.getElementById('edit-grade');
+                if (item.grade) {
+                    Array.from(gradeSelect.options).forEach(option => {
+                        if (option.value === item.grade) {
+                            option.selected = true;
+                        }
+                    });
+                }
+                
+                const typeSelect = document.getElementById('edit-type');
+                if (item.type) {
+                    Array.from(typeSelect.options).forEach(option => {
+                        if (option.value === item.type) {
+                            option.selected = true;
+                        }
+                    });
+                }
+                
+                document.getElementById('edit-content').value = item.content || '';
+            }
+        }
+    });
+    
+    // 添加保存编辑按钮点击事件
+    document.getElementById('save-edit-btn').addEventListener('click', function() {
+        const id = document.getElementById('edit-id').value;
+        const name = document.getElementById('edit-name').value;
+        const grade = document.getElementById('edit-grade').value;
+        const type = document.getElementById('edit-type').value;
+        const content = document.getElementById('edit-content').value;
+        
+        if (!name) {
+            showMessage('error', '任务名称不能为空');
+            return;
+        }
+        
+        // 这里可以添加保存逻辑，例如调用API保存数据
+        // 示例：模拟保存成功
+        showMessage('success', '保存成功');
+        
+        // 关闭抽屉
+        const editDrawerInstance = bootstrap.Offcanvas.getInstance(document.getElementById('editDrawer'));
+        if (editDrawerInstance) {
+            editDrawerInstance.hide();
+        }
+        
+        // 刷新数据
+        const activeTab = document.querySelector('.content-switch__item--active');
+        const contentType = activeTab.getAttribute('data-type');
+        if (contentType === 'article') {
+            fetchArticleData().then(data => updateTableData(data, currentPage));
+        } else {
+            fetchTaskData().then(data => updateTableData(data, currentPage));
+        }
+    });
 }

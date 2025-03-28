@@ -153,7 +153,61 @@ body {
     padding: 6px 12px;
     border-radius: 4px;
     cursor: pointer;
-    transition: background 0.3s ease;
+    transition: all 0.3s ease;
+    margin: 2px;
+}
+
+.btn-edit {
+    background: linear-gradient(45deg, rgba(255, 165, 0, 0.1), rgba(255, 165, 0, 0.05));
+    border: 1px solid rgba(255, 165, 0, 0.6);
+    color: #ffa500;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 2px;
+}
+
+.btn-edit:hover {
+    background: #ff8c00;
+    border-color: #ff8c00;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(255, 165, 0, 0.2);
+}
+
+.btn-delete {
+    background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(255, 69, 0, 0.05));
+    border: 1px solid rgba(255, 69, 0, 0.6);
+    color: #ff4500;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin: 2px;
+}
+
+.btn-delete:hover {
+    background: #ff4500;
+    border-color: #ff4500;
+    color: #fff;
+    box-shadow: 0 2px 8px rgba(255, 69, 0, 0.2);
+}
+
+.btn-action {
+    padding: 4px 8px;
+    font-size: 12px;
+    border: none;
+    background: rgba(0, 128, 255, 0.1);
+    color: rgba(255, 255, 255, 0.9);
+    border-radius: 4px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(0, 128, 255, 0.3);
+}
+
+.btn-action:hover {
+    background: rgba(0, 128, 255, 0.2);
+    color: #fff;
 }
 
 .btn-primary:hover {
@@ -306,7 +360,8 @@ body {
     position: absolute;
     left: 3px;
     top: 9%;
-    width: calc(50% - 6px);  /* 两个按钮时的宽度 */
+    width: calc(50% - 6px);
+    /* 两个按钮时的宽度 */
     height: 80%;
     background: linear-gradient(45deg, #0080ff, #1a90ff);
     border-radius: 4px;
@@ -314,6 +369,6 @@ body {
     box-shadow: 0 2px 8px rgba(0, 128, 255, 0.3);
 }
 
-.content-switch__item[data-type="task"].content-switch__item--active ~ .content-switch__slider {
+.content-switch__item[data-type="task"].content-switch__item--active~.content-switch__slider {
     transform: translateX(calc(100% + 3px));
 }

@@ -80,12 +80,23 @@ function updateSliderPosition(index) {
 
 async function loadRankingData(period, date = '') {
     try {
+        // 首先确保表格头的初始化
+        const tableHead = document.querySelector(`#score table thead tr`);
+        if (tableHead) {
+            tableHead.innerHTML = `
+                <th class="text-center" style="width: 80px;">排名</th>
+                <th style="width: 120px;">姓名</th>
+                <th style="width: 80px;">类型</th>
+                <th style="width: 140px;">打字速度</th>
+                <th style="width: 180px;">总分 (速度×准确率)</th>
+            `;
+        }
+
         const data = await fetchRankingData(period, date);
         if (!data || (!data.chinese?.length && !data.english?.length)) {
-            // 如果数据为空，直接显示暂无数据
             const tableBody = document.querySelector(`#score table tbody`);
             if (tableBody) {
-                tableBody.innerHTML = `<tr><td colspan="4" class="no-data">暂无数据，请选择其他日期</td></tr>`;
+                tableBody.innerHTML = `<tr><td colspan="5" class="no-data text-center">暂无数据，请选择其他日期</td></tr>`;
             }
             return;
         }
@@ -94,7 +105,7 @@ async function loadRankingData(period, date = '') {
         console.error('获取排行榜失败:', error);
         const tableBody = document.querySelector(`#score table tbody`);
         if (tableBody) {
-            tableBody.innerHTML = `<tr><td colspan="4" class="no-data">数据加载失败</td></tr>`;
+            tableBody.innerHTML = `<tr><td colspan="5" class="no-data text-center">数据加载失败</td></tr>`;
         }
         showMessage('error', '获取排行榜数据失败');
     }
@@ -182,7 +193,7 @@ function updateRankingTable(data) {
     if (!tableBody) return;
 
     if (!data.chinese.length && !data.english.length) {
-        tableBody.innerHTML = `<tr><td colspan="6" class="no-data">暂无数据</td></tr>`;
+        tableBody.innerHTML = `<tr><td colspan="5" class="no-data text-center">暂无数据</td></tr>`;
         return;
     }
 

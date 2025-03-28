@@ -141,6 +141,94 @@
                         </li>
                     </ul>
                 </nav>
+                
+                <!-- 查看抽屉组件 -->
+                <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="viewDrawer">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title">查看详情</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <div class="drawer-content">
+                            <div class="mb-3">
+                                <label class="form-label">任务ID</label>
+                                <p id="view-id" class="form-control-static">-</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">任务名称</label>
+                                <p id="view-name" class="form-control-static">-</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">文章年级</label>
+                                <p id="view-grade" class="form-control-static">-</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">文章类型</label>
+                                <p id="view-type" class="form-control-static">-</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">发布时间</label>
+                                <p id="view-create-time" class="form-control-static">-</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">截止时间</label>
+                                <p id="view-update-time" class="form-control-static">-</p>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">文章内容</label>
+                                <div id="view-content" class="form-control-static content-box">-</div>
+                            </div>
+                            <div class="drawer-actions">
+                                <button type="button" class="btn btn-primary" data-bs-dismiss="offcanvas">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <!-- 编辑抽屉组件 -->
+                <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="editDrawer">
+                    <div class="offcanvas-header">
+                        <h5 class="offcanvas-title">编辑任务</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+                    </div>
+                    <div class="offcanvas-body">
+                        <form id="edit-form">
+                            <input type="hidden" id="edit-id">
+                            <div class="mb-3">
+                                <label for="edit-name" class="form-label">任务名称</label>
+                                <input type="text" class="form-control" id="edit-name">
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-grade" class="form-label">文章年级</label>
+                                <select class="form-select" id="edit-grade">
+                                    <option value="">请选择</option>
+                                    <option value="小学">小学</option>
+                                    <option value="初中">初中</option>
+                                    <option value="高中">高中</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-type" class="form-label">文章类型</label>
+                                <select class="form-select" id="edit-type">
+                                    <option value="">请选择</option>
+                                    <option value="记叙文">记叙文</option>
+                                    <option value="说明文">说明文</option>
+                                    <option value="议论文">议论文</option>
+                                    <option value="应用文">应用文</option>
+                                </select>
+                            </div>
+                            <div class="mb-3">
+                                <label for="edit-content" class="form-label">文章内容</label>
+                                <textarea class="form-control" id="edit-content" rows="6"></textarea>
+                            </div>
+                            <div class="drawer-actions">
+                                <button type="button" class="btn btn-primary" id="save-edit-btn">保存</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="offcanvas">取消</button>
+                            </div>
+                        </form>
+                    </div>
+                </div> -->
+                
                 <script>
                     document.addEventListener('DOMContentLoaded', function () {
                         let currentPage = 1;
@@ -274,6 +362,7 @@
     <!-- 引入JavaScript文件 -->
     <script src="js/jquery.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
+    <script src="js/bootstrap.bundle.min.js"></script>
     <script src="js/smooth-scrollbar.js"></script>
     <script src="js/custom.js"></script>
     <script type="module" src="js/main.js"></script>
