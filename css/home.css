@@ -1,0 +1,273 @@
+/* 外层容器，用于整体居中 */
+.tabs-wrapper {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto;
+    /* 可根据需要调整间距 */
+    width: 100%;
+}
+
+/* 最外层容器，使用深色背景与细边框 */
+.tabs {
+    position: relative;
+    display: inline-flex;
+    background-color: #333;
+    /* 深色背景 */
+    border: 1px solid #444;
+    /* 细边框，颜色略浅以区分背景 */
+    border-radius: 4px;
+    /* 小圆角，避免过于生硬 */
+    overflow: hidden;
+    font-size: 12px;
+    /* 较小字体，使整体更紧凑 */
+}
+
+/* 高亮滑块：覆盖选中的选项 */
+.tabs__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 33.3333%;
+    /* 三个选项等分 */
+    height: 100%;
+    background-color: #0080ff;
+    /* 高亮颜色（可自行替换成其他主题色） */
+    transition: left 0.3s ease;
+    /* 平滑过渡 */
+    z-index: 1;
+    /* 在文字下方 */
+}
+
+/* 每个选项按钮 */
+.tabs__item {
+    flex: 1 1 auto;
+    text-align: center;
+    padding: 4px 8px;
+    /* 小内边距，使按钮更紧凑 */
+    color: #ccc;
+    /* 默认文字颜色：比背景稍亮 */
+    text-decoration: none;
+    z-index: 2;
+    /* 保证文字在滑块之上 */
+    transition: color 0.2s ease;
+}
+
+/* 悬停时，文字颜色稍微加亮 */
+.tabs__item:hover {
+    color: #eee;
+}
+
+/* 选中状态，文字变为白色 */
+.tabs__item--active {
+    color: #fff;
+}
+
+/* 从typing.css移动过来的样式 */
+/* 任务状态标签 */
+.task-status {
+    display: inline-block !important;
+    padding: 0px 8px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+}
+
+.task-status-ongoing {
+    background-color: #dfefff !important;
+    border: 1px solid #0080ff !important;
+    color: #0080ff;
+}
+
+.task-status-completed {
+    background-color: #e6f9ef !important;
+    border: 1px solid #00c851 !important;
+    color: #00c851;
+}
+
+.task-status-expired {
+    background-color: #ffe6e8 !important;
+    border: 1px solid #ff3547 !important;
+    color: #ff3547;
+}
+
+.task-status-pending {
+    background-color: #fff8e6 !important;
+    border: 1px solid #ffaa01 !important;
+    color: #ffaa01;
+}
+
+/* 违规标签 */
+.violation-tag {
+    display: inline-block !important;
+    padding: 0px 8px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    background-color: #ff3547 !important;
+    color: #fff !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+/* 违规类型标签 */
+.violation-type {
+    display: inline-block !important;
+    padding: 0px 8px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    font-weight: 500 !important;
+    color: #fff !important;
+    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; */
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+}
+
+.violation-type-copy {
+    background-color: #ff3547 !important;
+}
+
+.violation-type-ai {
+    background-color: #ff9800 !important;
+}
+
+.violation-type-cheat {
+    background-color: #9c27b0 !important;
+}
+
+/* 学生信息 */
+.student-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.student-info .name {
+    font-weight: 600;
+    margin-bottom: 2px;
+}
+
+.student-info .id {
+    font-size: 12px;
+    color: #999;
+}
+
+.student-info .class {
+    font-size: 12px;
+    color: #999;
+}
+
+.action-btn-primary {
+    background-color: #0080ff;
+    color: #fff !important;
+    ;
+}
+
+/* 操作按钮 */
+.action-btn {
+    display: inline-block !important;
+    padding: 6px 12px !important;
+    border-radius: 4px !important;
+    font-size: 12px !important;
+    margin-right: 5px !important;
+    text-decoration: none !important;
+    transition: background-color 0.2s ease !important;
+    font-weight: 500 !important;
+    box-sizing: border-box !important;
+}
+
+.action-btn-primary:hover {
+    background-color: #0066cc !important;
+}
+
+.action-btn-warning {
+    background-color: #ff9800 !important;
+    color: #fff !important;
+}
+
+.action-btn-warning:hover {
+    background-color: #f57c00 !important;
+}
+
+/* 打字相关信息 */
+.typing-speed {
+    font-weight: 600;
+    color: #0080ff;
+}
+
+.typing-accuracy {
+    font-weight: 600;
+    color: #00c851;
+}
+
+.typing-time {
+    font-size: 12px;
+    color: #999;
+}
+
+/* 排名徽章 */
+.rank-badge {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    border-radius: 50%;
+    font-weight: 600;
+    font-size: 12px;
+    margin-right: 8px;
+}
+
+.rank-1 {
+    background-color: #ffd700;
+    color: #333;
+}
+
+.rank-2 {
+    background-color: #c0c0c0;
+    color: #333;
+}
+
+.rank-3 {
+    background-color: #cd7f32;
+    color: #fff;
+}
+
+.rank-other {
+    background-color: #444;
+    color: #fff;
+}
+
+/* 进度条 */
+.progress-bar-wrapper {
+    width: 100%;
+    height: 6px;
+    background-color: #333;
+    border-radius: 3px;
+    overflow: hidden;
+    margin-top: 4px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: linear-gradient(to right, #0080ff, #00c851);
+    border-radius: 3px;
+}
+
+/* 针对 WebKit 浏览器 */
+.overflow-auto::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+.overflow-auto::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.overflow-auto::-webkit-scrollbar-thumb {
+    background-color: rgba(255, 255, 255, 0.3);
+    /* 半透明白色 */
+    border-radius: 3px;
+}
+
+/* 针对 Firefox 浏览器 */
+.overflow-auto {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+}

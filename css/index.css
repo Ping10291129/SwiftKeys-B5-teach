@@ -1,273 +1,343 @@
-/* 外层容器，用于整体居中 */
-.tabs-wrapper {
-    display: flex;
-    justify-content: center;
-    margin: 20px auto;
-    /* 可根据需要调整间距 */
-    width: 100%;
+* {
+	padding: 0;
+	margin: 0;
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	color: #fff;
 }
 
-/* 最外层容器，使用深色背景与细边框 */
-.tabs {
-    position: relative;
-    display: inline-flex;
-    background-color: #333;
-    /* 深色背景 */
-    border: 1px solid #444;
-    /* 细边框，颜色略浅以区分背景 */
-    border-radius: 4px;
-    /* 小圆角，避免过于生硬 */
-    overflow: hidden;
-    font-size: 12px;
-    /* 较小字体，使整体更紧凑 */
+a {
+	text-decoration: none;
+	transition: .3s;
+	padding: 4px 8px;
+	border-radius: 12px;
+	color: #3498db;
 }
 
-/* 高亮滑块：覆盖选中的选项 */
-.tabs__slider {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 33.3333%;
-    /* 三个选项等分 */
-    height: 100%;
-    background-color: #0080ff;
-    /* 高亮颜色（可自行替换成其他主题色） */
-    transition: left 0.3s ease;
-    /* 平滑过渡 */
-    z-index: 1;
-    /* 在文字下方 */
+a:hover {
+	background-color: #c0d6f917;
+	border-radius: 12px;
+	transition: .3s;
 }
 
-/* 每个选项按钮 */
-.tabs__item {
-    flex: 1 1 auto;
-    text-align: center;
-    padding: 4px 8px;
-    /* 小内边距，使按钮更紧凑 */
-    color: #ccc;
-    /* 默认文字颜色：比背景稍亮 */
-    text-decoration: none;
-    z-index: 2;
-    /* 保证文字在滑块之上 */
-    transition: color 0.2s ease;
+.input-c {
+	position: relative;
+	margin-bottom: 20px;
+	width: 100%;
 }
 
-/* 悬停时，文字颜色稍微加亮 */
-.tabs__item:hover {
-    color: #eee;
+.password-toggle {
+	position: absolute;
+	right: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	padding: 0;
+	border: none;
+	background: none;
+	color: #666;
+	cursor: pointer;
+	z-index: 2;
 }
 
-/* 选中状态，文字变为白色 */
-.tabs__item--active {
-    color: #fff;
+.password-toggle:hover {
+	color: #0080ff;
 }
 
-/* 从typing.css移动过来的样式 */
-/* 任务状态标签 */
-.task-status {
-    display: inline-block !important;
-    padding: 0px 8px !important;
-    border-radius: 4px !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
+.password-toggle:focus {
+	outline: none;
+	box-shadow: none;
 }
 
-.task-status-ongoing {
-    background-color: #dfefff !important;
-    border: 1px solid #0080ff !important;
-    color: #0080ff;
+.password-wrapper {
+	position: relative;
+	width: 100%;
 }
 
-.task-status-completed {
-    background-color: #e6f9ef !important;
-    border: 1px solid #00c851 !important;
-    color: #00c851;
+.toggle-password {
+	position: absolute;
+	right: 55px;
+	top: 50%;
+	transform: translateY(-50%);
+	cursor: pointer;
+	color: #8e9399;
+	transition: .3s;
+	padding: 8px;
+	z-index: 3;
 }
 
-.task-status-expired {
-    background-color: #ffe6e8 !important;
-    border: 1px solid #ff3547 !important;
-    color: #ff3547;
+.toggle-password:hover {
+	color: #3498db;
 }
 
-.task-status-pending {
-    background-color: #fff8e6 !important;
-    border: 1px solid #ffaa01 !important;
-    color: #ffaa01;
+/* 确保label在toggle按钮下方 */
+.input-c label {
+	z-index: 2;
 }
 
-/* 违规标签 */
-.violation-tag {
-    display: inline-block !important;
-    padding: 0px 8px !important;
-    border-radius: 4px !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    background-color: #ff3547 !important;
-    color: #fff !important;
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between
 }
 
-/* 违规类型标签 */
-.violation-type {
-    display: inline-block !important;
-    padding: 0px 8px !important;
-    border-radius: 4px !important;
-    font-size: 12px !important;
-    font-weight: 500 !important;
-    color: #fff !important;
-    /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important; */
-    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+form a {
+	display: inline-block;
+	width: max-content;
+	float: right;
 }
 
-.violation-type-copy {
-    background-color: #ff3547 !important;
+button {
+	font-size: 16px;
+	padding: 6px 12px;
+	margin: 6px 12px;
+	color: #fff;
+	border-radius: 88px;
+	outline: none;
+	border: none;
+	transition: .3s;
+	cursor: pointer;
 }
 
-.violation-type-ai {
-    background-color: #ff9800 !important;
+button:hover {
+	box-shadow: #3333333d 0px 2px 3px;
+	transition: .3s;
 }
 
-.violation-type-cheat {
-    background-color: #9c27b0 !important;
+.pop-right-top {
+	display: flex;
+	justify-content: flex-start;
+	flex-direction: column;
 }
 
-/* 学生信息 */
-.student-info {
-    display: flex;
-    flex-direction: column;
+#register {
+	background: none;
+	border: 2px solid #0b57d0;
+	color: #0b57d0;
 }
 
-.student-info .name {
-    font-weight: 600;
-    margin-bottom: 2px;
+#register:active {
+	transition: 0;
+	opacity: .7;
 }
 
-.student-info .id {
-    font-size: 12px;
-    color: #999;
+.right {
+	display: flex;
+	justify-content: right;
 }
 
-.student-info .class {
-    font-size: 12px;
-    color: #999;
+#login {
+	background: #3498db;
+	border: none;
+	color: #fff;
+	padding: 10px 24px;
+	font-weight: 500;
+	box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
 }
 
-.action-btn-primary {
-    background-color: #0080ff;
-    color: #fff !important;
-    ;
+#login .button-content {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
 }
 
-/* 操作按钮 */
-.action-btn {
-    display: inline-block !important;
-    padding: 6px 12px !important;
-    border-radius: 4px !important;
-    font-size: 12px !important;
-    margin-right: 5px !important;
-    text-decoration: none !important;
-    transition: background-color 0.2s ease !important;
-    font-weight: 500 !important;
-    box-sizing: border-box !important;
+#login .spinner-border {
+	width: 1rem;
+	height: 1rem;
+	margin-left: 8px;
 }
 
-.action-btn-primary:hover {
-    background-color: #0066cc !important;
+#login:active {
+	transition: 0;
+	opacity: .7;
 }
 
-.action-btn-warning {
-    background-color: #ff9800 !important;
-    color: #fff !important;
+input {
+	width: 94%;
+	padding: 12px 3%;
+	border: 2px solid #3a4147;
+	border-radius: 8px;
+	font-size: 18px;
+	outline: none;
+	background-color: #1e242a;
+	color: #fff;
 }
 
-.action-btn-warning:hover {
-    background-color: #f57c00 !important;
+label {
+	position: absolute;
+	top: 50%;
+	left: 10px;
+	transform: translateY(-50%);
+	font-size: 16px;
+	color: #8e9399;
+	transition: all 0.3s ease;
+	user-select: none;
+	cursor: text;
 }
 
-/* 打字相关信息 */
-.typing-speed {
-    font-weight: 600;
-    color: #0080ff;
+input:focus+label,
+input:valid+label {
+	top: 0;
+	left: 12px;
+	font-size: 12px;
+	padding: 0 6px;
+	border-radius: 4px;
+	font-size: 14px;
+	background: #1e242a;
+	color: #3498db;
 }
 
-.typing-accuracy {
-    font-weight: 600;
-    color: #00c851;
+input:focus {
+	border-color: #3498db;
+	box-shadow: 0 0 0 1px #3498db;
 }
 
-.typing-time {
-    font-size: 12px;
-    color: #999;
+.pop {
+	width: 70vw;
+	height: 45vh;
+	min-height: 340px;
+	padding: 30px;
+	border-radius: 32px;
+	background-color: #2a3238;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	position: relative;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-/* 排名徽章 */
-.rank-badge {
-    display: inline-block;
-    width: 24px;
-    height: 24px;
-    line-height: 24px;
-    text-align: center;
-    border-radius: 50%;
-    font-weight: 600;
-    font-size: 12px;
-    margin-right: 8px;
+.pop-left,
+.pop-right {
+	width: 50%;
+	height: 100%;
 }
 
-.rank-1 {
-    background-color: #ffd700;
-    color: #333;
+.pop-left {
+	display: flex;
+	justify-content: left;
+	text-align: left;
+	flex-direction: column;
 }
 
-.rank-2 {
-    background-color: #c0c0c0;
-    color: #333;
+.pop-bottom {
+	height: 80%;
+	display: flex;
+	justify-content: center;
 }
 
-.rank-3 {
-    background-color: #cd7f32;
-    color: #fff;
+.logo {
+	position: absolute;
+	font-size: 24px;
+	color: #fff;
+	background-color: #3498db;
+	padding: 8px 16px;
+	border-radius: 12px;
+	user-select: none;
+	cursor: pointer;
+	transition: .4s;
+	box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+	font-family: Ding;
 }
 
-.rank-other {
-    background-color: #444;
-    color: #fff;
+.logo:hover {
+	transform: scale(1.1);
+	transition: .4s;
+	box-shadow: 0 3px 8px rgba(52, 152, 219, 0.42);
 }
 
-/* 进度条 */
-.progress-bar-wrapper {
-    width: 100%;
-    height: 6px;
-    background-color: #333;
-    border-radius: 3px;
-    overflow: hidden;
-    margin-top: 4px;
+.pop-top {
+	height: 20%;
+	font-size: 28px;
 }
 
-.progress-bar {
-    height: 100%;
-    background: linear-gradient(to right, #0080ff, #00c851);
-    border-radius: 3px;
+#last {
+	text-align: right;
+	height: 33px;
+	line-height: 33px
 }
 
-/* 针对 WebKit 浏览器 */
-.overflow-auto::-webkit-scrollbar {
-    width: 6px;
-    height: 6px;
+body {
+	background-color: #1e242a;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100vh;
 }
 
-.overflow-auto::-webkit-scrollbar-track {
-    background: transparent;
+h1 {
+	font-weight: 300;
+	font-size: 52px;
+	margin-bottom: 8px;
+	color: #fff;
 }
 
-.overflow-auto::-webkit-scrollbar-thumb {
-    background-color: rgba(255, 255, 255, 0.3);
-    /* 半透明白色 */
-    border-radius: 3px;
+.form-bottom {
+	height: 33px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
 }
 
-/* 针对 Firefox 浏览器 */
-.overflow-auto {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
+/* 覆盖Bootstrap的默认样式 */
+.pop button#login {
+	background: #3498db;
+	border: none;
+	color: #fff !important;
+	padding: 10px 24px;
+	font-weight: 500;
+	box-shadow: 0 2px 8px rgba(52, 152, 219, 0.3);
+	width: auto;
+	display: inline-flex;
+	align-items: center;
+}
+
+/* 覆盖Bootstrap的默认样式 */
+.pop button#login:focus {
+	outline: none;
+}
+
+.pop button#login:disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+}
+
+.pop .input-c input {
+	width: 94%;
+	padding: 12px 3%;
+	border: 2px solid #3a4147;
+	border-radius: 8px;
+	font-size: 18px;
+	outline: none;
+	background-color: #1e242a;
+	color: #fff;
+	height: auto;
+}
+
+.pop .form-bottom a {
+	color: #3498db !important;
+	text-decoration: none;
+}
+
+.pop .spinner-border {
+	color: #fff !important;
+}
+
+.pop .button-content {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+}
+
+/* 确保所有文本颜色正确 */
+.pop input::placeholder,
+.pop label,
+.pop p,
+.pop h1,
+.pop .button-text {
+	color: inherit;
+}
+
+/* 修复按钮hover状态 */
+.pop button#login:hover {
+	background: #2980b9;
+	box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
 }

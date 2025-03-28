@@ -1,0 +1,1239 @@
+<!doctype html>
+<html lang="zh">
+
+	<head>
+		<!-- Required meta tags -->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>SwiftKeys后台管理</title>
+		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="./css/font.css">
+		<link rel="stylesheet" href="./css/home.css">
+	</head>
+
+	<body data-page="home">
+		<div id="loading">
+			<div id="loading-center">
+				<div class="spinner-border text-primary" role="status"></div>
+			</div>
+		</div>
+		<div class="wrapper">
+			<div id="sidebar"></div>
+			<!-- Page Content  -->
+			<div id="content-page" class="content-page">
+				<!-- TOP Nav Bar -->
+					<div id="header"></div>
+				<!-- TOP Nav Bar END -->
+				<div class="container-fluid">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="iq-card">
+								<!-- <div class="iq-card-body">
+								<div class="yshead">
+									<ul class="row">
+										<li class=" col-md-8">
+											<div class="pull-left"><img src="images/user1.jpg"></div>
+											<div class="pull-left">
+												<h2>早安，韩修洁</h2>
+												<p>主任医师 <span>|</span>联系电话：0551-123456<span>|</span>xxx中心社区医院</p>
+											</div>
+										</li>
+										<li class=" col-md-4">
+											<div class="ysnm">
+												<div class="pull-right">
+													<p>审核进度</p>
+													<span>8</span> / <i>24</i>
+												</div>
+												<div class="pull-right">
+													<p>接诊总数</p>
+													<span>56</span>
+												</div>
+											</div>
+										</li>
+									</ul>
+								</div>
+							</div> -->
+							</div>
+						</div>
+
+						<div class="col-md-12">
+							<div class="iq-card">
+								<div class="iq-card-header d-flex justify-content-between">
+									<div class="iq-header-title">
+										<h4 class="card-title">数据统计</h4>
+									</div>
+									<div>
+										<a href="echarts.html" style="color: #666; font-size: 14px;">查看全部</a>
+									</div>
+								</div>
+								<div class="iq-card-body">
+									<ul class="clearfix row">
+										<li class="col-md-2">
+											<div class="ysnm ysnm2">
+												<div>
+													<p>累计用户打字数量</p>
+													<span>4320</span><i>人</i>
+												</div>
+												<div>
+													<p>本周用户打字数量</p>
+													<span>342</span><i>人</i>
+												</div>
+											</div>
+										</li>
+										<li class="col-md-10 clearfix">
+											<!-- 控制按钮 -->
+											<div class="clearfix">
+												<div class="pull-right">
+													<div class="tabs-wrapper">
+														<div class="tabs">
+															<!-- 滑块，用于高亮当前选中项 -->
+															<div class="tabs__slider"></div>
+															<a href="#" class="tabs__item tabs__item--active"
+																data-range="week">一周</a>
+															<a href="#" class="tabs__item" data-range="month">一月</a>
+															<a href="#" class="tabs__item" data-range="all">全部</a>
+														</div>
+													</div>
+													<!-- 可选的日期选择框 -->
+													<!-- <span class="pull-left p-t-10">
+													<input type="text" class="form-control date date1"
+														placeholder="请选择时间" id="date" lay-key="1"
+														style="min-width: 240px;">
+												</span> -->
+												</div>
+											</div>
+											<!-- 图表容器 -->
+											<div id="echart1" style="height: 200px;"></div>
+										</li>
+									</ul>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-12">
+							<div class="iq-card">
+								<div class="iq-card-header d-flex justify-content-between">
+									<div class="iq-header-title">
+										<h4 class="card-title">已发布打字任务</h4>
+									</div>
+									<div>
+										<a href="任务" style="color: #666; font-size: 14px;">查看全部</a>
+									</div>
+								</div>
+								<div class="iq-card-body">
+									<!-- 增加滚动容器 -->
+									<div class="overflow-auto" style="max-height:300px;">
+										<table class="table tablemd">
+											<thead>
+												<tr>
+													<th>任务名称</th>
+													<th>班级/学生</th>
+													<th>文章信息</th>
+													<th>截止时间</th>
+													<th>状态</th>
+													<th>操作</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<p><strong>期中打字测试</strong></p>
+														<p class="typing-time">发布于：2024-05-10</p>
+													</td>
+													<td>
+														<p>高一(3)班</p>
+														<p class="typing-time">已完成：24/45人</p>
+													</td>
+													<td>
+														<p>《计算机基础知识》</p>
+														<p class="typing-time">字数：1500字</p>
+													</td>
+													<td>
+														<p>2024-05-20</p>
+														<p class="typing-time">剩余：3天</p>
+													</td>
+													<td>
+														<span class="task-status task-status-ongoing">进行中</span>
+													</td>
+													<td>
+														<a href="#" class="action-btn action-btn-primary">查看详情</a>
+														<a href="#" class="action-btn action-btn-secondary">编辑</a>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p><strong>英文打字练习</strong></p>
+														<p class="typing-time">发布于：2024-05-08</p>
+													</td>
+													<td>
+														<p>高二(1)班</p>
+														<p class="typing-time">已完成：38/42人</p>
+													</td>
+													<td>
+														<p>《The Digital Age》</p>
+														<p class="typing-time">字数：1200字</p>
+													</td>
+													<td>
+														<p>2024-05-15</p>
+														<p class="typing-time">已截止</p>
+													</td>
+													<td>
+														<span class="task-status task-status-completed">已完成</span>
+													</td>
+													<td>
+														<a href="#" class="action-btn action-btn-primary">查看详情</a>
+														<a href="#" class="action-btn action-btn-secondary">导出成绩</a>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p><strong>速度挑战赛</strong></p>
+														<p class="typing-time">发布于：2024-05-12</p>
+													</td>
+													<td>
+														<p>高三(5)班</p>
+														<p class="typing-time">已完成：12/46人</p>
+													</td>
+													<td>
+														<p>《信息技术与现代生活》</p>
+														<p class="typing-time">字数：2000字</p>
+													</td>
+													<td>
+														<p>2024-05-25</p>
+														<p class="typing-time">剩余：8天</p>
+													</td>
+													<td>
+														<span class="task-status task-status-ongoing">进行中</span>
+													</td>
+													<td>
+														<a href="#" class="action-btn action-btn-primary">查看详情</a>
+														<a href="#" class="action-btn action-btn-secondary">编辑</a>
+													</td>
+												</tr>
+												<!-- 增加更多数据行测试滚动 -->
+												<tr>
+													<td>
+														<p><strong>期末综合测试</strong></p>
+														<p class="typing-time">发布于：2024-04-28</p>
+													</td>
+													<td>
+														<p>高一(1)班</p>
+														<p class="typing-time">已完成：30/40人</p>
+													</td>
+													<td>
+														<p>《综合知识测试》</p>
+														<p class="typing-time">字数：1800字</p>
+													</td>
+													<td>
+														<p>2024-05-05</p>
+														<p class="typing-time">已截止</p>
+													</td>
+													<td>
+														<span class="task-status task-status-completed">已完成</span>
+													</td>
+													<td>
+														<a href="#" class="action-btn action-btn-primary">查看详情</a>
+														<a href="#" class="action-btn action-btn-secondary">导出成绩</a>
+													</td>
+												</tr>
+												<tr>
+													<td>
+														<p><strong>专项练习</strong></p>
+														<p class="typing-time">发布于：2024-05-01</p>
+													</td>
+													<td>
+														<p>高二(2)班</p>
+														<p class="typing-time">已完成：20/35人</p>
+													</td>
+													<td>
+														<p>《速度与准确性》</p>
+														<p class="typing-time">字数：1600字</p>
+													</td>
+													<td>
+														<p>2024-05-10</p>
+														<p class="typing-time">剩余：1天</p>
+													</td>
+													<td>
+														<span class="task-status task-status-ongoing">进行中</span>
+													</td>
+													<td>
+														<a href="#" class="action-btn action-btn-primary">查看详情</a>
+														<a href="#" class="action-btn action-btn-secondary">编辑</a>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="iq-card">
+								<div class="iq-card-header d-flex justify-content-between">
+									<div class="iq-header-title">
+										<h4 class="card-title">未完成名单</h4>
+									</div>
+									<div>
+										<a href="unfinished_students.html"
+											style="color: #666; font-size: 14px;">查看全部</a>
+									</div>
+								</div>
+								<div class="iq-card-body">
+									<!-- 滚动容器 -->
+									<div class="overflow-auto" style="max-height:300px;">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>学生信息</th>
+													<th>班级/学号</th>
+													<th>打字速度</th>
+													<th>完成情况</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>
+														<div class="student-info">
+															<span class="name">李明</span>
+														</div>
+													</td>
+													<td>
+														<p>高一(2)班</p>
+														<p class="typing-time">学号：20240089</p>
+													</td>
+													<td>
+														<p><strong>85</strong> 字/分钟</p>
+														<p class="typing-time">准确率：92.5%</p>
+													</td>
+													<td><span class="task-status task-status-ongoing">进行中</span></td>
+												</tr>
+												<tr>
+													<td>
+														<div class="student-info">
+															<span class="name">张伟</span>
+														</div>
+													</td>
+													<td>
+														<p>高一(3)班</p>
+														<p class="typing-time">学号：20240078</p>
+													</td>
+													<td>
+														<p><strong>108</strong> 字/分钟</p>
+														<p class="typing-time">准确率：97.8%</p>
+													</td>
+													<td><span class="task-status task-status-completed">已完成</span></td>
+												</tr>
+												<tr>
+													<td>
+														<div class="student-info">
+															<span class="name">王浩</span>
+														</div>
+													</td>
+													<td>
+														<p>高二(1)班</p>
+														<p class="typing-time">学号：20230105</p>
+													</td>
+													<td>
+														<p><strong>120</strong> 字/分钟</p>
+														<p class="typing-time">准确率：98.5%</p>
+													</td>
+													<td><span class="task-status task-status-completed">已完成</span></td>
+												</tr>
+												<tr>
+													<td>
+														<div class="student-info">
+															<span class="name">陈静</span>
+														</div>
+													</td>
+													<td>
+														<p>高二(3)班</p>
+														<p class="typing-time">学号：20230142</p>
+													</td>
+													<td>
+														<p><strong>102</strong> 字/分钟</p>
+														<p class="typing-time">准确率：96.5%</p>
+													</td>
+													<td><span class="task-status task-status-pending">待完成</span></td>
+												</tr>
+												<tr>
+													<td>
+														<div class="student-info">
+															<span class="name">李梅</span>
+														</div>
+													</td>
+													<td>
+														<p>高三(5)班</p>
+														<p class="typing-time">学号：20220211</p>
+													</td>
+													<td>
+														<p><strong>115</strong> 字/分钟</p>
+														<p class="typing-time">准确率：99.2%</p>
+													</td>
+													<td><span class="task-status task-status-expired">已过期</span></td>
+												</tr>
+												<!-- 新增多行数据 -->
+												<tr>
+													<td>
+														<div class="student-info">
+															<span class="name">赵强</span>
+														</div>
+													</td>
+													<td>
+														<p>高一(1)班</p>
+														<p class="typing-time">学号：20240012</p>
+													</td>
+													<td>
+														<p><strong>95</strong> 字/分钟</p>
+														<p class="typing-time">准确率：93.5%</p>
+													</td>
+													<td><span class="task-status task-status-ongoing">进行中</span></td>
+												</tr>
+												<tr>
+													<td>
+														<div class="student-info">
+															<span class="name">孙丽</span>
+														</div>
+													</td>
+													<td>
+														<p>高二(2)班</p>
+														<p class="typing-time">学号：20230133</p>
+													</td>
+													<td>
+														<p><strong>110</strong> 字/分钟</p>
+														<p class="typing-time">准确率：97.0%</p>
+													</td>
+													<td><span class="task-status task-status-completed">已完成</span></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="iq-card">
+								<div class="iq-card-header d-flex justify-content-between">
+									<div class="iq-header-title">
+										<h4 class="card-title">违规学生名单</h4>
+									</div>
+									<div>
+										<a href="violation_list.html" style="color: #666; font-size: 14px;">查看全部</a>
+									</div>
+								</div>
+								<div class="iq-card-body">
+									<!-- 滚动容器 -->
+									<div class="overflow-auto" style="max-height:300px;">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>学生信息</th>
+													<th>班级/学号</th>
+													<th>违规类型</th>
+													<th>操作</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>张明</td>
+													<td>
+														<p>高一(3)班</p>
+														<p class="typing-time">学号：20240101</p>
+													</td>
+													<td><span class="violation-type violation-type-copy">数据异常</span>
+													</td>
+													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+												</tr>
+												<tr>
+													<td>李华</td>
+													<td>
+														<p>高二(1)班</p>
+														<p class="typing-time">学号：20230205</p>
+													</td>
+													<td><span class="violation-type violation-type-copy">数据异常</span>
+													</td>
+													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+												</tr>
+												<tr>
+													<td>王芳</td>
+													<td>
+														<p>高三(5)班</p>
+														<p class="typing-time">学号：20220318</p>
+													</td>
+													<td><span class="violation-type violation-type-copy">数据异常</span>
+													</td>
+													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+												</tr>
+												<tr>
+													<td>赵强</td>
+													<td>
+														<p>高一(2)班</p>
+														<p class="typing-time">学号：20240056</p>
+													</td>
+													<td><span class="violation-type violation-type-copy">数据异常</span>
+													</td>
+													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+												</tr>
+												<tr>
+													<td>陈明</td>
+													<td>
+														<p>高二(3)班</p>
+														<p class="typing-time">学号：20230127</p>
+													</td>
+													<td><span class="violation-type violation-type-copy">数据异常</span>
+													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+												</tr>
+												<!-- 增加更多数据行 -->
+												<tr>
+													<td>孙强</td>
+													<td>
+														<p>高一(1)班</p>
+														<p class="typing-time">学号：20240034</p>
+													</td>
+													<td><span class="violation-type violation-type-copy">数据异常</span>
+													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+												</tr>
+												<tr>
+													<td>刘红</td>
+													<td>
+														<p>高二(2)班</p>
+														<p class="typing-time">学号：20230178</p>
+													</td>
+													<td><span class="violation-type violation-type-copy">数据异常</span>
+													<td><a href="#" class="action-btn action-btn-warning">查看详情</a></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-md-6">
+							<div class="iq-card">
+								<div class="iq-card-header d-flex justify-content-between">
+									<div class="iq-header-title">
+										<h4 class="card-title">打字速度排行榜</h4>
+									</div>
+									<div>
+										<a href="ranking_list.html" style="color: #666; font-size: 14px;">查看全部</a>
+									</div>
+								</div>
+								<div class="iq-card-body">
+									<!-- 滚动容器 -->
+									<div class="overflow-auto" style="max-height:300px;">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>排名</th>
+													<th>学生信息</th>
+													<th>班级/学号</th>
+													<th>打字速度</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td><span class="rank-badge rank-1">1</span></td>
+													<td>王浩</td>
+													<td>
+														<p>高二(1)班</p>
+														<p class="typing-time">学号：20230105</p>
+													</td>
+													<td>
+														<p><strong>120</strong> 字/分钟</p>
+														<p class="typing-time">准确率：98.5%</p>
+													</td>
+												</tr>
+												<tr>
+													<td><span class="rank-badge rank-2">2</span></td>
+													<td>李梅</td>
+													<td>
+														<p>高三(5)班</p>
+														<p class="typing-time">学号：20220211</p>
+													</td>
+													<td>
+														<p><strong>115</strong> 字/分钟</p>
+														<p class="typing-time">准确率：99.2%</p>
+													</td>
+												</tr>
+												<tr>
+													<td><span class="rank-badge rank-3">3</span></td>
+													<td>张伟</td>
+													<td>
+														<p>高一(3)班</p>
+														<p class="typing-time">学号：20240078</p>
+													</td>
+													<td>
+														<p><strong>108</strong> 字/分钟</p>
+														<p class="typing-time">准确率：97.8%</p>
+													</td>
+												</tr>
+												<tr>
+													<td><span class="rank-badge">4</span></td>
+													<td>陈静</td>
+													<td>
+														<p>高二(3)班</p>
+														<p class="typing-time">学号：20230142</p>
+													</td>
+													<td>
+														<p><strong>102</strong> 字/分钟</p>
+														<p class="typing-time">准确率：96.5%</p>
+													</td>
+												</tr>
+												<tr>
+													<td><span class="rank-badge">5</span></td>
+													<td>赵阳</td>
+													<td>
+														<p>高一(2)班</p>
+														<p class="typing-time">学号：20240033</p>
+													</td>
+													<td>
+														<p><strong>98</strong> 字/分钟</p>
+														<p class="typing-time">准确率：95.9%</p>
+													</td>
+												</tr>
+												<!-- 增加更多数据行 -->
+												<tr>
+													<td><span class="rank-badge">6</span></td>
+													<td>孙红</td>
+													<td>
+														<p>高二(2)班</p>
+														<p class="typing-time">学号：20230188</p>
+													</td>
+													<td>
+														<p><strong>105</strong> 字/分钟</p>
+														<p class="typing-time">准确率：97.2%</p>
+													</td>
+												</tr>
+												<tr>
+													<td><span class="rank-badge">7</span></td>
+													<td>周杰</td>
+													<td>
+														<p>高三(1)班</p>
+														<p class="typing-time">学号：20220345</p>
+													</td>
+													<td>
+														<p><strong>99</strong> 字/分钟</p>
+														<p class="typing-time">准确率：96.0%</p>
+													</td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="iq-card">
+								<div class="iq-card-header d-flex justify-content-between">
+									<div class="iq-header-title">
+										<h4 class="card-title">最近活跃学生</h4>
+									</div>
+								</div>
+								<div class="iq-card-body">
+									<!-- 滚动容器 -->
+									<div class="overflow-auto" style="max-height:300px;">
+										<table class="table">
+											<thead>
+												<tr>
+													<th>学生信息</th>
+													<th>班级/学号</th>
+													<th>最近活动</th>
+													<th>完成情况</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>刘洋</td>
+													<td>
+														<p>高一(3)班</p>
+														<p class="typing-time">学号：20240102</p>
+													</td>
+													<td>
+														<p>完成《计算机基础知识》</p>
+														<p class="typing-time">2024-05-15 14:30</p>
+													</td>
+													<td><span class="task-status task-status-completed">已完成</span></td>
+												</tr>
+												<tr>
+													<td>张丽</td>
+													<td>
+														<p>高二(1)班</p>
+														<p class="typing-time">学号：20230118</p>
+													</td>
+													<td>
+														<p>开始《The Digital Age》</p>
+														<p class="typing-time">2024-05-15 13:45</p>
+													</td>
+													<td><span class="task-status task-status-ongoing">进行中</span></td>
+												</tr>
+												<tr>
+													<td>王强</td>
+													<td>
+														<p>高三(5)班</p>
+														<p class="typing-time">学号：20220056</p>
+													</td>
+													<td>
+														<p>完成《信息技术与现代生活》</p>
+														<p class="typing-time">2024-05-15 11:20</p>
+													</td>
+													<td><span class="task-status task-status-completed">已完成</span></td>
+												</tr>
+												<tr>
+													<td>李明</td>
+													<td>
+														<p>高一(2)班</p>
+														<p class="typing-time">学号：20240089</p>
+													</td>
+													<td>
+														<p>开始《速度挑战赛》</p>
+														<p class="typing-time">2024-05-15 10:15</p>
+													</td>
+													<td><span class="task-status task-status-ongoing">进行中</span></td>
+												</tr>
+												<tr>
+													<td>陈华</td>
+													<td>
+														<p>高二(3)班</p>
+														<p class="typing-time">学号：20230075</p>
+													</td>
+													<td>
+														<p>完成《英文打字练习》</p>
+														<p class="typing-time">2024-05-15 09:30</p>
+													</td>
+													<td><span class="task-status task-status-completed">已完成</span></td>
+												</tr>
+												<!-- 增加更多数据行 -->
+												<tr>
+													<td>赵敏</td>
+													<td>
+														<p>高一(4)班</p>
+														<p class="typing-time">学号：20240123</p>
+													</td>
+													<td>
+														<p>完成《基础打字练习》</p>
+														<p class="typing-time">2024-05-15 08:50</p>
+													</td>
+													<td><span class="task-status task-status-completed">已完成</span></td>
+												</tr>
+												<tr>
+													<td>周玲</td>
+													<td>
+														<p>高二(4)班</p>
+														<p class="typing-time">学号：20230210</p>
+													</td>
+													<td>
+														<p>开始《速度挑战赛》</p>
+														<p class="typing-time">2024-05-15 08:20</p>
+													</td>
+													<td><span class="task-status task-status-ongoing">进行中</span></td>
+												</tr>
+											</tbody>
+										</table>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+
+				</div>
+				<!-- Footer -->
+				<footer class="bg-white iq-footer">
+					<div class="container-fluid">
+						<div class="row">
+							<div class="col-lg-6">
+								<ul class="list-inline mb-0">
+									<li class="list-inline-item"><a href="#">使用帮助</a></li>
+									<li class="list-inline-item"><a href="#">进入官网</a></li>
+								</ul>
+							</div>
+							<div class="col-lg-6 text-right">
+								Copyright 2024 <a href="">SwiftKeys后台管理</a> 版权所有
+							</div>
+						</div>
+					</div>
+				</footer>
+				<!-- Footer END -->
+			</div>
+		</div>
+		<!-- Wrapper END -->
+
+		<!-- Optional JavaScript -->
+		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/bootstrap.min.js"></script>
+		<script src="js/smooth-scrollbar.js"></script>
+		<script src="js/custom.js"></script>
+		<script src="js/echarts.min.js"></script>
+		<script src="js/home.js"></script>
+		<script type="module" src="js/main.js"></script>
+
+		<script>
+			$(function() {
+				// 生成最近 60 天的数据
+				function generateFullData() {
+					var fullDataX = [];
+					var dataMale = [];
+					var dataFemale = [];
+					var now = new Date();
+					for (var i = 59; i >= 0; i--) {
+						var d = new Date(now.getTime() - i * 24 * 3600 * 1000);
+						var month = d.getMonth() + 1;
+						var day = d.getDate();
+						fullDataX.push((month < 10 ? '0' + month : month) + '-' + (day < 10 ? '0' + day : day));
+						dataMale.push(Math.round(Math.random() * 100) + 50); // 男生随机数据
+						dataFemale.push(Math.round(Math.random() * 100) + 50); // 女生随机数据
+					}
+					return {
+						fullDataX,
+						dataMale,
+						dataFemale
+					};
+				}
+
+				// 存储全量数据
+				var fullData = generateFullData();
+
+				// 初始化 ECharts 实例
+				var myChart = echarts.init(document.getElementById('echart1'));
+
+				// 更新统计数据
+				function updateStats(dataMale, dataFemale) {
+					// 计算所有数据的总和
+					const total = dataMale.reduce((a, b) => a + b, 0) + dataFemale.reduce((a, b) => a + b, 0);
+					// 只计算最近7天的数据总和
+					const weekTotal = (dataMale.slice(-7).reduce((a, b) => a + b, 0) + dataFemale.slice(-7).reduce((a,
+						b) => a + b, 0)) * 0.8;
+					document.querySelector('.ysnm2 div:first-child span').textContent = total;
+					document.querySelector('.ysnm2 div:last-child span').textContent = Math.round(weekTotal);
+				}
+
+				// 更新图表函数
+				function updateChart(range) {
+					let dataX = [];
+					let dataMale = [];
+					let dataFemale = [];
+					let total = fullData.fullDataX.length;
+
+					// 处理不同时间范围的数据
+					if (range === 'week') {
+						dataX = fullData.fullDataX.slice(total - 7);
+						dataMale = fullData.dataMale.slice(total - 7);
+						dataFemale = fullData.dataFemale.slice(total - 7);
+					} else if (range === 'month') {
+						dataX = fullData.fullDataX.slice(total - 30);
+						dataMale = fullData.dataMale.slice(total - 30);
+						dataFemale = fullData.dataFemale.slice(total - 30);
+					} else if (range === 'all') {
+						dataX = fullData.fullDataX;
+						dataMale = fullData.dataMale;
+						dataFemale = fullData.dataFemale;
+					}
+
+					// 更新统计数据
+					updateStats(dataMale, dataFemale);
+
+					// 设置图表配置
+					const option = {
+						tooltip: {
+							trigger: 'axis',
+							axisPointer: {
+								type: 'cross'
+							},
+							backgroundColor: 'rgba(30, 36, 42, 0.38)',
+							textStyle: {
+								color: '#fff',
+								fontSize: 12
+							},
+							extraCssText: 'backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); padding: 10px; border-radius: 8px;'
+						},
+						toolbox: {
+							top: '0%',
+							right: '10%',
+							feature: {
+								saveAsImage: {
+									title: '保存图片'
+								},
+								dataView: {
+									title: '数据视图'
+								},
+								magicType: {
+									type: ['stack', 'tiled', 'line', 'bar'],
+									title: {
+										stack: '堆叠',
+										tiled: '平铺',
+										line: '折线',
+										bar: '柱状'
+									}
+								}
+							}
+						},
+						color: ["#0080ff", "#FF69B4"],
+						legend: {
+							top: '5%',
+							textStyle: {
+								color: '#666',
+								fontSize: 12
+							},
+						},
+						dataZoom: [], // 默认为空数组，可根据需要加入缩放
+						xAxis: {
+							type: 'category',
+							name: '日期',
+							nameLocation: 'start',
+							boundaryGap: false,
+							data: dataX,
+							splitLine: {
+								show: true,
+								lineStyle: {
+									color: '#666',
+									type: 'dotted'
+								}
+							},
+							axisTick: {
+								show: false
+							},
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: '#666'
+								}
+							},
+							axisLabel: {
+								textStyle: {
+									color: '#777',
+									fontSize: 12
+								}
+							}
+						},
+						yAxis: {
+							type: 'value',
+							name: '人数',
+							position: 'right',
+							axisLine: {
+								show: true,
+								lineStyle: {
+									color: '#665'
+								}
+							},
+							axisTick: {
+								show: false
+							},
+							splitNumber: 4,
+							splitLine: {
+								show: true,
+								lineStyle: {
+									color: '#666',
+									type: 'dotted'
+								}
+							},
+							axisLabel: {
+								textStyle: {
+									color: '#999',
+									fontSize: 12
+								}
+							}
+						},
+						grid: {
+							top: '20%',
+							bottom: '10%',
+							right: '5%',
+							left: '5%',
+							containLabel: true
+						},
+						series: [{
+							name: '男生',
+							type: 'line',
+							stack: '总量',
+							smooth: true,
+							showSymbol: false,
+							symbolSize: 0,
+							data: dataMale,
+							itemStyle: {
+								// 使用渐变色
+								color: {
+									type: 'linear',
+									x: 0,
+									y: 0,
+									x2: 0,
+									y2: 1,
+									colorStops: [{
+											offset: 0,
+											color: '#4B96FF'
+										},
+										{
+											offset: 1,
+											color: '#2B5FF7'
+										}
+									]
+								}
+							},
+							lineStyle: {
+								width: 3,
+								shadowColor: 'rgba(43,95,247, 0.3)',
+								shadowBlur: 10,
+								shadowOffsetY: 20
+							},
+							areaStyle: {
+								opacity: 0.2,
+								color: {
+									type: 'linear',
+									x: 0,
+									y: 0,
+									x2: 0,
+									y2: 1,
+									colorStops: [{
+											offset: 0,
+											color: '#4B96FF'
+										},
+										{
+											offset: 1,
+											color: '#fff'
+										}
+									]
+								}
+							},
+							markLine: {
+								data: [{
+									type: 'average',
+									name: '均'
+								}],
+								label: {
+									position: 'start',
+									formatter: function(params) {
+										let val = params.value || ((params.data && params.data.value) ||
+											0);
+										let rounded = Math.round(val);
+										return '平均:' + rounded;
+									},
+									fontSize: 12,
+									color: '#4B96FF'
+								}
+							},
+							animationDuration: 1000,
+							animationEasing: 'cubicOut'
+						}, {
+							name: '女生',
+							type: 'line',
+							smooth: true,
+							showSymbol: false,
+							symbolSize: 0,
+							stack: '总量',
+							data: dataFemale,
+							itemStyle: {
+								color: {
+									type: 'linear',
+									x: 0,
+									y: 0,
+									x2: 0,
+									y2: 1,
+									colorStops: [{
+											offset: 0,
+											color: '#FF69B4'
+										},
+										{
+											offset: 1,
+											color: '#FF1493'
+										}
+									]
+								}
+							},
+							lineStyle: {
+								width: 3,
+								shadowColor: 'rgba(255,105,180, 0.3)',
+								shadowBlur: 10,
+								shadowOffsetY: 20
+							},
+							areaStyle: {
+								opacity: 0.2,
+								color: {
+									type: 'linear',
+									x: 0,
+									y: 0,
+									x2: 0,
+									y2: 1,
+									colorStops: [{
+											offset: 0,
+											color: '#FF69B4'
+										},
+										{
+											offset: 1,
+											color: '#fff'
+										}
+									]
+								}
+							},
+							markLine: {
+								data: [{
+									type: 'average',
+									name: '均'
+								}],
+								label: {
+									position: 'start',
+									formatter: function(params) {
+										let val = params.value || ((params.data && params.data.value) ||
+											0);
+										let rounded = Math.round(val);
+										return '平均:' + rounded;
+									},
+									fontSize: 12,
+									color: '#FF69B4'
+								}
+							},
+							animationDuration: 1000,
+							animationEasing: 'cubicOut'
+						}]
+					};
+
+					// 为'all'范围添加dataZoom配置
+					if (range === 'all') {
+						option.dataZoom = [{
+							type: 'slider',
+							start: ((total - 30) / total) * 100,
+							end: 100
+						}];
+					} else {
+						// 确保在周视图和月视图时移除dataZoom组件
+						option.dataZoom = [];
+					}
+
+					// 更新图表，强制清除之前的配置
+					myChart.clear();
+					myChart.setOption(option);
+				}
+
+				// 将updateChart函数暴露到全局作用域
+				window.updateChart = updateChart;
+
+				// 默认加载"一周"数据
+				updateChart('week');
+
+				// 监听窗口大小变化和全屏状态变化，保证自适应
+				function handleResize() {
+					setTimeout(() => {
+						myChart.resize();
+					}, 200);
+				}
+
+				// 监听窗口大小变化
+				window.addEventListener("resize", handleResize);
+
+				// 监听全屏状态变化
+				document.addEventListener("fullscreenchange", handleResize);
+				document.addEventListener("webkitfullscreenchange", handleResize);
+				document.addEventListener("mozfullscreenchange", handleResize);
+				document.addEventListener("MSFullscreenChange", handleResize);
+
+			})
+		</script>
+		<script>
+			// 显示消息提示框
+			function showMessage(type, message) {
+				const messageDiv = document.createElement('div');
+				messageDiv.style.cssText = `
+					position: fixed;
+					top: 20px;
+					right: 20px;
+					padding: 15px 20px;
+					border-radius: 4px;
+					color: white;
+					z-index: 9999;
+					opacity: 0;
+					transition: opacity 0.3s ease-in-out;
+				`;
+				messageDiv.style.backgroundColor = type === 'error' ? '#ff4d4f' : '#52c41a';
+				messageDiv.textContent = message;
+				document.body.appendChild(messageDiv);
+				setTimeout(() => messageDiv.style.opacity = '1', 100);
+				setTimeout(() => {
+					messageDiv.style.opacity = '0';
+					setTimeout(() => document.body.removeChild(messageDiv), 300);
+				}, 3000);
+			}
+
+			// 倒计时跳转函数（错误时清除 token 跳转登录）
+			function redirectToLoginWithCountdown(seconds) {
+				let counter = seconds;
+				showMessage('error', `登录已经失效，${counter}秒后将跳转到登录页面`);
+				const intervalId = setInterval(function() {
+					counter--;
+					if (counter > 0) {
+						showMessage('error', `登录已经失效，${counter}秒后将跳转到登录页面`);
+					} else {
+						clearInterval(intervalId);
+						localStorage.removeItem('token');
+						window.location.href = 'login.html';
+					}
+				}, 1000);
+			}
+
+			// 调用接口更新页面头部的用户信息（头像、姓名、机构）
+			function updateHeaderUserInfo() {
+				localStorage.setItem('ip', 'http://10.11.126.174:809');
+				const xhr = new XMLHttpRequest();
+				const timeout = 10000; // 超时10秒
+				let timeoutId;
+
+				xhr.open('POST', localStorage.getItem('ip') + '/userLogin/pim', true);
+				xhr.setRequestHeader('Authorization', localStorage.getItem('token'));
+				xhr.setRequestHeader('Content-Type', 'application/json');
+
+				xhr.onreadystatechange = function() {
+					if (xhr.readyState === 4) {
+						clearTimeout(timeoutId);
+						if (xhr.status === 200) {
+							try {
+								const response = JSON.parse(xhr.responseText);
+								if (response.code === 200) {
+									const userData = response.rows;
+									
+									// 更新头部头像（.navbar-list 里第一个 a 标签中的 img）
+									const headerImg = document.querySelector('.navbar-list li a.search-toggle img');
+									if (headerImg && userData.img) {
+										headerImg.src = localStorage.getItem('ip') + userData.img;
+									}
+									// 更新头部用户名（h6 标签）
+									const headerName = document.querySelector('.navbar-list li a.search-toggle .caption h6');
+									if (headerName) {
+										headerName.textContent = userData.name || '用户';
+									}
+									// 更新机构或其他信息（span 标签，此处可根据实际需求调整）
+									const headerInfo = document.querySelector('.navbar-list li a.search-toggle .caption span');
+									if (headerInfo) {
+										headerInfo.textContent = userData.branch || '';
+									}
+								} else {
+									redirectToLoginWithCountdown(3);
+								}
+							} catch (error) {
+								showMessage('error', '解析响应数据失败');
+								console.error('解析响应数据失败:', error);
+							}
+						} else {
+							redirectToLoginWithCountdown(3);
+						}
+					}
+				};
+
+				xhr.onerror = function() {
+					clearTimeout(timeoutId);
+					redirectToLoginWithCountdown(3);
+				};
+
+				// 设置请求超时
+				timeoutId = setTimeout(() => {
+					xhr.abort();
+					redirectToLoginWithCountdown(3);
+				}, 10000);
+
+				xhr.send();
+			}
+
+			document.addEventListener('DOMContentLoaded', function () {
+				updateHeaderUserInfo();
+			});
+		</script>
+	</body>
+	<script src="./js/home.js"></script>
+
+</html>

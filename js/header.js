@@ -48,7 +48,7 @@ export default function renderHeader() {
                                             </div>
                                         </a>
                                         <div class="d-inline-block w-100 text-center p-3">
-                                            <a class="bg-primary iq-sign-btn" href="login.html" role="button">退出登录
+                                            <a class="bg-primary iq-sign-btn" href="index.html" role="button">退出登录
                                                 <i class="ri-login-box-line ml-2"></i>
                                             </a>
                                         </div>

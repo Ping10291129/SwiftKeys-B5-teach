@@ -7,8 +7,8 @@ export default function renderSidebar() {
             <div id="sidebar-scrollbar">
                 <nav class="iq-sidebar-menu">
                     <ul class="iq-menu">
-                        <li data-page="index">
-                            <a href="index.html" class="iq-waves-effect">
+                        <li data-page="home">
+                            <a href="home.html" class="iq-waves-effect">
                                 <i class="ri-home-8-fill"></i><span>首页</span>
                             </a>
                         </li>
