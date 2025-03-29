@@ -54,7 +54,7 @@ a:hover {
 
 .toggle-password {
 	position: absolute;
-	right: 55px;
+	right: 3vw;
 	top: 50%;
 	transform: translateY(-50%);
 	cursor: pointer;

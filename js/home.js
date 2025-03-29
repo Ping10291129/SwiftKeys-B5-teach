@@ -1,3 +1,7 @@
+import { showMessage } from './main.js';
+
+import { redirectToLoginWithCountdown } from './main.js';
+
 document.addEventListener('DOMContentLoaded', function() {
     // 初始化tabs
     initTabs();
@@ -28,44 +32,6 @@ function initChart() {
     // ...existing chart initialization code...
 }
 
-// 检查登录状态
-function checkLoginStatus() {
-    const token = localStorage.getItem('token');
-    if (!token) {
-        redirectToLoginWithCountdown(3);
-        return false;
-    }
-    return true;
-}
-
-// 显示消息提示框
-function showMessage(type, message) {
-    let messageDiv = document.querySelector('.message-div');
-    if (!messageDiv) {
-        messageDiv = document.createElement('div');
-        messageDiv.className = 'message-div';
-        messageDiv.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            padding: 15px 20px;
-            border-radius: 4px;
-            color: white;
-            z-index: 9999;
-            opacity: 0;
-            transition: opacity 0.3s ease-in-out;
-        `;
-        document.body.appendChild(messageDiv);
-    }
-    messageDiv.style.backgroundColor = type === 'error' ? '#ff4d4f' : '#52c41a';
-    messageDiv.textContent = message;
-    messageDiv.style.opacity = '1';
-    setTimeout(() => {
-        messageDiv.style.opacity = '0';
-        setTimeout(() => messageDiv.remove(), 300);
-    }, 3000);
-}
-
 // 调用接口更新页面头部的用户信息
 async function updateHeaderUserInfo() {
     try {
@@ -83,29 +49,19 @@ async function updateHeaderUserInfo() {
             }
         });
 
-        // 统一处理401和500状态
         if (!response.ok) {
-            if (response.status === 401 || response.status === 500) {
-                redirectToLoginWithCountdown(3);
-                return;
-            }
-            throw new Error('网络请求失败');
+            throw new Error('Network response was not ok');
         }
 
         const data = await response.json();
         if (data.code === 200) {
             updateUIWithUserData(data.rows);
-        } else if (data.code === 401 || data.code === 500) {
-            redirectToLoginWithCountdown(3);
         } else {
-            throw new Error(data.message || '获取用户信息失败');
+            redirectToLoginWithCountdown(3);
         }
     } catch (error) {
-        showMessage('error', '获取用户信息失败');
-        console.error('获取用户信息失败:', error);
-        if (error.message.includes('401') || error.message.includes('500')) {
-            redirectToLoginWithCountdown(3);
-        }
+        console.error('Error:', error);
+        redirectToLoginWithCountdown(3);
     }
 }
 
@@ -141,7 +97,7 @@ function initLogout() {
         logoutBtn.addEventListener('click', function(e) {
             e.preventDefault();
             localStorage.removeItem('token');
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         });
     }
 }
@@ -163,20 +119,4 @@ function initDropdownToggle() {
             }
         });
     }
-}
-
-// 倒计时跳转函数
-function redirectToLoginWithCountdown(seconds) {
-    let counter = seconds;
-    showMessage('error', `登录已经失效，，${counter}秒后将跳转到登录页面`);
-    const intervalId = setInterval(function() {
-        counter--;
-        if (counter > 0) {
-            showMessage('error', `登录已经失效，，${counter}秒后将跳转到登录页面`);
-        } else {
-            clearInterval(intervalId);
-            localStorage.removeItem('token');
-            window.location.href = 'login.html';
-        }
-    }, 1000);
 }

@@ -50,30 +50,11 @@ function initPublishTask() {
         }, 3000);
     }
 
-    // 倒计时跳转函数
-    function redirectToLoginWithCountdown(seconds) {
-        let counter = seconds;
-        showMessage('error', `登录已经失效，${counter}秒后将跳转到登录页面`);
-        const intervalId = setInterval(function () {
-            counter--;
-            if (counter > 0) {
-                showMessage('error', `登录已经失效，${counter}秒后将跳转到登录页面`);
-            } else {
-                clearInterval(intervalId);
-                localStorage.removeItem('token');
-                window.location.href = 'login.html';
-            }
-        }, 1000);
-    }
-
     // 获取文章列表数据
     async function fetchArticleData() {
         try {
             const token = localStorage.getItem('token');
-            if (!token) {
-                redirectToLoginWithCountdown(3);
-                return [];
-            }
+            if (!token) return [];
 
             const response = await fetch(localStorage.getItem('ip') + '/textUpload/textList', {
                 method: 'GET',
@@ -84,10 +65,7 @@ function initPublishTask() {
             });
 
             if (!response.ok) {
-                if (response.status === 401 || response.status === 500) {
-                    redirectToLoginWithCountdown(3);
-                    return [];
-                }
+                if (response.status === 401 || response.status === 500) return [];
                 throw new Error('网络请求失败');
             }
 
@@ -95,7 +73,6 @@ function initPublishTask() {
             if (data.code === 200) {
                 return data.rows || [];
             } else if (data.code === 401 || data.code === 500) {
-                redirectToLoginWithCountdown(3);
                 return [];
             } else {
                 throw new Error(data.message || '获取文章列表失败');
@@ -111,10 +88,7 @@ function initPublishTask() {
     async function fetchTaskData() {
         try {
             const token = localStorage.getItem('token');
-            if (!token) {
-                redirectToLoginWithCountdown(3);
-                return [];
-            }
+            if (!token) return [];
 
             const response = await fetch(localStorage.getItem('ip') + '/task/taskList', {
                 method: 'GET',
@@ -125,10 +99,7 @@ function initPublishTask() {
             });
 
             if (!response.ok) {
-                if (response.status === 401 || response.status === 500) {
-                    redirectToLoginWithCountdown(3);
-                    return [];
-                }
+                if (response.status === 401 || response.status === 500) return [];
                 throw new Error('网络请求失败');
             }
 
@@ -136,7 +107,6 @@ function initPublishTask() {
             if (data.code === 200) {
                 return data.rows || [];
             } else if (data.code === 401 || data.code === 500) {
-                redirectToLoginWithCountdown(3);
                 return [];
             } else {
                 throw new Error(data.message || '获取任务列表失败');

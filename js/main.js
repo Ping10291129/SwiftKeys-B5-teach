@@ -61,21 +61,66 @@ function updateHeaderUserInfo() {
 }
 
 // 倒计时跳转函数
-function redirectToLoginWithCountdown(seconds) {
+function redirectToLoginWithCountdown(seconds = 4) {
     let counter = seconds;
-    showMessage('error', `服务器内部错误，${counter}秒后将跳转到登录页面`);
+    const getCountdownMessage = (count) => `登录已失效，${count}秒后将跳转到登录页面`;
+    const message = getCountdownMessage(counter);
+    showMessage('error', message, true);
     const intervalId = setInterval(() => {
         counter--;
         if (counter > 0) {
-            showMessage('error', `服务器内部错误，${counter}秒后将跳转到登录页面`);
+            const existingMessage = document.querySelector('.countdown-message');
+            if (existingMessage) {
+                existingMessage.textContent = getCountdownMessage(counter);
+            }
         } else {
             clearInterval(intervalId);
             localStorage.removeItem('token');
-            window.location.href = 'login.html';
+            window.location.href = 'index.html';
         }
     }, 1000);
 }
 
-function showMessage(type, message) {
-    // ...existing message display code...
+export function showMessage(type, message, isCountdown = false) {
+    // 如果是倒计时消息，尝试更新现有的倒计时消息框
+    if (isCountdown) {
+        const existingCountdown = document.querySelector('.countdown-message');
+        if (existingCountdown) {
+            existingCountdown.textContent = message;
+            return;
+        }
+    } else {
+        // 移除所有非倒计时消息
+        const existingMessages = document.querySelectorAll('.message-div:not(.countdown-message)');
+        existingMessages.forEach(div => div.remove());
+    }
+
+    // 创建新的消息提示
+    const messageDiv = document.createElement('div');
+    messageDiv.className = `message-div${isCountdown ? ' countdown-message' : ''}`;
+    messageDiv.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        padding: 15px 20px;
+        border-radius: 4px;
+        color: white;
+        z-index: 9999;
+        opacity: 0;
+        transition: opacity 0.3s ease-in-out;
+    `;
+    messageDiv.style.backgroundColor = type === 'error' ? '#ff4d4f' : '#52c41a';
+    messageDiv.textContent = message;
+    document.body.appendChild(messageDiv);
+    
+    // 显示消息
+    setTimeout(() => messageDiv.style.opacity = '1', 10);
+
+    // 如果不是倒计时消息，3秒后自动移除
+    if (!isCountdown) {
+        setTimeout(() => {
+            messageDiv.style.opacity = '0';
+            setTimeout(() => messageDiv.remove(), 300);
+        }, 3000);
+    }
 }

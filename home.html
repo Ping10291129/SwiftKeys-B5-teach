@@ -761,12 +761,12 @@
 		<!-- Optional JavaScript -->
 		<!-- jQuery first, then Popper.js, then Bootstrap JS -->
 		<script src="js/jquery.min.js"></script>
-		<script src="js/bootstrap.min.js"></script>
+		<script src="js/bootstrap.bundle.min.js"></script>
 		<script src="js/smooth-scrollbar.js"></script>
 		<script src="js/custom.js"></script>
 		<script src="js/echarts.min.js"></script>
-		<script src="js/home.js"></script>
-		<script type="module" src="js/main.js"></script>
+		<script src="js/main.js" type="module"></script>
+		<script src="js/home.js" type="module"></script>
 
 		<script>
 			$(function() {
@@ -1169,7 +1169,6 @@
 
 			// 调用接口更新页面头部的用户信息（头像、姓名、机构）
 			function updateHeaderUserInfo() {
-				localStorage.setItem('ip', 'http://10.11.126.174:809');
 				const xhr = new XMLHttpRequest();
 				const timeout = 10000; // 超时10秒
 				let timeoutId;
